@@ -1,0 +1,8 @@
+mat-card {
+    width: 100%; 
+    margin: auto;
+}
+
+mat-card-content {
+    font-size: 16pt;
+}

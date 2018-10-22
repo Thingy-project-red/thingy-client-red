@@ -15,13 +15,15 @@ import {
 import { AppComponent } from './app.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { AirComponent } from './airquality/air.component';
+import { HumidityComponent } from './humidity/humidity.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TemperatureComponent,
-    AirComponent
+    AirComponent,
+    HumidityComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,6 @@ import { AirComponent } from './airquality/air.component';
     MatExpansionModule,
     MatGridListModule
   ],
-  // providers: [DataService],
   providers: [],
   bootstrap: [AppComponent]
 })
