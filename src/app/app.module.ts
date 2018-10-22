@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { AirComponent } from './airquality/air.component';
 import { HumidityComponent } from './humidity/humidity.component';
+import { LightComponent } from './light/light.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HumidityComponent } from './humidity/humidity.component';
     AppComponent,
     TemperatureComponent,
     AirComponent,
-    HumidityComponent
+    HumidityComponent,
+    LightComponent
   ],
   imports: [
     BrowserModule,
