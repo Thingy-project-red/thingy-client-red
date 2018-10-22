@@ -1,0 +1,9 @@
+<mat-card>
+        <mat-card-title>
+                Temperature:
+        </mat-card-title>
+        <mat-card-content *ngFor="let temp of temperatures" > 
+                <strong>Latest:</strong> {{temp.temperature}}°C <br>
+                <strong>Time:</strong> {{temp.time}}
+        </mat-card-content>
+</mat-card> 

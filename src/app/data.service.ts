@@ -6,22 +6,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  getLight() {
-    return this.http.get('http://localhost:8000/api/v1/light/latest')
+/*  getLight() {
+    return this.http.get('http://localhost:8000/api/v1/light/latest');
   }
 
   getHumidity() {
-    return this.http.get('http://localhost:8000/api/v1/humidity/latest')
+    return this.http.get('http://localhost:8000/api/v1/humidity/latest');
   }
 
-  getTemperature() {
-    return this.http.get('http://localhost:8000/api/v1/temperature/latest')
-  }
+  // getTemperature() {
+    // return this.http.get('http://localhost:8000/api/v1/temperature/latest');
+  // }
 
   getAirQuality() {
-    return this.http.get('http://localhost:8000/api/v1/air_quality/latest')
+    return this.http.get('http://localhost:8000/api/v1/air_quality/latest');
   }
-
+*/
 }

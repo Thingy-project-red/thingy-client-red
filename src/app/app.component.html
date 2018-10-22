@@ -9,39 +9,30 @@
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
       <h2>Light</h2>
       <ul>
-        <li>Red: {{light.red}}</li>
-        <li>Green: {{light.green}}</li>
-        <li>Blue: {{light.blue}}</li>
-        <li>Clear: {{light.clear}}</li>
-        <li>
-          <svg width="40" height="40">
-            <circle cx="20" cy="20" r="18" stroke="black" stroke-width="2" [attr.fill]="colorCode" />
-          </svg>
-        </li>
+        <li>Light</li>
       </ul>
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
       <h2>Humidity</h2>
       <ul>
-        <li>{{humidity}}%</li>
+        <li>humidity%</li>
       </ul>
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-      <h2>Temperature</h2>
-      <ul>
-        <li>{{temperature.temperature}} C°</li>
-      </ul>
+        <h2>Placeholder</h2>
     </div>
 
     <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
       <h2>Air Quality</h2>
       <ul>
-        <li>eCO2: {{airQuality.eco2}} ppm</li>
-        <li>TVOC: {{airQuality.tvoc}} ppb</li>
+        <li>eCO2: CO2 ppm</li>
+        <li>TVOC: methan ppb</li>
       </ul>  
     </div>
 
   </div>
 </div>
+
+<app-temperature></app-temperature>

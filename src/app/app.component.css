@@ -1,3 +1,10 @@
+main{
+    margin-top: 16pt; 
+    width: 80%; 
+    margin: auto; 
+}
+
+
 h1 {
     font-family: Arial, Helvetica, sans-serif;
     padding-bottom: 50px;

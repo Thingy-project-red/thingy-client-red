@@ -8,18 +8,18 @@ import { interval } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
-  defaultInterval:number = 1;
+/*
+  defaultInterval: number = 1;
 
   light = {};
   humidity = {};
   temperature = {};
   airQuality = {};
 
-  colorCode = "";
-
-  constructor(public dataService: DataService) {
-
+  colorCode = '';
+*/
+  // constructor(public dataService: DataService) {
+/*
     interval(this.defaultInterval * 1000).subscribe(x => {
       this.dataService.getLight().subscribe( data => {
         this.light = data;
@@ -28,9 +28,9 @@ export class AppComponent {
       this.dataService.getHumidity().subscribe( data => {
         this.humidity = data;
       });
-      this.dataService.getTemperature().subscribe( data => {
-        this.temperature = data;
-      });
+      // this.dataService.getTemperature().subscribe( data => {
+        // this.temperature = data;
+     // });
       this.dataService.getAirQuality().subscribe( data => {
         this.airQuality = data;
       });
@@ -72,5 +72,5 @@ export class AppComponent {
 
     this.colorCode = 'rgb(' + red.toFixed(0) + ', ' + green.toFixed(0) + ', ' + blue.toFixed(0) + ')';
   }
-
+*/
 }
