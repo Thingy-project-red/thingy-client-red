@@ -8,18 +8,20 @@ import {
   MatCardModule,
   MatButtonModule,
   MatToolbarModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatGridListModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-// import { DataService } from './data.service';
 import { TemperatureComponent } from './temperature/temperature.component';
+import { AirComponent } from './airquality/air.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemperatureComponent
+    TemperatureComponent,
+    AirComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { TemperatureComponent } from './temperature/temperature.component';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule
   ],
   // providers: [DataService],
   providers: [],

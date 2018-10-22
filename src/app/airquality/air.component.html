@@ -1,0 +1,10 @@
+<mat-card>
+        <mat-card-title>
+                Air Quality:
+        </mat-card-title>
+        <mat-card-content *ngFor="let air of airs" > 
+                <strong>CO2:</strong> {{air.eco2}}ppm <br>
+                <strong>TVOC:</strong> {{air.tvoc}}ppm <br>
+                <strong>Time:</strong> {{air.time}}
+        </mat-card-content>
+</mat-card> 
