@@ -1,0 +1,6 @@
+// Environment for running the API somewhere else
+export const environment = {
+  production: false,
+  name: 'hosted',
+  api: 'http://HOSTNAME:PORT'
+};

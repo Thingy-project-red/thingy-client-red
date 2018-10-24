@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class LightService {
@@ -8,6 +9,6 @@ export class LightService {
     constructor(private http: HttpClient) { }
 
     getLight() {
-        return this.http.get('http://localhost:8000/api/v1/light');
+        return this.http.get(`${environment.api}/api/v1/light`);
     }
 }
