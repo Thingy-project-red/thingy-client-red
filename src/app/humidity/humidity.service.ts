@@ -9,6 +9,6 @@ export class HumidityService {
     constructor(private http: HttpClient) { }
 
     getHumidity() {
-        return this.http.get(`${environment.api}/api/v1/humidity`);
+        return this.http.get(`${environment.api}/api/v1/Thingy1/humidity`);
     }
 }

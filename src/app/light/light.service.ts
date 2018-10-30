@@ -9,6 +9,6 @@ export class LightService {
     constructor(private http: HttpClient) { }
 
     getLight() {
-        return this.http.get(`${environment.api}/api/v1/light`);
+        return this.http.get(`${environment.api}/api/v1/Thingy1/light_intensity`);
     }
 }

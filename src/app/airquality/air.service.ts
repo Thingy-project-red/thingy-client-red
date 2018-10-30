@@ -9,6 +9,6 @@ export class AirService {
     constructor(private http: HttpClient) { }
 
     getAirQuality() {
-        return this.http.get(`${environment.api}/api/v1/air_quality`);
+        return this.http.get(`${environment.api}/api/v1/Thingy1/air_quality`);
     }
 }

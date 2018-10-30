@@ -9,6 +9,6 @@ export class TemperatureService {
     constructor(private http: HttpClient) { }
 
     getTemperature() {
-        return this.http.get(`${environment.api}/api/v1/temperature`);
+        return this.http.get(`${environment.api}/api/v1/Thingy1/temperature`);
     }
 }
