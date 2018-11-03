@@ -10,7 +10,9 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatGridListModule,
-  MatIconModule
+  MatIconModule,
+  MatTreeModule, 
+  MatTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -39,7 +41,9 @@ import { LightComponent } from './light/light.component';
     MatToolbarModule,
     MatExpansionModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    MatTreeModule, 
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
