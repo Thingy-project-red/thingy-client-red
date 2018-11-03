@@ -4,4 +4,5 @@ export interface Light {
     green: number;
     red: number;
     clear: number;
+    device: string; 
 }
