@@ -14,8 +14,8 @@ import { interval } from 'rxjs';
 export class TemperatureComponent implements OnInit, OnDestroy {
     temperatures1: any;
     temperatures2: any;
-    latestTemp1: any; 
-    latestTemp2: any;
+    latestTemp1: number; 
+    latestTemp2: number;
     lookUpRange = '10'; // in seconds
 
     private temperaturesSub1: Subscription;
@@ -28,7 +28,7 @@ export class TemperatureComponent implements OnInit, OnDestroy {
             this.temperatureService.getTemperatures1(this.lookUpRange); 
             this.temperaturesSub1 = this.temperatureService.getTemperatureUpdateListener1()
             .subscribe((temperatures: Temperature[]) => {
-                this.latestTemp1 = temperatures[0];
+                this.latestTemp1 = temperatures[0].temperature;
                 this.temperatures1 = temperatures; 
             });
         })
@@ -36,7 +36,7 @@ export class TemperatureComponent implements OnInit, OnDestroy {
             this.temperatureService.getTemperatures2(this.lookUpRange); 
             this.temperaturesSub2 = this.temperatureService.getTemperatureUpdateListener2()
             .subscribe((temperatures: Temperature[]) => {
-                this.latestTemp2 = temperatures[0];
+                this.latestTemp2 = temperatures[0].temperature;
                 this.temperatures2 = temperatures; 
             });
         })
