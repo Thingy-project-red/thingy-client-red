@@ -13,8 +13,8 @@ import { Subscription, interval } from 'rxjs';
 export class AirComponent implements OnInit, OnDestroy {
     airs1: any;
     airs2: any; 
-    latestAir1: any; 
-    latestAir2: any;
+    latestAir1: number; 
+    latestAir2: number;
     lookUpRange = '10';
 
 
@@ -28,7 +28,7 @@ export class AirComponent implements OnInit, OnDestroy {
             this.airService.getAirQuality1(this.lookUpRange); 
             this.airSub1 = this.airService.getAirUpdateListener1()
             .subscribe((temperatures: Air[]) => {
-                this.latestAir1 = temperatures[0];
+                this.latestAir1 = temperatures[0].eco2;
                 this.airs1 = temperatures; 
             });
         })
@@ -36,7 +36,7 @@ export class AirComponent implements OnInit, OnDestroy {
             this.airService.getAirQuality2(this.lookUpRange); 
             this.airSub2 = this.airService.getAirUpdateListener2()
             .subscribe((temperatures: Air[]) => {
-                this.latestAir2 = temperatures[0];
+                this.latestAir2 = temperatures[0].eco2;
                 this.airs2 = temperatures; 
             });
         })
