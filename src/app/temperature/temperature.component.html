@@ -2,7 +2,7 @@
         <mat-expansion-panel>
                 <mat-expansion-panel-header>
                         <mat-panel-title>
-                        Temperature
+                                Temperature
                         </mat-panel-title>
                         <mat-panel-description>
                                 <div class="grid-container">
@@ -13,30 +13,30 @@
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
-                        <table style="width:50%">
-                                <tr>
-                                        <th>Temperature</th>
-                                        <th>Time</th> 
-                                        <th>Device</th>
-                                        </tr>
-                                        <tr *ngFor="let temp of temperatures1">
-                                                <td>{{temp.temperature}}°C</td>
-                                                <td>{{temp.time | date: 'medium'}}</td>
-                                                <td>{{temp.device}}</td> 
-                                        </tr>
-                        </table>
-                        <hr>
-                        <table style="width:50%">
-                                        <tr>
-                                                <th>Temperature</th>
-                                                <th>Time</th> 
-                                                <th>Device</th>
-                                                </tr>
-                                                <tr *ngFor="let temp of temperatures2">
-                                                        <td>{{temp.temperature}}°C</td>
-                                                        <td>{{temp.time | date: 'medium'}}</td>
-                                                        <td>{{temp.device}}</td> 
-                                                </tr>
-                                </table>
+                <table style="width:50%">
+                        <tr>
+                                <th>Temperature</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let temp of temperatures1">
+                                <td>{{temp.temperature}}°C</td>
+                                <td>{{temp.time | date: 'medium'}}</td>
+                                <td>{{temp.device}}</td>
+                        </tr>
+                </table>
+                <hr>
+                <table style="width:50%">
+                        <tr>
+                                <th>Temperature</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let temp of temperatures2">
+                                <td>{{temp.temperature}}°C</td>
+                                <td>{{temp.time | date: 'medium'}}</td>
+                                <td>{{temp.device}}</td>
+                        </tr>
+                </table>
         </mat-expansion-panel>
 </mat-accordion>

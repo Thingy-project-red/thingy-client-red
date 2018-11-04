@@ -13,7 +13,7 @@ import { Subscription, interval } from 'rxjs';
 export class LightComponent implements OnInit, OnDestroy {
     lights1: any;
     lights2: any;
-    colorCode1: any; 
+    colorCode1: any;
     colorCode2: any;
 
     lookUpRange = '10'; // in seconds
@@ -21,29 +21,29 @@ export class LightComponent implements OnInit, OnDestroy {
     private ligthSub1: Subscription;
     private ligthSub2: Subscription;
 
-    constructor(public lightService: LightService) {}
+    constructor(public lightService: LightService) { }
 
     ngOnInit() {
         interval(1000).subscribe(x => {
-            this.lightService.getLights1(this.lookUpRange); 
+            this.lightService.getLights1(this.lookUpRange);
             this.ligthSub1 = this.lightService.getLightsUpdateListener1()
-            .subscribe((lights: Light[]) => {
-                this.colorCode1 = this.lightService.getColorCode1();
-                this.lights1 = lights; 
-            });
+                .subscribe((lights: Light[]) => {
+                    this.colorCode1 = this.lightService.getColorCode1();
+                    this.lights1 = lights;
+                });
         })
         interval(1000).subscribe(x => {
-            this.lightService.getLights2(this.lookUpRange); 
+            this.lightService.getLights2(this.lookUpRange);
             this.ligthSub1 = this.lightService.getLightsUpdateListener2()
-            .subscribe((lights: Light[]) => {
-                this.colorCode2 = this.lightService.getColorCode2();
-                this.lights2 = lights; 
-            });
+                .subscribe((lights: Light[]) => {
+                    this.colorCode2 = this.lightService.getColorCode2();
+                    this.lights2 = lights;
+                });
         })
     }
 
     ngOnDestroy() {
         this.ligthSub1.unsubscribe();
-        this.ligthSub2.unsubscribe(); 
+        this.ligthSub2.unsubscribe();
     }
 }

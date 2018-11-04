@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Subject } from "rxjs"; 
+import { Subject } from "rxjs";
 import { Light } from "./light.model"
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class LightService {
-    colorCode1: any; 
-    colorCode2: any; 
+    colorCode1: any;
+    colorCode2: any;
 
-    private lights1: Light[] = []; 
-    private lights2: Light[] = []; 
+    private lights1: Light[] = [];
+    private lights2: Light[] = [];
 
-    private lightsUpdated1 = new Subject<Light[]>(); 
-    private lightsUpdated2 = new Subject<Light[]>(); 
+    private lightsUpdated1 = new Subject<Light[]>();
+    private lightsUpdated2 = new Subject<Light[]>();
 
     constructor(private http: HttpClient) { }
 
-    getLights1(rangeInSeconds){
+    getLights1(rangeInSeconds) {
         this.http
             .get<Light[]>(
                 `${environment.api}/api/v1/Thingy1/light_intensity/${rangeInSeconds}`
@@ -29,11 +29,11 @@ export class LightService {
             })
     }
 
-    getColorCode1(){
+    getColorCode1() {
         return this.colorCode1;
     }
 
-    getLights2(rangeInSeconds){
+    getLights2(rangeInSeconds) {
         this.http
             .get<Light[]>(
                 `${environment.api}/api/v1/Thingy2/light_intensity/${rangeInSeconds}`
@@ -45,16 +45,16 @@ export class LightService {
             })
     }
 
-    getColorCode2(){
+    getColorCode2() {
         return this.colorCode2;
     }
 
     getLightsUpdateListener1() {
-        return this.lightsUpdated1.asObservable(); 
+        return this.lightsUpdated1.asObservable();
     }
 
     getLightsUpdateListener2() {
-        return this.lightsUpdated2.asObservable(); 
+        return this.lightsUpdated2.asObservable();
     }
 
     setColors(data) {
@@ -69,27 +69,27 @@ export class LightService {
         const clearAtWhite = 400;
         const clearDiff = clearAtWhite - clearAtBlack;
         let clearNormalized = (c - clearAtBlack) / clearDiff;
-    
+
         if (clearNormalized < 0) {
-          clearNormalized = 0;
+            clearNormalized = 0;
         }
-    
+
         let red = rRatio * 255.0 * 3 * clearNormalized;
         if (red > 255) {
-          red = 255;
+            red = 255;
         }
-    
+
         let green = gRatio * 255.0 * 3 * clearNormalized;
         if (green > 255) {
-          green = 255;
+            green = 255;
         }
-    
+
         let blue = bRatio * 255.0 * 3 * clearNormalized;
         if (blue > 255) {
-          blue = 255;
+            blue = 255;
         }
-    
+
         let colorToUpdate = 'rgb(' + red.toFixed(0) + ', ' + green.toFixed(0) + ', ' + blue.toFixed(0) + ')';
         return colorToUpdate;
-      }
+    }
 }

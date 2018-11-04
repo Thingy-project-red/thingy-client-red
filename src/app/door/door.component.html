@@ -1,45 +1,45 @@
 <mat-accordion multi="true">
-                <mat-expansion-panel>
-                        <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                Fridge Door 
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                        <div class="grid-container">
-                                                <div class="grid-item">Thingy1: </div>
-                                                <div class="grid-item2" *ngIf="isOpen1;else isClosed">open</div>
-                                                <div class="grid-item">Thingy2: </div>
-                                                <div class="grid-item2" *ngIf="isOpen2;else isClosed">open</div>
-                                        </div>
-                                </mat-panel-description>
-                        </mat-expansion-panel-header>
-                                <table style="width:50%">
-                                        <tr>
-                                                <th>Door</th>
-                                                <th>Time</th> 
-                                                <th>Device</th>
-                                        </tr>                                                
-                                        <tr *ngFor="let door of doors1">
-                                                <td *ngIf="door.open;else isClosed">open</td>
-                                                <td>{{door.time | date: 'medium'}}</td>
-                                                <td>{{door.device}}</td> 
-                                        </tr>
-                                </table>
-                                <hr>
-                                <table style="width:50%">
-                                        <tr>
-                                                <th>Light</th>
-                                                <th>Time</th> 
-                                                <th>Device</th>
-                                        </tr>                                                
-                                        <tr *ngFor="let door of doors2">
-                                                <td *ngIf="door.open;else isClosed">open</td>
-                                                <td>{{door.time | date: 'medium'}}</td>
-                                                <td>{{door.device}}</td> 
-                                        </tr>
-                                        </table>
-                </mat-expansion-panel>
-        </mat-accordion>
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title>
+                                Fridge Door
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container">
+                                        <div class="grid-item">Thingy1: </div>
+                                        <div class="grid-item2" *ngIf="isOpen1;else isClosed">open</div>
+                                        <div class="grid-item">Thingy2: </div>
+                                        <div class="grid-item2" *ngIf="isOpen2;else isClosed">open</div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+                <table style="width:50%">
+                        <tr>
+                                <th>Door</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let door of doors1">
+                                <td *ngIf="door.open;else isClosed">open</td>
+                                <td>{{door.time | date: 'medium'}}</td>
+                                <td>{{door.device}}</td>
+                        </tr>
+                </table>
+                <hr>
+                <table style="width:50%">
+                        <tr>
+                                <th>Light</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let door of doors2">
+                                <td *ngIf="door.open;else isClosed">open</td>
+                                <td>{{door.time | date: 'medium'}}</td>
+                                <td>{{door.device}}</td>
+                        </tr>
+                </table>
+        </mat-expansion-panel>
+</mat-accordion>
 
 
 <ng-template #isClosed>

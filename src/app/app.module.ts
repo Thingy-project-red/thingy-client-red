@@ -11,7 +11,7 @@ import {
   MatExpansionModule,
   MatGridListModule,
   MatIconModule,
-  MatTreeModule, 
+  MatTreeModule,
   MatTableModule
 } from '@angular/material';
 
@@ -44,7 +44,7 @@ import { DoorComponent } from './door/door.component';
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatTreeModule, 
+    MatTreeModule,
     MatTableModule
   ],
   providers: [],
