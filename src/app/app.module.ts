@@ -10,7 +10,9 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatGridListModule,
-  MatIconModule
+  MatIconModule,
+  MatTreeModule,
+  MatTableModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -18,6 +20,7 @@ import { TemperatureComponent } from './temperature/temperature.component';
 import { AirComponent } from './airquality/air.component';
 import { HumidityComponent } from './humidity/humidity.component';
 import { LightComponent } from './light/light.component';
+import { DoorComponent } from './door/door.component';
 
 
 @NgModule({
@@ -26,7 +29,8 @@ import { LightComponent } from './light/light.component';
     TemperatureComponent,
     AirComponent,
     HumidityComponent,
-    LightComponent
+    LightComponent,
+    DoorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { LightComponent } from './light/light.component';
     MatToolbarModule,
     MatExpansionModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    MatTreeModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

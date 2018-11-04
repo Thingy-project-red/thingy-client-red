@@ -1,9 +1,42 @@
-<mat-card>
-        <mat-card-title>
-                Temperature:
-        </mat-card-title>
-        <mat-card-content *ngFor="let temp of temperatures" > 
-                <strong>Latest:</strong> {{temp.temperature}}°C <br>
-                <strong>Time:</strong> {{temp.time}}
-        </mat-card-content>
-</mat-card> 
+<mat-accordion multi="true">
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title>
+                                Temperature
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container">
+                                        <div class="grid-item">Thingy1: </div>
+                                        <div class="grid-item2">{{ latestTemp1 }}°C</div>
+                                        <div class="grid-item">Thingy2: </div>
+                                        <div class="grid-item2">{{ latestTemp2 }}°C</div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+                <table style="width:50%">
+                        <tr>
+                                <th>Temperature</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let temp of temperatures1">
+                                <td>{{temp.temperature}}°C</td>
+                                <td>{{temp.time | date: 'medium'}}</td>
+                                <td>{{temp.device}}</td>
+                        </tr>
+                </table>
+                <hr>
+                <table style="width:50%">
+                        <tr>
+                                <th>Temperature</th>
+                                <th>Time</th>
+                                <th>Device</th>
+                        </tr>
+                        <tr *ngFor="let temp of temperatures2">
+                                <td>{{temp.temperature}}°C</td>
+                                <td>{{temp.time | date: 'medium'}}</td>
+                                <td>{{temp.device}}</td>
+                        </tr>
+                </table>
+        </mat-expansion-panel>
+</mat-accordion>

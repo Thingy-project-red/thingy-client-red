@@ -1,19 +1,10 @@
-
 <mat-toolbar color="primary">
-  <mat-icon>home</mat-icon>&nbsp; Thingy Team Red Client
+    <mat-icon>home</mat-icon>&nbsp; Thingy Team Red Client
 </mat-toolbar>
-
-<mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
-      <app-temperature></app-temperature>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <app-humidity></app-humidity>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <app-air></app-air>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <app-light></app-light>
-    </mat-grid-tile>
-</mat-grid-list>
+<main>
+    <app-temperature> </app-temperature>
+    <app-air> </app-air>
+    <app-humidity></app-humidity>
+    <app-light></app-light>
+    <app-door></app-door>
+</main>
