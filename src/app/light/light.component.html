@@ -2,7 +2,7 @@
                 <mat-expansion-panel>
                         <mat-expansion-panel-header>
                                 <mat-panel-title>
-                                Lights
+                                Lights 
                                 </mat-panel-title>
                                 <mat-panel-description>
                                         <div class="grid-container">
@@ -10,13 +10,13 @@
                                                 <div class="grid-item2">
                                                         <svg width="27" height="27">
                                                                 <circle cx="13.5" cy="13.5" r="12" stroke="gray" stroke-width="1" [attr.fill]="colorCode1" />
-                                                        </svg> {{door1}}
+                                                        </svg> 
                                                 </div>
                                                 <div class="grid-item">Thingy2: </div>
                                                 <div class="grid-item2">
                                                         <svg width="27" height="27">
                                                                 <circle cx="13.5" cy="13.5" r="12" stroke="gray" stroke-width="1" [attr.fill]="colorCode2" />
-                                                        </svg> {{door2}}
+                                                        </svg>
                                                 </div>
                                         </div>
                                 </mat-panel-description>
@@ -28,7 +28,7 @@
                                                 <th>Device</th>
                                         </tr>                                                
                                         <tr *ngFor="let light of lights1">
-                                                <td>r: {{light.red}} g: {{light.green}} b: {{light.blue}} clear: {{light.clear}}</td>
+                                                <td>rgb: ({{light.red}}, {{light.green}}, {{light.blue}}) clear: {{light.clear}}</td>
                                                 <td>{{light.time | date: 'medium'}}</td>
                                                 <td>{{light.device}}</td> 
                                         </tr>
@@ -41,7 +41,7 @@
                                                 <th>Device</th>
                                         </tr>                                                
                                         <tr *ngFor="let light of lights2">
-                                                <td>r: {{light.red}} g: {{light.green}} b: {{light.blue}} clear: {{light.clear}}</td>
+                                                <td>rgb: ({{light.red}}, {{light.green}}, {{light.blue}}) clear: {{light.clear}}</td>
                                                 <td>{{light.time | date: 'medium'}}</td>
                                                 <td>{{light.device}}</td> 
                                                 </tr>

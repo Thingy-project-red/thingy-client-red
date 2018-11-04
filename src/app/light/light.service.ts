@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs"; 
-import {Light } from "./light.model"
+import { Light } from "./light.model"
 
 @Injectable({providedIn: 'root'})
 export class LightService {
     colorCode1: any; 
     colorCode2: any; 
-
-    door1: any; 
-    door2: any; 
 
     private lights1: Light[] = []; 
     private lights2: Light[] = []; 
@@ -24,26 +21,12 @@ export class LightService {
         this.http
             .get<Light[]>(
                 `${environment.api}/api/v1/Thingy1/light_intensity/${rangeInSeconds}`
-        ).subscribe((response) => {
-            this.lights1 = response;
-            this.colorCode1 = this.setColors(this.lights1[0]);
-            this.lightsUpdated1.next([...this.lights1]);
-        })
-    }
-
-    getDoor1(){
-        this.http
-            .get(
-                `${environment.api}/api/v1/Thingy1/door/1`
-        ).subscribe((response) => {
-            let door = response[0]; 
-            let isOpen = door.open;
-            if(isOpen){
-                this.door1 = "open";
-            }else{
-                this.door1 = "closed";
-            }
-        })
+            )
+            .subscribe((transformedLights) => {
+                this.lights1 = transformedLights;
+                this.colorCode1 = this.setColors(this.lights1[0]);
+                this.lightsUpdated1.next(this.lights1);
+            })
     }
 
     getColorCode1(){
@@ -54,25 +37,12 @@ export class LightService {
         this.http
             .get<Light[]>(
                 `${environment.api}/api/v1/Thingy2/light_intensity/${rangeInSeconds}`
-        ).subscribe((response) => {
-            this.lights2 = response;
-            this.colorCode2 = this.setColors(this.lights2[0]);
-            this.lightsUpdated2.next([...this.lights2]);
-        })
-    }
-
-    getDoor2(){
-        this.http
-            .get(
-                `${environment.api}/api/v1/Thingy2/door/1`
-        ).subscribe((response) => {
-            let door = response[0]; 
-            if(door.open){
-                this.door2 = "open";
-            }else{
-                this.door2 = "closed";
-            }
-        })
+            )
+            .subscribe((transformedLights) => {
+                this.lights2 = transformedLights;
+                this.colorCode2 = this.setColors(this.lights2[0]);
+                this.lightsUpdated2.next(this.lights2);
+            })
     }
 
     getColorCode2(){

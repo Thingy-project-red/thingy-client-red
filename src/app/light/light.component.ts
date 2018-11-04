@@ -15,8 +15,7 @@ export class LightComponent implements OnInit, OnDestroy {
     lights2: any;
     colorCode1: any; 
     colorCode2: any;
-    door1: any; 
-    door2: any;
+
     lookUpRange = '10'; // in seconds
 
     private ligthSub1: Subscription;
@@ -30,7 +29,6 @@ export class LightComponent implements OnInit, OnDestroy {
             this.ligthSub1 = this.lightService.getLightsUpdateListener1()
             .subscribe((lights: Light[]) => {
                 this.colorCode1 = this.lightService.getColorCode1();
-                this.door1 = this.lightService.getDoor1(); 
                 this.lights1 = lights; 
             });
         })
@@ -39,7 +37,6 @@ export class LightComponent implements OnInit, OnDestroy {
             this.ligthSub1 = this.lightService.getLightsUpdateListener2()
             .subscribe((lights: Light[]) => {
                 this.colorCode2 = this.lightService.getColorCode2();
-                this.door2 = this.lightService.getDoor2(); 
                 this.lights2 = lights; 
             });
         })
