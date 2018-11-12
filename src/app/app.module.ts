@@ -21,6 +21,7 @@ import { AirComponent } from './airquality/air.component';
 import { HumidityComponent } from './humidity/humidity.component';
 import { LightComponent } from './light/light.component';
 import { DoorComponent } from './door/door.component';
+import { BatteryComponent } from './battery/battery.component'; 
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DoorComponent } from './door/door.component';
     AirComponent,
     HumidityComponent,
     LightComponent,
-    DoorComponent
+    DoorComponent, 
+    BatteryComponent
   ],
   imports: [
     BrowserModule,
