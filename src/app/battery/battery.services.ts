@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
 import { Battery } from "./battery.model";
+import { AuthProvider } from '../auth/auth.provider';
 
 
 @Injectable({providedIn: 'root'})
@@ -19,7 +20,8 @@ export class BatteryService {
     getBattery1(rangeInSeconds) {
         this.http
         .get<Battery[]>(
-            `${environment.api}/api/v1/Thingy1/battery_level/${rangeInSeconds}`
+            `${environment.api}/api/v1/Thingy1/battery_level/${rangeInSeconds}`,
+            { headers: AuthProvider.getHeaders(this.http) }
         ).subscribe((response) => {
             this.batteries1 = response;
             this.batteriesUpdated1.next(this.batteries1);
@@ -30,7 +32,8 @@ export class BatteryService {
     getBattery2(rangeInSeconds) {
         this.http
         .get<Battery[]>(
-            `${environment.api}/api/v1/Thingy2/battery_level/${rangeInSeconds}`
+            `${environment.api}/api/v1/Thingy2/battery_level/${rangeInSeconds}`,
+            { headers: AuthProvider.getHeaders(this.http) }
         ).subscribe((response) => {
             this.batteries2 = response;
             this.batteriesUpdated2.next(this.batteries2);

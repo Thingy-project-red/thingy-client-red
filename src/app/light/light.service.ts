@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
-import { Light } from "./light.model"
+import { Light } from "./light.model";
+import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class LightService {
@@ -20,7 +21,8 @@ export class LightService {
     getLights1(rangeInSeconds) {
         this.http
             .get<Light[]>(
-                `${environment.api}/api/v1/Thingy1/light_intensity/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy1/light_intensity/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             )
             .subscribe((transformedLights) => {
                 this.lights1 = transformedLights;
@@ -36,7 +38,8 @@ export class LightService {
     getLights2(rangeInSeconds) {
         this.http
             .get<Light[]>(
-                `${environment.api}/api/v1/Thingy2/light_intensity/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy2/light_intensity/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             )
             .subscribe((transformedLights) => {
                 this.lights2 = transformedLights;

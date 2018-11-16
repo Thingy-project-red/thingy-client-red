@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Humidity } from './humidity.model';
 import { Subject } from "rxjs";
+import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class HumidityService {
@@ -18,7 +19,8 @@ export class HumidityService {
     getHumidities1(rangeInSeconds) {
         this.http
             .get<Humidity[]>(
-                `${environment.api}/api/v1/Thingy1/humidity/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy1/humidity/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.humidities1 = response;
                 this.humiditiesUpdated1.next([...this.humidities1]);
@@ -28,7 +30,8 @@ export class HumidityService {
     getHumidities2(rangeInSeconds) {
         this.http
             .get<Humidity[]>(
-                `${environment.api}/api/v1/Thingy2/humidity/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy2/humidity/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.humidities2 = response;
                 this.humiditiesUpdated2.next([...this.humidities2]);

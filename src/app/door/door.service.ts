@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
-import { Door } from "./door.model"
+import { Door } from "./door.model";
+import { AuthProvider } from '../auth/auth.provider';
 
 
 @Injectable({ providedIn: 'root' })
@@ -19,7 +20,8 @@ export class DoorService {
     getDoor1(rangeInSeconds) {
         this.http
             .get<Door[]>(
-                `${environment.api}/api/v1/Thingy1/door/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy1/door/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             )
             .subscribe((transformedLights) => {
                 this.doors1 = transformedLights;
@@ -30,7 +32,8 @@ export class DoorService {
     getDoor2(rangeInSeconds) {
         this.http
             .get<Door[]>(
-                `${environment.api}/api/v1/Thingy2/door/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy2/door/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             )
             .subscribe((transformedLights) => {
                 this.doors2 = transformedLights;

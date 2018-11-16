@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
 import { Air } from "./air.model";
+import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class AirService {
@@ -17,7 +18,8 @@ export class AirService {
     getAirQuality1(rangeInSeconds) {
         this.http
             .get<Air[]>(
-                `${environment.api}/api/v1/Thingy1/air_quality/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy1/air_quality/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.airs1 = response;
                 this.airsUpdated1.next([...this.airs1]);
@@ -27,7 +29,8 @@ export class AirService {
     getAirQuality2(rangeInSeconds) {
         this.http
             .get<Air[]>(
-                `${environment.api}/api/v1/Thingy2/air_quality/${rangeInSeconds}`
+                `${environment.api}/api/v1/Thingy2/air_quality/${rangeInSeconds}`,
+                { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.airs2 = response;
                 this.airsUpdated2.next([...this.airs2]);
