@@ -11,7 +11,7 @@ import { Subscription, interval } from 'rxjs';
 
 export class AirqualitySeriesComponent implements OnInit, OnDestroy {
   @Input() device: String;
-  @Input() rangeInSeconds: number; 
+  @Input() rangeInSeconds: number;
 
   airs: any;
   private airSub: Subscription;
@@ -22,14 +22,14 @@ export class AirqualitySeriesComponent implements OnInit, OnDestroy {
     interval(1000).subscribe(x => {
       this.airSeriesService.getAirSeries(this.device, this.rangeInSeconds);
       this.airSub = this.airSeriesService.getAirsUpdateListener(this.device)
-        .subscribe((temperatures: Air[]) => {
-            this.airs = temperatures;
+        .subscribe((airs: Air[]) => {
+          this.airs = airs;
         });
     })
   }
 
-  ngOnDestroy(){
-    this.airSub.unsubscribe(); 
+  ngOnDestroy() {
+    this.airSub.unsubscribe();
   }
 
 }

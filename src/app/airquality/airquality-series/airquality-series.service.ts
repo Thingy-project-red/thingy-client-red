@@ -20,18 +20,18 @@ export class AirSeriesService {
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.airs = response;
-                if(device == "Thingy1"){
+                if (device == "Thingy1") {
                     this.airsUpdated1.next(this.airs);
-                }else{
+                } else {
                     this.airsUpdated2.next(this.airs);
                 }
             });
     }
 
     getAirsUpdateListener(device) {
-        if(device == "Thingy1"){
+        if (device == "Thingy1") {
             return this.airsUpdated1.asObservable();
-        }else{
+        } else {
             return this.airsUpdated2.asObservable();
         }
     }

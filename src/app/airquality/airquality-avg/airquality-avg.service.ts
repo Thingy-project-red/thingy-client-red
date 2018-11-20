@@ -6,33 +6,33 @@ import { Air } from "../air.model";
 import { AuthProvider } from '../../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
-export class AirLatestService {
-    private co2: Air[] = [];
-    private co2Updated1 = new Subject<Air[]>();
-    private co2Updated2 = new Subject<Air[]>();
+export class AirAvgService {
+    private avg: Air[] = [];
+    private avgUpdated1 = new Subject<Air[]>();
+    private avgUpdated2 = new Subject<Air[]>();
 
     constructor(private http: HttpClient) { }
 
-    getLatestCO2(device) {
+    getAvgCO2(device) {
         this.http
             .get<Air[]>(
-                `${environment.api}/api/v1/${device}/air_quality/1`,
+                `${environment.api}/api/v1/${device}/air_quality/average`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
-                this.co2 = response;
+                this.avg = response;
                 if (device == "Thingy1") {
-                    this.co2Updated1.next(this.co2);
+                    this.avgUpdated1.next(this.avg);
                 } else {
-                    this.co2Updated2.next(this.co2);
+                    this.avgUpdated2.next(this.avg);
                 }
             });
     }
 
-    getCO2UpdateListener(device) {
+    getAvgUpdateListener(device) {
         if (device == "Thingy1") {
-            return this.co2Updated1.asObservable();
+            return this.avgUpdated1.asObservable();
         } else {
-            return this.co2Updated2.asObservable();
+            return this.avgUpdated2.asObservable();
         }
     }
 }
