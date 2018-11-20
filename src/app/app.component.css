@@ -3,7 +3,8 @@ main {
   margin: 1rem auto;
 }
 
-mat-panel-title{
+/* Hint: moved to dashboard component*/
+/*mat-panel-title{
   margin-right: 6px;
   font-size: 18px;
 }
@@ -27,5 +28,13 @@ mat-panel-description{
 .grid-item2 {
   font-size: 18px;
   color: black;
+}*/
+
+.toolbar-spacer {
+  padding-left: 25px;
+}
+
+a:hover {
+  color: white;
 }
 
