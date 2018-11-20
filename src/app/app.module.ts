@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import {
   MatInputModule,
   MatCardModule,
@@ -12,7 +13,9 @@ import {
   MatGridListModule,
   MatIconModule,
   MatTreeModule,
-  MatTableModule
+  MatTableModule,
+  MatProgressSpinnerModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -28,6 +31,19 @@ import { AirqualityAvgComponent } from './airquality/airquality-avg/airquality-a
 import { HumidityLatestComponent } from './humidity/humidity-latest/humidity-latest.component';
 import { HumidityAvgComponent } from './humidity/humidity-avg/humidity-avg.component';
 import { HumiditySeriesComponent } from './humidity/humidity-series/humidity-series.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TemperatureGraphComponent } from './graphs/temperature-graph/temperature-graph.component';
+import { HumidityGraphComponent } from './graphs/humidity-graph/humidity-graph.component';
+import { GraphOverviewComponent } from './graphs/graph-overview/graph-overview.component';
+import { Co2GraphComponent } from './graphs/co2-graph/co2-graph.component';
+import { TvocGraphComponent } from './graphs/tvoc-graph/tvoc-graph.component'; 
+import { ChartsModule } from 'ng2-charts'
+
+const appRoutes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'graphs',      component: GraphOverviewComponent },
+  { path: '**', component: DashboardComponent }
+];
 
 @NgModule({
   declarations: [
@@ -43,13 +59,22 @@ import { HumiditySeriesComponent } from './humidity/humidity-series/humidity-ser
     AirqualityAvgComponent,
     HumidityLatestComponent,
     HumidityAvgComponent,
-    HumiditySeriesComponent
+    HumiditySeriesComponent,
+    DashboardComponent,
+    TemperatureGraphComponent,
+    HumidityGraphComponent,
+    Co2GraphComponent,
+    TvocGraphComponent,
+    GraphOverviewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(
+      appRoutes,
+    ),
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -58,7 +83,10 @@ import { HumiditySeriesComponent } from './humidity/humidity-series/humidity-ser
     MatGridListModule,
     MatIconModule,
     MatTreeModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
