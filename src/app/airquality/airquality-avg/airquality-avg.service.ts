@@ -13,10 +13,10 @@ export class AirAvgService {
 
     constructor(private http: HttpClient) { }
 
-    getAvgCO2(device) {
+    getAvgCO2(device, rangeInSeconds) {
         this.http
             .get<Air[]>(
-                `${environment.api}/api/v1/${device}/air_quality/average`,
+                `${environment.api}/api/v1/${device}/air_quality/average/${rangeInSeconds}`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.avg = response;

@@ -11,6 +11,7 @@ import { Subscription, interval } from 'rxjs';
 
 export class AirqualityAvgComponent implements OnInit, OnDestroy {
   @Input() device: String;
+  @Input() rangeInSeconds: number; 
 
   avg: number;
   private avgSub: Subscription;
@@ -18,8 +19,8 @@ export class AirqualityAvgComponent implements OnInit, OnDestroy {
   constructor(public airAvgService: AirAvgService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
-      this.airAvgService.getAvgCO2(this.device);
+    interval(10000).subscribe(x => {
+      this.airAvgService.getAvgCO2(this.device, this.rangeInSeconds);
       this.avgSub = this.airAvgService.getAvgUpdateListener(this.device)
         .subscribe((airs: Air[]) => {
           this.avg = Math.round(airs[0].eco2 * 100) / 100;

@@ -14,10 +14,10 @@ export class HumidityAvgService {
 
     constructor(private http: HttpClient) { }
 
-    getAvgHumidity(device) {
+    getAvgHumidity(device, rangeInSeconds) {
         this.http
             .get<Humidity[]>(
-                `${environment.api}/api/v1/${device}/humidity/average`,
+                `${environment.api}/api/v1/${device}/humidity/average/${rangeInSeconds}`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.avg = response;

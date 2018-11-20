@@ -14,10 +14,10 @@ export class TemperatureAvgService {
 
     constructor(private http: HttpClient) { }
 
-    getAvgTemperature(device) {
+    getAvgTemperature(device, rangeInSeconds) {
         this.http
             .get<Temperature[]>(
-                `${environment.api}/api/v1/${device}/temperature/average/`,
+                `${environment.api}/api/v1/${device}/temperature/average/${rangeInSeconds}`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.avg = response;
