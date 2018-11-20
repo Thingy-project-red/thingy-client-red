@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-card-header>
+    <div></div>
+    <mat-card-title>Temperature graph</mat-card-title>
+    <mat-card-subtitle>for the last hour
+      <!--<div class="row" style="padding-left: 16px">
+        <div class="cold-md-4" style="padding-right: 20px">
+          <mat-form-field >
+            <input matInput placeholder="Value" type="number" [(ngModel)]="selectedValue">
+          </mat-form-field>
+        </div>
+        <div class="cold-md-4">
+          <mat-form-field>
+            <mat-select placeholder="Time interval" [(value)]="selectedTime.viewValue">
+              <mat-option *ngFor="let time of times" [value]="time.viewValue">
+                {{time.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="cold-md-4" style="padding-right: 20px">
+          <button mat-icon-button>
+            <mat-icon aria-label="Example icon-button with a heart icon" (click)="loadGraphData((selectedValue * selectedTime.value), '')">refresh</mat-icon>
+          </button>
+        </div>
+      </div>-->
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="loader" *ngIf="!dataLoaded">
+      <mat-spinner style="margin:0 auto;" [diameter]="60"></mat-spinner>
+    </div>
+    <div class="row" *ngIf="dataLoaded">
+        <div class="col-md-12">
+          <div style="display: block;">
+          <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"></canvas>
+          </div>
+        </div>
+      </div>
+  </mat-card-content>
+  <mat-card-actions></mat-card-actions>
+</mat-card>
