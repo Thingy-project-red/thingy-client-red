@@ -10,8 +10,8 @@ export class GraphDataService {
 
   constructor(public http:HttpClient) { }
 
-  getData(device, topic, intervalInSeconds, average) {
-    return this.http.get(`${environment.api}/api/v1/` + device + '/' + topic + '/' + intervalInSeconds + '?average=' + average, { headers: AuthProvider.getHeaders(this.http) })
+  getData(device, topic, timeInSeconds, intervalInSeconds) {
+    return this.http.get(`${environment.api}/api/v1/` + device + '/' + topic + '/average/' + timeInSeconds + '?interval=' + intervalInSeconds, { headers: AuthProvider.getHeaders(this.http) })
   }
 
 }
