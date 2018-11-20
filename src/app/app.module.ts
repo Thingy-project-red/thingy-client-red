@@ -24,6 +24,8 @@ import { LightComponent } from './light/light.component';
 import { DoorComponent } from './door/door.component';
 import { BatteryComponent } from './battery/battery.component';
 import { TemperatureSeriesComponent } from './temperature/temperature-series/temperature-series.component';
+import { AirqualityLatestComponent } from './airquality/airquality-latest/airquality-latest.component';
+import { AirqualitySeriesComponent } from './airquality/airquality-series/airquality-series.component';
 
 @NgModule({
   declarations: [
@@ -32,10 +34,12 @@ import { TemperatureSeriesComponent } from './temperature/temperature-series/tem
     TemperatureLatestComponent, 
     TemperatureSeriesComponent,
     AirComponent,
+    AirqualitySeriesComponent,
     HumidityComponent,
     LightComponent,
     DoorComponent, 
-    BatteryComponent
+    BatteryComponent, 
+    AirqualityLatestComponent
   ],
   imports: [
     BrowserModule,

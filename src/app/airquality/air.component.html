@@ -7,40 +7,16 @@
                         <mat-panel-description>
                                 <div class="grid-container">
                                         <div class="grid-item">Thingy1: </div>
-                                        <div class="grid-item2">{{ latestAir1 }}ppm CO2</div>
+                                        <div class="grid-item2"><app-airquality-latest device="Thingy1"></app-airquality-latest></div>
+                                        <div class="grid-item2"></div>
                                         <div class="grid-item">Thingy2: </div>
-                                        <div class="grid-item2">{{ latestAir2 }}ppm CO2</div>
+                                        <div class="grid-item2"><app-airquality-latest device="Thingy2"></app-airquality-latest></div>
+                                        <div class="grid-item2"></div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
-                <table style="width:50%">
-                        <tr>
-                                <th>CO2</th>
-                                <th>TVOC</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let air of airs1">
-                                <td>{{air.eco2}}ppm</td>
-                                <td>{{air.tvoc}}ppm</td>
-                                <td>{{air.time | date: 'medium'}}</td>
-                                <td>{{air.device}}</td>
-                        </tr>
-                </table>
+                <app-airquality-series device="Thingy1" rangeInSeconds="10"></app-airquality-series>
                 <hr>
-                <table style="width:50%">
-                        <tr>
-                                <th>CO2</th>
-                                <th>TVOC</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let air of airs2">
-                                <td>{{air.eco2}}ppm</td>
-                                <td>{{air.tvoc}}ppm</td>
-                                <td>{{air.time | date: 'medium'}}</td>
-                                <td>{{air.device}}</td>
-                        </tr>
-                </table>
+                <app-airquality-series device="Thingy2" rangeInSeconds="10"></app-airquality-series>
         </mat-expansion-panel>
 </mat-accordion>
