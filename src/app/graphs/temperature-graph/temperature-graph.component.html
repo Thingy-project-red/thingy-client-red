@@ -1,29 +1,36 @@
 <mat-card>
   <mat-card-header>
     <div></div>
-    <mat-card-title>Temperature graph</mat-card-title>
-    <mat-card-subtitle>for the last hour
-      <!--<div class="row" style="padding-left: 16px">
-        <div class="cold-md-4" style="padding-right: 20px">
-          <mat-form-field >
-            <input matInput placeholder="Value" type="number" [(ngModel)]="selectedValue">
+    <mat-card-title style="padding-bottom: 10px">Temperature graph</mat-card-title>
+    <mat-card-subtitle>
+        <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <mat-form-field style="width: 70%">
+            <input matInput placeholder="#Datapoints" type="number" [(ngModel)]="numberOfDataPoints">
           </mat-form-field>
         </div>
-        <div class="cold-md-4">
-          <mat-form-field>
-            <mat-select placeholder="Time interval" [(value)]="selectedTime.viewValue">
-              <mat-option *ngFor="let time of times" [value]="time.viewValue">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <mat-form-field style="width: 70%">
+            <input matInput placeholder="Amount" type="number" [(ngModel)]="selectedValue">
+          </mat-form-field>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+          <mat-form-field style="width: 100%">
+            <mat-select placeholder="Time interval" [(value)]="selectedTime">
+              <mat-option *ngFor="let time of times" [value]="time.value">
                 {{time.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="cold-md-4" style="padding-right: 20px">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left: 30px">
           <button mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon" (click)="loadGraphData((selectedValue * selectedTime.value), '')">refresh</mat-icon>
+            <mat-icon aria-label="Example icon-button with a heart icon" (click)="loadGraphData((selectedValue * selectedTime), (selectedValue * selectedTime) / numberOfDataPoints)">refresh</mat-icon>
           </button>
         </div>
-      </div>-->
+      </div>
+    </div>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>

@@ -29,83 +29,18 @@ export class TemperatureGraphComponent implements OnInit {
     {value: 86400, viewValue: 'Days'}
   ];
 
-  selectedTime = this.times[1];
+  selectedTime = 3600;
   selectedValue:number = 1;
 
-  constructor(private graphDataService:GraphDataService) { }
+  numberOfDataPoints:number = 60;
 
-  ngOnInit() {
+  /*
+    Graph variables
+  */
 
-    this.loadGraphData(3600, '');
+  public lineChartData:Array<any> = [];
+  public lineChartLabels:Array<any> = [];
 
-  }
-
-  loadGraphData(timeRange, interval) {
-    /*console.log(timeRange, interval);
-    this.dataLoaded = false;
-    this.data1Loaded = false;
-    this.data2Loaded = false;
-
-    this.graphData1 = null;
-    this.graphData2 = null;
-
-    this.dataPoints1 = [];
-    this.dataPoints2 = [];*/
-    //this.dataLabels = [];
-
-    this.graphDataService.getData('Thingy1', 'temperature', timeRange, interval).subscribe((data) => {
-      this.graphData1 = data;
-      let counter = 0;
-      let average = 0;
-      for(let i = 0; i<this.graphData1.length; i++) {
-        if(counter<60) {
-          average = average + this.graphData1[i].temperature;
-          counter++;
-        } else {
-          this.dataPoints1.push(Number((average / 60).toFixed(2)));
-          this.dataLabels.push(new Date(this.graphData1[i-30].time).getHours() + ':' + (new Date(this.graphData1[i-30].time).getMinutes() < 10 ? '0' + new Date(this.graphData1[i-30].time).getMinutes() : new Date(this.graphData1[i-30].time).getMinutes()));
-          counter = 0;
-          average = 0;
-        }
-      }
-      this.data1Loaded = true;
-      if(this.data2Loaded) {
-        this.dataLoaded = true;
-      }
-    },
-    (error) => {
-      console.log(error);
-    });
-
-    this.graphDataService.getData('Thingy2', 'temperature', timeRange, interval).subscribe((data) => {
-      this.graphData2 = data;
-      let counter = 0;
-      let average = 0;
-      for(let i = 0; i<this.graphData2.length; i++) {
-        if(counter<60) {
-          average = average + this.graphData2[i].temperature;
-          counter++;
-        } else {
-          this.dataPoints2.push(Number((average / 60).toFixed(2)));
-          counter = 0;
-          average = 0;
-        }
-      }
-      this.data2Loaded = true;
-      if(this.data1Loaded) {
-        this.dataLoaded = true;
-      }
-    },
-    (error) => {
-      console.log(error);
-    });
-  }
-
-  public lineChartData:Array<any> = [
-    {data: this.dataPoints1, label: 'Thingy1'},
-    {data: this.dataPoints2, label: 'Thingy2'}
-  ];
-  public lineChartLabels:Array<any> = this.dataLabels;
   public lineChartOptions:any = {
     responsive: true
   };
@@ -129,5 +64,84 @@ export class TemperatureGraphComponent implements OnInit {
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
+
+  constructor(private graphDataService:GraphDataService) { }
+
+  ngOnInit() {
+
+    this.loadGraphData(3600, this.numberOfDataPoints);
+
+  }
+
+  loadGraphData(timeRange, interval) {
+
+    this.resetVariables();
+
+    this.graphDataService.getData('Thingy1', 'temperature', timeRange, interval).subscribe((data) => {
+      this.graphData1 = data;
+
+      for(let i = 0; i<this.graphData1.length; i++) {
+        if(this.graphData1[i].temperature != null) {
+          this.dataPoints1.push(Number((this.graphData1[i].temperature).toFixed(2)));
+          let minutes = new Date(this.graphData1[i].time).getMinutes();
+          let hours = new Date(this.graphData1[i].time).getHours();
+          if(this.selectedTime == 60 || this.selectedTime == 3600) {
+            this.dataLabels.push(hours + ':' + (minutes < 10 ? '0' + minutes : minutes));
+          } else {
+            let days = new Date(this.graphData1[i].time).getDate();
+            let month = new Date(this.graphData1[i].time).getMonth() + 1;
+            let year = new Date(this.graphData1[i].time).getFullYear();
+            this.dataLabels.push(days + '.' + month + '.' + year + ' - ' +hours + ':' + (minutes < 10 ? '0' + minutes : minutes));
+          }
+        }
+      }
+
+      this.lineChartData[0] = {data: this.dataPoints1, label: 'Thingy1'};
+      this.lineChartLabels = this.dataLabels;
+
+      this.data1Loaded = true;
+      if(this.data2Loaded) {
+        this.dataLoaded = true;
+      }
+    },
+    (error) => {
+      console.log(error);
+    });
+
+    this.graphDataService.getData('Thingy2', 'temperature', timeRange, interval).subscribe((data) => {
+      this.graphData2 = data;
+
+      for(let i = 0; i<this.graphData2.length; i++) {
+        if(this.graphData2[i].temperature != null) {
+          this.dataPoints2.push(Number((this.graphData2[i].temperature).toFixed(2)));
+        }
+      }
+
+      this.lineChartData[1] = {data: this.dataPoints2, label: 'Thingy2'};
+
+      this.data2Loaded = true;
+      if(this.data1Loaded) {
+        this.dataLoaded = true;
+      }
+    },
+    (error) => {
+      console.log(error);
+    });
+  }
+
+  resetVariables() {
+    this.dataLoaded = false;
+    this.data1Loaded = false;
+    this.data2Loaded = false;
+
+    this.graphData1 = null;
+    this.graphData2 = null;
+
+    this.dataPoints1 = [];
+    this.dataPoints2 = [];
+    this.dataLabels = [];
+    this.lineChartData = [];
+    this.lineChartLabels = [];
+  }
 
 }
