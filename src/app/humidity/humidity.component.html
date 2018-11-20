@@ -7,9 +7,11 @@
                         <mat-panel-description>
                                 <div class="grid-container">
                                         <div class="grid-item">Thingy1: </div>
-                                        <div class="grid-item2">{{ latest1 }}%</div>
+                                        <div class="grid-item2"><app-humidity-latest device="Thingy1"></app-humidity-latest></div>
+                                        <div class="grid-item2"><app-humidity-avg device="Thingy1"></app-humidity-avg></div>
                                         <div class="grid-item">Thingy2: </div>
-                                        <div class="grid-item2">{{ latest2 }}%</div>
+                                        <div class="grid-item2"><app-humidity-latest device="Thingy2"></app-humidity-latest></div>
+                                        <div class="grid-item2"><app-humidity-avg device="Thingy2"></app-humidity-avg> </div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>

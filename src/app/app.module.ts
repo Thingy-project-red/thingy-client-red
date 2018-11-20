@@ -26,6 +26,9 @@ import { TemperatureSeriesComponent } from './temperature/temperature-series/tem
 import { AirqualityLatestComponent } from './airquality/airquality-latest/airquality-latest.component';
 import { AirqualitySeriesComponent } from './airquality/airquality-series/airquality-series.component';
 import { AirqualityAvgComponent } from './airquality/airquality-avg/airquality-avg.component';
+import { HumidityLatestComponent } from './humidity/humidity-latest/humidity-latest.component';
+import { HumidityAvgComponent } from './humidity/humidity-avg/humidity-avg.component';
+import { HumiditySeriesComponent } from './humidity/humidity-series/humidity-series.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { AirqualityAvgComponent } from './airquality/airquality-avg/airquality-a
     DoorComponent, 
     BatteryComponent, 
     AirqualityLatestComponent,
-    AirqualityAvgComponent
+    AirqualityAvgComponent,
+    HumidityLatestComponent,
+    HumidityAvgComponent,
+    HumiditySeriesComponent
   ],
   imports: [
     BrowserModule,
