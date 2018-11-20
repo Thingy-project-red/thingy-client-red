@@ -18,7 +18,6 @@ import {
 import { AppComponent } from './app.component';
 import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
 import { TemperatureLatestComponent } from './temperature/temperature-latest/temperature-latest.component';
-import { HumidityComponent } from './humidity/humidity.component';
 import { LightComponent } from './light/light.component';
 import { DoorComponent } from './door/door.component';
 import { BatteryComponent } from './battery/battery.component';
@@ -37,7 +36,6 @@ import { HumiditySeriesComponent } from './humidity/humidity-series/humidity-ser
     TemperatureLatestComponent, 
     TemperatureSeriesComponent,
     AirqualitySeriesComponent,
-    HumidityComponent,
     LightComponent,
     DoorComponent, 
     BatteryComponent, 

@@ -1,0 +1,12 @@
+<table style="width:50%">
+  <tr>
+    <th>Humidity</th>
+    <th>Time</th>
+    <th>Device</th>
+  </tr>
+  <tr *ngFor="let humid of humidities">
+    <td>{{humid.humidity}}%</td>
+    <td>{{humid.time | date: 'medium'}}</td>
+    <td>{{humid.device}}</td>
+  </tr>
+</table>

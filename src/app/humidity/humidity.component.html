@@ -15,30 +15,8 @@
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
-                <table style="width:50%">
-                        <tr>
-                                <th>Humidity</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let humid of humidities1">
-                                <td>{{humid.humidity}}%</td>
-                                <td>{{humid.time | date: 'medium'}}</td>
-                                <td>{{humid.device}}</td>
-                        </tr>
-                </table>
+                <app-humidity-series device="Thingy1" rangeInSeconds="10"></app-humidity-series>
                 <hr>
-                <table style="width:50%">
-                        <tr>
-                                <th>Humidity</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let humid of humidities2">
-                                <td>{{humid.humidity}}%</td>
-                                <td>{{humid.time | date: 'medium'}}</td>
-                                <td>{{humid.device}}</td>
-                        </tr>
-                </table>
+                <app-humidity-series device="Thingy2" rangeInSeconds="10"></app-humidity-series>
         </mat-expansion-panel>
 </mat-accordion>
