@@ -18,9 +18,9 @@ export class HumiditySeriesComponent implements OnInit, OnDestroy {
   constructor(public humidityService: HumiditySeriesService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
+    this.humidSub = interval(1000).subscribe(x => {
       this.humidityService.getHumiditySeries(this.device, this.rangeInSeconds);
-      this.humidSub = this.humidityService.getHumidityUpdateListener(this.device)
+      this.humidityService.getHumidityUpdateListener(this.device)
         .subscribe((humidities: Humidity[]) => {
           this.humidities = humidities;
         });

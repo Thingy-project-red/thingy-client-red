@@ -19,14 +19,14 @@ export class AirqualityAvgComponent implements OnInit, OnDestroy {
   constructor(public airAvgService: AirAvgService) { }
 
   ngOnInit() {
-    interval(10000).subscribe(x => {
+    this.avgSub = interval(10000).subscribe(x => {
       this.airAvgService.getAvgCO2(this.device, this.rangeInSeconds);
-      this.avgSub = this.airAvgService.getAvgUpdateListener(this.device)
+      this.airAvgService.getAvgUpdateListener(this.device)
         .subscribe((airs: Air[]) => {
           this.avg = Math.round(airs[0].eco2 * 100) / 100;
         });
     })
-
+    
   }
 
   ngOnDestroy() {

@@ -17,9 +17,9 @@ export class HumidityLatestComponent implements OnInit, OnDestroy{
   constructor(public humidityService: HumidityLatestService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
+    this.humidSub = interval(1000).subscribe(x => {
       this.humidityService.getLatestHumidity(this.device);
-      this.humidSub = this.humidityService.getHumidityUpdateListener(this.device)
+      this.humidityService.getHumidityUpdateListener(this.device)
         .subscribe((humidities1: Humidity[]) => {
           this.latest = humidities1[0].humidity;
         });

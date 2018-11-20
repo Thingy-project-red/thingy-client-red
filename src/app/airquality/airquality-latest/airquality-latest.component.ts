@@ -18,14 +18,14 @@ export class AirqualityLatestComponent implements OnInit, OnDestroy {
   constructor(public co2Service: AirLatestService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
+    this.co2Sub = interval(1000).subscribe(x => {
       this.co2Service.getLatestCO2(this.device);
-      this.co2Sub = this.co2Service.getCO2UpdateListener(this.device)
+      this.co2Service.getCO2UpdateListener(this.device)
         .subscribe((airs: Air[]) => {
           this.latest = airs[0].eco2;
         });
     })
-
+    
   }
 
   ngOnDestroy() {

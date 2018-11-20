@@ -21,9 +21,9 @@ export class TemperatureAvgComponent implements OnInit, OnDestroy {
     constructor(public temperatureService: TemperatureAvgService) { }
 
     ngOnInit() {
-        interval(10000).subscribe(x => {
+        this.temperaturesSub = interval(10000).subscribe(x => {
             this.temperatureService.getAvgTemperature(this.device, this.rangeInSeconds);
-            this.temperaturesSub = this.temperatureService.getTemperatureUpdateListener(this.device)
+            this.temperatureService.getTemperatureUpdateListener(this.device)
                 .subscribe((temperatures: Temperature[]) => {
                     this.avg = Math.round(temperatures[0].temperature * 100) / 100;
                 });

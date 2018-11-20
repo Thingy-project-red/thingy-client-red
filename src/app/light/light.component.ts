@@ -24,17 +24,17 @@ export class LightComponent implements OnInit, OnDestroy {
     constructor(public lightService: LightService) { }
 
     ngOnInit() {
-        interval(1000).subscribe(x => {
+        this.ligthSub1 = interval(1000).subscribe(x => {
             this.lightService.getLights1(this.lookUpRange);
-            this.ligthSub1 = this.lightService.getLightsUpdateListener1()
+            this.lightService.getLightsUpdateListener1()
                 .subscribe((lights: Light[]) => {
                     this.colorCode1 = this.lightService.getColorCode1();
                     this.lights1 = lights;
                 });
         })
-        interval(1000).subscribe(x => {
+        this.ligthSub2 = interval(1000).subscribe(x => {
             this.lightService.getLights2(this.lookUpRange);
-            this.ligthSub1 = this.lightService.getLightsUpdateListener2()
+            this.lightService.getLightsUpdateListener2()
                 .subscribe((lights: Light[]) => {
                     this.colorCode2 = this.lightService.getColorCode2();
                     this.lights2 = lights;

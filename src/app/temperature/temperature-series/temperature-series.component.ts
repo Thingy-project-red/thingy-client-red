@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 import { TemperatureSeriesService } from './temperature-series.service';
 import { Temperature } from '../temperature.model';
@@ -8,7 +8,7 @@ import { Temperature } from '../temperature.model';
   templateUrl: './temperature-series.component.html',
   styleUrls: ['../temperature.component.css']
 })
-export class TemperatureSeriesComponent implements OnInit {
+export class TemperatureSeriesComponent implements OnInit, OnDestroy {
   @Input() device: String;
   @Input() rangeInSeconds: String;
 
@@ -18,9 +18,9 @@ export class TemperatureSeriesComponent implements OnInit {
   constructor(public temperatureService: TemperatureSeriesService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
+    this.temperaturesSub = interval(1000).subscribe(x => {
       this.temperatureService.getTemperatureSeries(this.device, this.rangeInSeconds);
-      this.temperaturesSub = this.temperatureService.getTemperatureUpdateListener(this.device)
+      this.temperatureService.getTemperatureUpdateListener(this.device)
         .subscribe((temperatures: Temperature[]) => {
           this.temperatures = temperatures;
         });

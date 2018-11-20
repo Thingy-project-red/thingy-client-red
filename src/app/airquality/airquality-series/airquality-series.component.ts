@@ -19,9 +19,9 @@ export class AirqualitySeriesComponent implements OnInit, OnDestroy {
   constructor(public airSeriesService: AirSeriesService) { }
 
   ngOnInit() {
-    interval(1000).subscribe(x => {
+    this.airSub = interval(1000).subscribe(x => {
       this.airSeriesService.getAirSeries(this.device, this.rangeInSeconds);
-      this.airSub = this.airSeriesService.getAirsUpdateListener(this.device)
+      this.airSeriesService.getAirsUpdateListener(this.device)
         .subscribe((airs: Air[]) => {
           this.airs = airs;
         });
