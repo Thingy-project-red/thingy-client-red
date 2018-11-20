@@ -16,18 +16,21 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { TemperatureComponent } from './temperature/temperature.component';
+import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
+import { TemperatureLatestComponent } from './temperature/temperature-latest/temperature-latest.component';
 import { AirComponent } from './airquality/air.component';
 import { HumidityComponent } from './humidity/humidity.component';
 import { LightComponent } from './light/light.component';
 import { DoorComponent } from './door/door.component';
-import { BatteryComponent } from './battery/battery.component'; 
-
+import { BatteryComponent } from './battery/battery.component';
+import { TemperatureSeriesComponent } from './temperature/temperature-series/temperature-series.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemperatureComponent,
+    TemperatureAvgComponent,
+    TemperatureLatestComponent, 
+    TemperatureSeriesComponent,
     AirComponent,
     HumidityComponent,
     LightComponent,
