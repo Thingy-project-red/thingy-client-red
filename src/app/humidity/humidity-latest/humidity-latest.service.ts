@@ -17,7 +17,7 @@ export class HumidityLatestService {
     getLatestHumidity(device) {
         this.http
             .get<Humidity[]>(
-                `${environment.api}/api/v1/${device}/humidity/1`,
+                `${environment.api}/api/v1/${device}/humidity`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.latest = response;

@@ -17,7 +17,7 @@ export class TemperatureLatestService {
     getLatestTemperature(device) {
         this.http
             .get<Temperature[]>(
-                `${environment.api}/api/v1/${device}/temperature/1/`,
+                `${environment.api}/api/v1/${device}/temperature`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.latest = response;
