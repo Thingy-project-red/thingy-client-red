@@ -37,7 +37,8 @@ import { HumidityGraphComponent } from './graphs/humidity-graph/humidity-graph.c
 import { GraphOverviewComponent } from './graphs/graph-overview/graph-overview.component';
 import { Co2GraphComponent } from './graphs/co2-graph/co2-graph.component';
 import { TvocGraphComponent } from './graphs/tvoc-graph/tvoc-graph.component'; 
-import { ChartsModule } from 'ng2-charts'
+import { ChartsModule } from 'ng2-charts';
+import { StatusComponent } from './status/status.component'
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     HumidityGraphComponent,
     Co2GraphComponent,
     TvocGraphComponent,
-    GraphOverviewComponent
+    GraphOverviewComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
