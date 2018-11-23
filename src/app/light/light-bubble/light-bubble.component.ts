@@ -6,7 +6,7 @@ import { Light } from '../light.model';
 @Component({
   selector: 'app-light-bubble',
   templateUrl: './light-bubble.component.html',
-  styleUrls: ['../light-bubble.component.css']
+  styleUrls: ['../light.component.css']
 })
 export class LightBubbleComponent implements OnInit {
   @Input() device: String;
