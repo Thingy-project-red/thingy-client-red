@@ -7,57 +7,40 @@ import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class LightService {
-    colorCode1: any;
-    colorCode2: any;
-
-    private lights1: Light[] = [];
-    private lights2: Light[] = [];
+    private latestColor: any;
 
     private lightsUpdated1 = new Subject<Light[]>();
     private lightsUpdated2 = new Subject<Light[]>();
 
     constructor(private http: HttpClient) { }
 
-    getLights1(rangeInSeconds) {
+    getLatestColor(device){
         this.http
             .get<Light[]>(
-                `${environment.api}/api/v1/Thingy1/light_intensity/${rangeInSeconds}`,
+                `${environment.api}/api/v1/${device}/light_intensity/1`,
                 { headers: AuthProvider.getHeaders(this.http) }
             )
-            .subscribe((transformedLights) => {
-                this.lights1 = transformedLights;
-                this.colorCode1 = this.setColors(this.lights1[0]);
-                this.lightsUpdated1.next(this.lights1);
+            .subscribe((lights) => {
+                this.latestColor = this.setColors(lights[0]);
+                if(device == "Thingy1"){
+                    this.lightsUpdated1.next(this.latestColor); 
+                }else{
+                    this.lightsUpdated2.next(this.latestColor); 
+                }
             })
     }
 
-    getColorCode1() {
-        return this.colorCode1;
+    getColorCode() {
+        return this.latestColor;
     }
 
-    getLights2(rangeInSeconds) {
-        this.http
-            .get<Light[]>(
-                `${environment.api}/api/v1/Thingy2/light_intensity/${rangeInSeconds}`,
-                { headers: AuthProvider.getHeaders(this.http) }
-            )
-            .subscribe((transformedLights) => {
-                this.lights2 = transformedLights;
-                this.colorCode2 = this.setColors(this.lights2[0]);
-                this.lightsUpdated2.next(this.lights2);
-            })
-    }
-
-    getColorCode2() {
-        return this.colorCode2;
-    }
-
-    getLightsUpdateListener1() {
-        return this.lightsUpdated1.asObservable();
-    }
-
-    getLightsUpdateListener2() {
-        return this.lightsUpdated2.asObservable();
+   
+    getLightsUpdateListener(device){
+        if(device == "Thingy1"){
+            return this.lightsUpdated1.asObservable();
+        }else{
+            return this.lightsUpdated2.asObservable();
+        }
     }
 
     setColors(rgb) {

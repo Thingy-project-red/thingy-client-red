@@ -6,46 +6,36 @@ import { Battery } from "./battery.model";
 import { AuthProvider } from '../auth/auth.provider';
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class BatteryService {
 
-    private batteries1: Battery[] = [] ;
-    private batteries2: Battery[] = [] ;
+    private batteries: Battery[] = [];
+    private batteriesUpdated1 = new Subject<Battery[]>();
+    private batteriesUpdated2 = new Subject<Battery[]>();
 
-    private batteriesUpdated1 = new Subject<Battery[]>(); 
-    private batteriesUpdated2 = new Subject<Battery[]>(); 
+    constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient){}
-
-    getBattery1(rangeInSeconds) {
+    getBatteryLevel(device) {
         this.http
-        .get<Battery[]>(
-            `${environment.api}/api/v1/Thingy1/battery_level/${rangeInSeconds}`,
-            { headers: AuthProvider.getHeaders(this.http) }
-        ).subscribe((response) => {
-            this.batteries1 = response;
-            this.batteriesUpdated1.next(this.batteries1);
-        })
+            .get<Battery[]>(
+                `${environment.api}/api/v1/${device}/battery_level/1`,
+                { headers: AuthProvider.getHeaders(this.http) }
+            ).subscribe((response) => {
+                this.batteries = response;
+                if (device == "Thingy1") {
+                    this.batteriesUpdated1.next(this.batteries);
+                } else {
+                    this.batteriesUpdated2.next(this.batteries);
+                }
+            })
 
     }
 
-    getBattery2(rangeInSeconds) {
-        this.http
-        .get<Battery[]>(
-            `${environment.api}/api/v1/Thingy2/battery_level/${rangeInSeconds}`,
-            { headers: AuthProvider.getHeaders(this.http) }
-        ).subscribe((response) => {
-            this.batteries2 = response;
-            this.batteriesUpdated2.next(this.batteries2);
-        })
-
-    }
-
-    getBatteryUpdateListener1() {
-        return this.batteriesUpdated1.asObservable();
-    }
-
-    getBatteryUpdateListener2() {
-        return this.batteriesUpdated2.asObservable();
+    getBatteryUpdateListener(device) {
+        if (device == "Thingy1") {
+            return this.batteriesUpdated1.asObservable();
+        } else {
+            return this.batteriesUpdated2.asObservable();
+        }
     }
 }

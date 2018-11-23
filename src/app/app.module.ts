@@ -36,12 +36,14 @@ import { TemperatureGraphComponent } from './graphs/temperature-graph/temperatur
 import { HumidityGraphComponent } from './graphs/humidity-graph/humidity-graph.component';
 import { GraphOverviewComponent } from './graphs/graph-overview/graph-overview.component';
 import { Co2GraphComponent } from './graphs/co2-graph/co2-graph.component';
-import { TvocGraphComponent } from './graphs/tvoc-graph/tvoc-graph.component'; 
-import { ChartsModule } from 'ng2-charts'
+import { TvocGraphComponent } from './graphs/tvoc-graph/tvoc-graph.component';
+import { ChartsModule } from 'ng2-charts';
+import { LightBubbleComponent } from './light/light-bubble/light-bubble.component';
+import { LightLatestComponent } from './light/light-latest/light-latest.component'
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'graphs',      component: GraphOverviewComponent },
+  { path: 'graphs', component: GraphOverviewComponent },
   { path: '**', component: DashboardComponent }
 ];
 
@@ -49,12 +51,12 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     TemperatureAvgComponent,
-    TemperatureLatestComponent, 
+    TemperatureLatestComponent,
     TemperatureSeriesComponent,
     AirqualitySeriesComponent,
     LightComponent,
-    DoorComponent, 
-    BatteryComponent, 
+    DoorComponent,
+    BatteryComponent,
     AirqualityLatestComponent,
     AirqualityAvgComponent,
     HumidityLatestComponent,
@@ -65,7 +67,9 @@ const appRoutes: Routes = [
     HumidityGraphComponent,
     Co2GraphComponent,
     TvocGraphComponent,
-    GraphOverviewComponent
+    GraphOverviewComponent,
+    LightBubbleComponent,
+    LightLatestComponent
   ],
   imports: [
     BrowserModule,
