@@ -16,7 +16,7 @@ export class AirLatestService {
     getLatestCO2(device) {
         this.http
             .get<Air[]>(
-                `${environment.api}/api/v1/${device}/air_quality/1`,
+                `${environment.api}/api/v1/${device}/air_quality`,
                 { headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.co2 = response;

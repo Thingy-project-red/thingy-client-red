@@ -38,8 +38,10 @@ import { GraphOverviewComponent } from './graphs/graph-overview/graph-overview.c
 import { Co2GraphComponent } from './graphs/co2-graph/co2-graph.component';
 import { TvocGraphComponent } from './graphs/tvoc-graph/tvoc-graph.component';
 import { ChartsModule } from 'ng2-charts';
+import { StatusComponent } from './status/status.component'
 import { LightBubbleComponent } from './light/light-bubble/light-bubble.component';
 import { LightLatestComponent } from './light/light-latest/light-latest.component'
+
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -69,7 +71,8 @@ const appRoutes: Routes = [
     TvocGraphComponent,
     GraphOverviewComponent,
     LightBubbleComponent,
-    LightLatestComponent
+    LightLatestComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
