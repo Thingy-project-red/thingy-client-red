@@ -23,17 +23,17 @@ export class DoorComponent implements OnInit, OnDestroy {
     constructor(public doorService: DoorService) { }
 
     ngOnInit() {
-        interval(1000).subscribe(x => {
+        this.doorSub1 = interval(1000).subscribe(x => {
             this.doorService.getDoor1(this.lookUpRange);
-            this.doorSub1 = this.doorService.getDoorUpdateListener1()
+            this.doorService.getDoorUpdateListener1()
                 .subscribe((doors: Door[]) => {
                     this.doors1 = doors;
                     this.isOpen1 = this.doors1[0].open;
                 });
         })
-        interval(1000).subscribe(x => {
+        this.doorSub2 = interval(1000).subscribe(x => {
             this.doorService.getDoor2(this.lookUpRange);
-            this.doorSub2 = this.doorService.getDoorUpdateListener2()
+            this.doorService.getDoorUpdateListener2()
                 .subscribe((doors: Door[]) => {
                     this.doors2 = doors;
                     this.isOpen2 = this.doors2[0].open;

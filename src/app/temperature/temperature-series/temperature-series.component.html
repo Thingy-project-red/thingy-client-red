@@ -1,0 +1,12 @@
+<table style="width:50%">
+  <tr>
+          <th>Temperature</th>
+          <th>Time</th>
+          <th>Device</th>
+  </tr>
+  <tr *ngFor="let temp of temperatures">
+          <td>{{temp.temperature}}°C</td>
+          <td>{{temp.time | date: 'medium'}}</td>
+          <td>{{temp.device}}</td>
+  </tr>
+</table>

@@ -1,0 +1,55 @@
+<mat-card>
+    <mat-card-header>
+      <div></div>
+      <mat-card-title style="padding-bottom: 10px">ECO2</mat-card-title>
+      <mat-card-subtitle>
+          <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <mat-form-field style="width: 70%">
+              <input matInput placeholder="#Datapoints" type="number" [(ngModel)]="numberOfDataPoints">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <mat-form-field style="width: 70%">
+              <input matInput placeholder="Amount" type="number" [(ngModel)]="selectedValue">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <mat-form-field style="width: 100%">
+              <mat-select placeholder="Time interval" [(value)]="selectedTime">
+                <mat-option *ngFor="let time of times" [value]="time.value">
+                  {{time.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left: 30px">
+            <button mat-icon-button>
+              <mat-icon aria-label="Example icon-button with a heart icon" (click)="loadGraphData((selectedValue * selectedTime), (selectedValue * selectedTime) / numberOfDataPoints)">refresh</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="loader" *ngIf="!dataLoaded">
+        <mat-spinner style="margin:0 auto;" [diameter]="60"></mat-spinner>
+      </div>
+      <div class="row" *ngIf="dataLoaded">
+          <div class="col-md-12">
+            <div style="display: block;">
+            <canvas baseChart width="400" height="400"
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"></canvas>
+            </div>
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions></mat-card-actions>
+  </mat-card>
