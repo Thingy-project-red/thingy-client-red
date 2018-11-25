@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Air } from "../air.model";
-//import { AuthProvider } from '../../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class AirAvgService {
@@ -17,7 +16,6 @@ export class AirAvgService {
         this.http
             .get<Air[]>(
                 `${environment.api}/api/v1/${device}/air_quality/average/${rangeInSeconds}`,
-                //{ headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.avg = response;
                 if (device == "Thingy1") {
