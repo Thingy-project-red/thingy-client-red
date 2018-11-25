@@ -18,11 +18,11 @@ export class HumidityAvgComponent implements OnInit, OnDestroy{
   constructor(public humidityService: HumidityAvgService) { }
 
   ngOnInit() {
-    this.humidSub = interval(10000).subscribe(x => {
+    this.humidSub = interval(1000).subscribe(x => {
       this.humidityService.getAvgHumidity(this.device, this.rangeInSeconds);
       this.humidityService.getHumidityUpdateListener(this.device)
         .subscribe((humidities: Humidity[]) => {
-          this.avg = Math.round(humidities[0].humidity * 100) / 100;
+          this.avg = Math.round(humidities[0].humidity);
         });
     })
   }

@@ -18,7 +18,7 @@ export class StatusComponent implements OnInit, OnDestroy {
     constructor(public statusService: StatusService){}
 
     ngOnInit(){
-        this.statusSub1 = interval(10000).subscribe(x => {
+        this.statusSub1 = interval(1000).subscribe(x => {
             this.statusService.getStatus1(); 
             this.statusService.getStatusUpdateListener1()
             .subscribe((data: Status) => {
@@ -26,7 +26,7 @@ export class StatusComponent implements OnInit, OnDestroy {
             });
         })
 
-        this.statusSub2 = interval(10000).subscribe(x => {
+        this.statusSub2 = interval(1000).subscribe(x => {
             this.statusService.getStatus2(); 
             this.statusService.getStatusUpdateListener2()
             .subscribe((data: Status) => {

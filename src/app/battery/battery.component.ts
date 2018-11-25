@@ -19,7 +19,7 @@ export class BatteryComponent implements OnInit, OnDestroy {
     constructor(public batteryService: BatteryService){}
 
     ngOnInit(){
-        this.batterySub = interval(10000).subscribe(x => {
+        this.batterySub = interval(1000).subscribe(x => {
             this.batteryService.getBatteryLevel(this.device); 
             this.batteryService.getBatteryUpdateListener(this.device)
             .subscribe((batteries: Battery[]) => {
