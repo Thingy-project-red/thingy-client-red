@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 
 export class SignupComponent {
     isLoading = false; 
+    isCreated = false; 
 
     constructor(public authService: AuthService){}
 
@@ -23,6 +24,5 @@ export class SignupComponent {
         console.log("Username: " + form.value.username); 
         console.log("Password: " + form.value.password); 
         let response = this.authService.createUser(form.value.username, form.value.password); 
-        console.log(response);
     }
 }

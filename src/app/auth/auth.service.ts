@@ -17,15 +17,15 @@ export class AuthService {
     createUser(user: string, password: string) {
         console.log("Trying to create user"); 
         const authData: UserData = {
-            name: user, password: password, rights: ["api",
-                "admin"]
+            name: user, password: password, rights: ["api"]
         };
         this.http.post(
             `${environment.api}/api/v1/users`, authData)
             .subscribe(response => {
-                console.log(response); 
-                this.login(user, password); 
-            })
+                if (response) {
+                    this.login(user, password); 
+                }        
+        })
     }
 
     login(username: string, password: string) {
