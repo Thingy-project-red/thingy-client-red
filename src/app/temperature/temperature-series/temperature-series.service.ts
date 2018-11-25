@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Temperature } from "../temperature.model";
-import { AuthProvider } from '../../auth/auth.provider';
+//import { AuthProvider } from '../../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureSeriesService {
@@ -17,7 +17,7 @@ export class TemperatureSeriesService {
         this.http
             .get<Temperature[]>(
                 `${environment.api}/api/v1/${device}/temperature/${rangeInSeconds}`,
-                { headers: AuthProvider.getHeaders(this.http) }
+                //{ headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.temperatures = response;
                 if(device == "Thingy1"){

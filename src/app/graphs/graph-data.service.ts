@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthProvider } from '../auth/auth.provider';
+//import { AuthProvider } from '../auth/auth.provider';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -8,10 +8,20 @@ import { environment } from '../../environments/environment';
 })
 export class GraphDataService {
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   getData(device, topic, timeInSeconds, intervalInSeconds) {
-    return this.http.get(`${environment.api}/api/v1/` + device + '/' + topic + '/average/' + timeInSeconds + '?interval=' + intervalInSeconds, { headers: AuthProvider.getHeaders(this.http) })
+    return this.http.get(
+      `${environment.api}/api/v1/` 
+        + device 
+        + '/' 
+        + topic 
+        + '/average/' 
+        + timeInSeconds 
+        + '?interval=' 
+        + intervalInSeconds 
+        //{ headers: AuthProvider.getHeaders(this.http)}
+        )
   }
 
 }

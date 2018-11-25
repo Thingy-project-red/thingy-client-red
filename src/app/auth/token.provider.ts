@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
+/*
 export namespace TokenProvider {
     let token: string;
 
@@ -26,3 +26,4 @@ export namespace TokenProvider {
         return token;
     }
 }
+*/

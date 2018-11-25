@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Humidity } from '../humidity.model';
 import { Subject } from "rxjs";
-import { AuthProvider } from '../../auth/auth.provider';
+//import { AuthProvider } from '../../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class HumidityLatestService {
@@ -18,7 +18,7 @@ export class HumidityLatestService {
         this.http
             .get<Humidity[]>(
                 `${environment.api}/api/v1/${device}/humidity`,
-                { headers: AuthProvider.getHeaders(this.http) }
+                //{ headers: AuthProvider.getHeaders(this.http) }
             ).subscribe((response) => {
                 this.latest = response;
                 if (device == "Thingy1") {

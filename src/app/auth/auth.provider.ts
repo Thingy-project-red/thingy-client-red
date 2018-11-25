@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { TokenProvider } from './token.provider';
-
+//import { TokenProvider } from './token.provider';
+/*
 export namespace AuthProvider {
     export function getHeaders(http: HttpClient) {
         return {
@@ -8,3 +8,4 @@ export namespace AuthProvider {
         };
     }
 }
+*/

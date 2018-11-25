@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 import {
   MatInputModule,
   MatCardModule,
@@ -15,13 +14,13 @@ import {
   MatTreeModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatSelectModule
+  MatSelectModule, 
+  
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
 import { TemperatureLatestComponent } from './temperature/temperature-latest/temperature-latest.component';
-import { LightComponent } from './light/light.component';
 import { DoorComponent } from './door/door.component';
 import { BatteryComponent } from './battery/battery.component';
 import { TemperatureSeriesComponent } from './temperature/temperature-series/temperature-series.component';
@@ -41,13 +40,11 @@ import { ChartsModule } from 'ng2-charts';
 import { StatusComponent } from './status/status.component'
 import { LightBubbleComponent } from './light/light-bubble/light-bubble.component';
 import { LightLatestComponent } from './light/light-latest/light-latest.component'
-
-
-const appRoutes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'graphs', component: GraphOverviewComponent },
-  { path: '**', component: DashboardComponent }
-];
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
@@ -56,7 +53,6 @@ const appRoutes: Routes = [
     TemperatureLatestComponent,
     TemperatureSeriesComponent,
     AirqualitySeriesComponent,
-    LightComponent,
     DoorComponent,
     BatteryComponent,
     AirqualityLatestComponent,
@@ -72,16 +68,19 @@ const appRoutes: Routes = [
     GraphOverviewComponent,
     LightBubbleComponent,
     LightLatestComponent,
-    StatusComponent
+    StatusComponent,
+    LoginComponent, 
+    SignupComponent, 
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(
-      appRoutes,
-    ),
+    AppRoutingModule,
+    ChartsModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -92,10 +91,9 @@ const appRoutes: Routes = [
     MatTreeModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatSelectModule,
-    ChartsModule
+    MatSelectModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

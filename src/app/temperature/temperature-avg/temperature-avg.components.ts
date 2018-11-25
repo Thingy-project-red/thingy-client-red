@@ -13,9 +13,10 @@ import { interval } from 'rxjs';
 
 export class TemperatureAvgComponent implements OnInit, OnDestroy {
     @Input() device: String;
-    @Input() rangeInSeconds: number; 
+    @Input() rangeInSeconds: number;
 
     avg: number;
+    userIsAuthenticated = false;
     private temperaturesSub: Subscription;
 
     constructor(public temperatureService: TemperatureAvgService) { }
@@ -27,7 +28,7 @@ export class TemperatureAvgComponent implements OnInit, OnDestroy {
                 .subscribe((temperatures: Temperature[]) => {
                     this.avg = Math.round(temperatures[0].temperature * 100) / 100;
                 });
-        })
+        });
     }
 
     ngOnDestroy() {

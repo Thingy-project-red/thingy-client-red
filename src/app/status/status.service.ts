@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
 import { Status } from "./status.model";
-import { AuthProvider } from '../auth/auth.provider';
+//import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class StatusService {
@@ -20,7 +20,7 @@ export class StatusService {
         this.http
         .get<Status>(
             `${environment.api}/api/v1/Thingy1/status`,
-            { headers: AuthProvider.getHeaders(this.http) }
+            //{ headers: AuthProvider.getHeaders(this.http) }
         ).subscribe((response) => {
             this.status1 = response;
             this.statusUpdated1.next(this.status1);
@@ -32,7 +32,7 @@ export class StatusService {
         this.http
         .get<Status>(
             `${environment.api}/api/v1/Thingy2/status`,
-            { headers: AuthProvider.getHeaders(this.http) }
+            //{ headers: AuthProvider.getHeaders(this.http) }
         ).subscribe((response) => {
             this.status2 = response;
             this.statusUpdated2.next(this.status2);

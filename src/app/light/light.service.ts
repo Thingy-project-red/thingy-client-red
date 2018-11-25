@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Subject } from "rxjs";
 import { Light } from "./light.model";
-import { AuthProvider } from '../auth/auth.provider';
+//import { AuthProvider } from '../auth/auth.provider';
 
 @Injectable({ providedIn: 'root' })
 export class LightService {
@@ -18,7 +18,7 @@ export class LightService {
         this.http
             .get<Light[]>(
                 `${environment.api}/api/v1/${device}/light_intensity/1`,
-                { headers: AuthProvider.getHeaders(this.http) }
+                //{ headers: AuthProvider.getHeaders(this.http) }
             )
             .subscribe((lights) => {
                 this.latestColor = this.setColors(lights[0]);
