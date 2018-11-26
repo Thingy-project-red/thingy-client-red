@@ -15,6 +15,7 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatSelectModule, 
+  MatSnackBarModule
   
 } from '@angular/material';
 
@@ -93,7 +94,8 @@ import { UserComponent } from "./users/user.component";
     MatTreeModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule, 
+    MatSnackBarModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

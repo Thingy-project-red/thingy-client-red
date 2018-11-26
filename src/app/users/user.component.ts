@@ -2,37 +2,40 @@ import { Subscription } from "rxjs";
 import { UserData } from "../auth/auth-user-data.model";
 import { OnInit, OnDestroy, Component } from "@angular/core";
 import { UserService } from "./user.service";
+import {MatSnackBar} from '@angular/material';
 
 @Component({
-    selector: 'app-users', 
+    selector: 'app-users',
     templateUrl: './user.component.html'
 })
 
 export class UserComponent implements OnInit, OnDestroy {
-    private users: UserData[]; 
-    private usersSub: Subscription; 
-    isLoading = false; 
+    private users: UserData[];
+    private usersSub: Subscription;
+    isLoading = false;
 
-    constructor(public userService: UserService){}
+    constructor(public userService: UserService, public snackBar: MatSnackBar) { }
 
     ngOnInit() {
-        this.userService.getUsers(); 
+        this.userService.getUsers();
         this.usersSub = this.userService
-        .getUserUpdateListener()
-        .subscribe((users) => {
-            this.users = users; 
-        }); 
+            .getUserUpdateListener()
+            .subscribe((users) => {
+                this.users = users;
+            });
     }
 
     ngOnDestroy() {
-        this.usersSub.unsubscribe(); 
-            
+        this.usersSub.unsubscribe();
+
     }
 
     onDelete(username: string) {
-        this.isLoading = true; 
+        this.isLoading = true;
         this.userService.deleteUser(username).subscribe(() => {
-          this.userService.getUsers();
+            this.snackBar.open("User " + username + " deleted successfully", "done", { duration: 2000 });
+            this.userService.getUsers();
         });
-      }
+
+    }
 }

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { AuthService } from '../auth.service'; 
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -12,7 +13,7 @@ export class SignupComponent {
     isLoading = false; 
     isCreated = false; 
 
-    constructor(public authService: AuthService){}
+    constructor(public authService: AuthService, public snackBar: MatSnackBar){}
 
     onSignup(form: NgForm){
         if(form.invalid){
@@ -20,5 +21,6 @@ export class SignupComponent {
         }
         this.isLoading = true; 
         let response = this.authService.createUser(form.value.username, form.value.password); 
+        this.snackBar.open("User created successfully", "done", {duration: 2000}); 
     }
 }
