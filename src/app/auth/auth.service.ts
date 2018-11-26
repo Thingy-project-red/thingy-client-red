@@ -17,14 +17,17 @@ export class AuthService {
     createUser(user: string, password: string) {
         console.log("Trying to create user"); 
         const authData: UserData = {
-            name: user, password: password, rights: ["api"]
+            name: user, password: password, rights: ["admin", "api"]
         };
         this.http.post(
             `${environment.api}/api/v1/users`, authData)
             .subscribe(response => {
+                console.log("User created successfully"); 
+                this.router.navigate(['/dashboard']);
+                /*
                 if (response) {
                     this.login(user, password); 
-                }        
+                }*/    
         })
     }
 
@@ -33,12 +36,14 @@ export class AuthService {
         this.http.post(
             `${environment.api}/api/v1/auth`, authData, { responseType: 'text' })
             .subscribe(jwt => {
+                console.log("Jwt: " + jwt); 
                 this.token = jwt;
                 if (jwt) {
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     this.router.navigate(['/dashboard']);
                 }
+                console.log("Token" + this.token); 
             })
     }
 
