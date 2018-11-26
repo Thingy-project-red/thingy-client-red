@@ -11,11 +11,11 @@ export class AuthService {
     private isAuthenticated = false;
     private token: string;
     private authStatusListener = new Subject<boolean>();
+    private tokenTimer: any; 
 
     constructor(private http: HttpClient, private router: Router) { }
 
     createUser(user: string, password: string) {
-        console.log("Trying to create user"); 
         const authData: UserData = {
             name: user, password: password, rights: ["admin", "api"]
         };
@@ -33,17 +33,20 @@ export class AuthService {
 
     login(username: string, password: string) {
         const authData: AuthData = { name: username, password: password };
-        this.http.post(
-            `${environment.api}/api/v1/auth`, authData, { responseType: 'text' })
-            .subscribe(jwt => {
-                console.log("Jwt: " + jwt); 
-                this.token = jwt;
-                if (jwt) {
+        this.http.post<{token: string, expiresIn: number}>(
+            `${environment.api}/api/v1/auth`, authData)
+            .subscribe(response => {
+                const token = response.token; 
+                this.token = token;
+                if (token) {
+                    let expiresInDuration = response.expiresIn; 
+                    this.tokenTimer = setTimeout(() => {
+                        this.logout(); 
+                    }, expiresInDuration * 1000); // timeout in ms  
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
                     this.router.navigate(['/dashboard']);
                 }
-                console.log("Token" + this.token); 
             })
     }
 
@@ -51,6 +54,7 @@ export class AuthService {
         this.token = null;
         this.isAuthenticated = false;
         this.authStatusListener.next(false);
+        clearTimeout(this.tokenTimer); 
         this.router.navigate(['/login']);
 
     }
