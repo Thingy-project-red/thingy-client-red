@@ -25,8 +25,8 @@ export class TemperatureAvgComponent implements OnInit, OnDestroy {
         this.temperaturesSub = interval(1000).subscribe(x => {
             this.temperatureService.getAvgTemperature(this.device, this.rangeInSeconds);
             this.temperatureService.getTemperatureUpdateListener(this.device)
-                .subscribe((temperatures: Temperature[]) => {
-                    this.avg = Math.round(temperatures[0].temperature * 10) / 10;
+                .subscribe((temperatures: number) => {
+                    this.avg = temperatures;
                 });
         });
     }

@@ -1,0 +1,17 @@
+<app-signup></app-signup>
+
+<mat-card>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <table style="width:50%">
+                <tr>
+                        <th>Username</th>
+                        <th>Rights</th>
+                        <th></th>
+                </tr>
+                <tr *ngFor="let user of users">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.rights }}</td>
+                        <td><button mat-button color="warn" (click)="onDelete(user.name)">DELETE</button></td>
+                </tr>
+        </table>
+</mat-card>

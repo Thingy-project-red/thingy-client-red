@@ -6,10 +6,9 @@ import { Temperature } from "../temperature.model";
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureAvgService {
-    private avg: Temperature[] = [];
-
-    private tempereraturesUpdated1 = new Subject<Temperature[]>();
-    private tempereraturesUpdated2 = new Subject<Temperature[]>();
+    private avg: number; 
+    private tempereraturesUpdated1 = new Subject<number>();
+    private tempereraturesUpdated2 = new Subject<number>();
 
     constructor(private http: HttpClient) { }
 
@@ -18,7 +17,8 @@ export class TemperatureAvgService {
             .get<Temperature[]>(
                 `${environment.api}/api/v1/${device}/temperature/average/${rangeInSeconds}`,
             ).subscribe((response) => {
-                this.avg = response;
+                const temperature = response[0].temperature;
+                this.avg = Math.round(temperature * 10) / 10;
                 if(device == "Thingy1"){
                     this.tempereraturesUpdated1.next(this.avg);
                 }else{

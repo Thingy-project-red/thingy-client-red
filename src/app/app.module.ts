@@ -15,6 +15,7 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatSnackBarModule
 
 } from '@angular/material';
 
@@ -45,6 +46,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { UserComponent } from "./users/user.component";
 import { MetricsService } from './ws/metrics.service';
 
 @NgModule({
@@ -72,7 +74,9 @@ import { MetricsService } from './ws/metrics.service';
     StatusComponent,
     LoginComponent,
     SignupComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,8 @@ import { MetricsService } from './ws/metrics.service';
     MatTreeModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

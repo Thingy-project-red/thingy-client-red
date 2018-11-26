@@ -6,15 +6,14 @@ import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-battery-latest', 
-    template: '{{ batteryLevel }}%', 
-    styleUrls: ['./battery.component.css']
+    template: '{{ batteryLevel }}%'
 })
 
 export class BatteryComponent implements OnInit, OnDestroy {
     @Input() device: String; 
 
-    private batterySub: Subscription; 
     private batteryLevel: number; 
+    private batterySub: Subscription; 
 
     constructor(public batteryService: BatteryService){}
 
@@ -22,8 +21,8 @@ export class BatteryComponent implements OnInit, OnDestroy {
         this.batterySub = interval(1000).subscribe(x => {
             this.batteryService.getBatteryLevel(this.device); 
             this.batteryService.getBatteryUpdateListener(this.device)
-            .subscribe((batteries: Battery[]) => {
-                this.batteryLevel = batteries[0].battery_level; 
+            .subscribe((level: number) => {
+                this.batteryLevel = level; 
             });
         })
     }
