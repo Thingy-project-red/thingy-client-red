@@ -5,6 +5,7 @@ import { AuthData } from './auth-data.model';
 import { UserData } from './auth-user-data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -29,13 +30,16 @@ export class AuthService {
 
     login(username: string, password: string) {
         const authData: AuthData = { name: username, password: password };
-        this.http.post<{ token: string, expiresIn: number }>(
-            `${environment.api}/api/v1/auth`, authData)
+        this.http.post(
+            `${environment.api}/api/v1/auth`, authData, { responseType: 'text' })
             .subscribe(response => {
-                const token = response.token;
+                const token = response;
                 this.token = token;
                 if (token) {
-                    const expiresInDuration = response.expiresIn;
+                    const helper = new JwtHelperService();
+                    const expiresInDuration: number = helper
+                        .getTokenExpirationDate(token)
+                        .getTime();
                     this.setAuthenticationTimer(expiresInDuration);
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
