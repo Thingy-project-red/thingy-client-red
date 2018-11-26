@@ -17,12 +17,14 @@ export class UserComponent implements OnInit, OnDestroy {
     constructor(public userService: UserService, public snackBar: MatSnackBar) { }
 
     ngOnInit() {
+        this.isLoading = true; 
         this.userService.getUsers();
         this.usersSub = this.userService
             .getUserUpdateListener()
             .subscribe((users) => {
                 this.users = users;
             });
+        this.isLoading = false; 
     }
 
     ngOnDestroy() {
@@ -36,6 +38,7 @@ export class UserComponent implements OnInit, OnDestroy {
             this.snackBar.open("User " + username + " deleted successfully", "done", { duration: 2000 });
             this.userService.getUsers();
         });
+        this.isLoading = false; 
 
     }
 }

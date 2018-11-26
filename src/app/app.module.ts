@@ -74,7 +74,8 @@ import { UserComponent } from "./users/user.component";
     LoginComponent, 
     SignupComponent, 
     HeaderComponent, 
-    UserComponent
+    UserComponent, 
+    SignupComponent
   ],
   imports: [
     BrowserModule,

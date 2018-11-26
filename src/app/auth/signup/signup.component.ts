@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material';
 
 
 @Component({
+    selector: 'app-signup', 
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.css']
 })
