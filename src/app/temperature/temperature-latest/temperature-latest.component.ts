@@ -10,8 +10,8 @@ import { Temperature } from '../temperature.model';
 })
 export class TemperatureLatestComponent implements OnInit, OnDestroy {
   @Input() device: String;
-  latest: number;
 
+  private latest: number;
   private temperaturesSub: Subscription;
 
   constructor(public temperatureService: TemperatureLatestService) { }
@@ -20,8 +20,8 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
     this.temperaturesSub = interval(1000).subscribe(x => {
       this.temperatureService.getLatestTemperature(this.device);
       this.temperatureService.getTemperatureUpdateListener(this.device)
-        .subscribe((temperatures: Temperature[]) => {
-          this.latest = temperatures[0].temperature;
+        .subscribe((temperature: number) => {
+          this.latest = temperature;
         });
     })
   }

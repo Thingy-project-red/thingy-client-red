@@ -6,10 +6,10 @@ import { Temperature } from "../temperature.model";
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureLatestService {
-    private latest: Temperature[] = [];
-
-    private tempereraturesUpdated1 = new Subject<Temperature[]>();
-    private tempereraturesUpdated2 = new Subject<Temperature[]>();
+    
+    private latest: number; 
+    private tempereraturesUpdated1 = new Subject<number>();
+    private tempereraturesUpdated2 = new Subject<number>();
 
     constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class TemperatureLatestService {
             .get<Temperature[]>(
                 `${environment.api}/api/v1/${device}/temperature`,
             ).subscribe((response) => {
-                this.latest = response;
+                this.latest = response[0].temperature;
                 if(device == "Thingy1"){
                     this.tempereraturesUpdated1.next(this.latest);
                 }else{
