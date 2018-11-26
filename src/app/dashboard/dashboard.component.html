@@ -5,19 +5,19 @@
                             Temperature
                     </mat-panel-title>
                     <mat-panel-description>
-                            <div class="grid-container">
-                                    <div class="grid-item">Thingy1: </div>
-                                    <div class="grid-item2">
+                            <div class="grid-container-temp">
+                                    <div class="grid-item-thingy-label">Thingy1: </div>
+                                    <div class="grid-item-temp-latest">
                                             <app-temperature-latest device="Thingy1"></app-temperature-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-temp-avg">
                                             <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
                                     </div>
-                                    <div class="grid-item">Thingy2: </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-thingy-label">Thingy2: </div>
+                                    <div class="grid-item-temp-latest">
                                             <app-temperature-latest device="Thingy2"></app-temperature-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-temp-avg">
                                             <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
                                     </div>
                             </div>
@@ -31,23 +31,23 @@
 <mat-accordion multi="true">
     <mat-expansion-panel>
             <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title class="airTitle"> 
                             Air Quality
                     </mat-panel-title>
                     <mat-panel-description>
-                            <div class="grid-container">
-                                    <div class="grid-item">Thingy1: </div>
-                                    <div class="grid-item2">
+                            <div class="grid-container-air">
+                                    <div class="grid-item-thingy-label">Thingy1: </div>
+                                    <div class="grid-item-air-latest">
                                             <app-airquality-latest device="Thingy1"></app-airquality-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-air-avg">
                                             <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
                                     </div>
-                                    <div class="grid-item">Thingy2: </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-thingy-label">Thingy2: </div>
+                                    <div class="grid-item-air-latest">
                                             <app-airquality-latest device="Thingy2"></app-airquality-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-air-avg">
                                             <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
                                     </div>
                             </div>
@@ -61,23 +61,23 @@
 <mat-accordion multi="true">
     <mat-expansion-panel>
             <mat-expansion-panel-header>
-                    <mat-panel-title>
+                    <mat-panel-title class="humidityTitle">
                             Humidity
                     </mat-panel-title>
                     <mat-panel-description>
-                            <div class="grid-container">
-                                    <div class="grid-item">Thingy1: </div>
-                                    <div class="grid-item2">
+                            <div class="grid-container-humid">
+                                    <div class="grid-item-thingy-label">Thingy1: </div>
+                                    <div class="grid-item-humid-latest">
                                             <app-humidity-latest device="Thingy1"></app-humidity-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-humid-avg">
                                             <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
                                     </div>
-                                    <div class="grid-item">Thingy2: </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-thingy-label">Thingy2: </div>
+                                    <div class="grid-item-humid-latest">
                                             <app-humidity-latest device="Thingy2"></app-humidity-latest>
                                     </div>
-                                    <div class="grid-item2">
+                                    <div class="grid-item-humid-avg">
                                             <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
                                     </div>
                             </div>
@@ -91,17 +91,17 @@
 <mat-accordion multi="true">
         <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                        <mat-panel-title>
+                        <mat-panel-title class="lightsTitle">
                                 Lights
                         </mat-panel-title>
                         <mat-panel-description>
-                                <div class="grid-container">
-                                        <div class="grid-item">Thingy1: </div>
-                                        <div class="grid-item2">
+                                <div class="grid-container-light">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-light-bubble">
                                                 <app-light-bubble device="Thingy1"></app-light-bubble>
                                         </div>
-                                        <div class="grid-item">Thingy2: </div>
-                                        <div class="grid-item2">
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-light-bubble">
                                                 <app-light-bubble device="Thingy2"></app-light-bubble>
                                         </div>
                                 </div>
@@ -109,23 +109,55 @@
                 </mat-expansion-panel-header>
         </mat-expansion-panel>
 </mat-accordion>
-<app-door></app-door>
 <mat-accordion multi="true">
         <mat-expansion-panel>
                 <mat-expansion-panel-header>
-                        <mat-panel-title>
+                        <mat-panel-title class="doorTitle">
+                                Fridge Door
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container-door">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-door-latest"><app-door device="Thingy1"></app-door></div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-door-latest"><app-door device="Thingy2"></app-door></div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+        </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion multi="true">
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title class="batteryTitle">
                                 Battery
                         </mat-panel-title>
                         <mat-panel-description>
-                                <div class="grid-container">
-                                        <div class="grid-item">Thingy1: </div>
-                                        <div class="grid-item2"><app-battery-latest device="Thingy1"></app-battery-latest></div>
-                                        <div class="grid-item">Thingy2: </div>
-                                        <div class="grid-item2"><app-battery-latest device="Thingy2"></app-battery-latest></div>
+                                <div class="grid-container-battery">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-battery-latest"><app-battery-latest device="Thingy1"></app-battery-latest></div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-battery-latest"><app-battery-latest device="Thingy2"></app-battery-latest></div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
         </mat-expansion-panel>
     </mat-accordion>
-<app-status></app-status>
+    <mat-accordion multi="true" hideToggle="true">
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title class="statusTitle">
+                                Status
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container-status">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-status"><app-status device="Thingy1"></app-status></div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-status"><app-status device="Thingy2"></app-status></div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+        </mat-expansion-panel>
+      </mat-accordion>
 

@@ -6,6 +6,36 @@ mat-panel-title{
   mat-panel-description{
     font-size: 18px;
   }
+
+  .airTitle {
+    margin-right: 25px;
+    font-size: 18px;
+  }
+
+  .humidityTitle{
+    margin-right: 36px;
+    font-size: 18px;
+  }
+
+  .lightsTitle{
+    margin-right: 58px;
+    font-size: 18px;
+  }
+
+  .doorTitle{
+    margin-right: 16px; 
+    font-size: 18px; 
+  }
+
+  .batteryTitle{
+    margin-right: 54px; 
+    font-size: 18px; 
+  }
+
+  .statusTitle{
+    margin-right: 54px; 
+    font-size: 18px; 
+  }
   
   .grid-container {
     display: inline-grid;
@@ -13,13 +43,109 @@ mat-panel-title{
     grid-gap: 20px;
     align-items: flex-end;  
   }
-  
-  .grid-item {
+
+  .grid-item-thingy-label {
+    font-size: 10px;
+    padding-bottom: 3px;
+    color: #9E9E9E;
+  }
+
+  .grid-container-temp {
+    display: inline-grid;
+    grid-template-columns: 50px 120px 120px 50px 120px 120px;
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-temp-latest {
+    font-size: 18px;
+    color: black;
+  }
+
+  .grid-item-temp-avg {
+    font-size: 18px;
+    color: #3F51B5;
+  }
+
+  .grid-container-air {
+    display: inline-grid;
+    grid-template-columns: 50px 120px 120px 50px 120px 120px;
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-air-latest {
+    font-size: 18px;
+    color: black;
+  }
+
+  .grid-item-air-avg {
+    font-size: 18px;
+    color: #3F51B5;
+  }
+
+  .grid-container-humid {
+    display: inline-grid;
+    grid-template-columns: 50px 120px 120px 50px 120px 120px;
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-humid-latest {
+    font-size: 18px;
+    color: black;
+  }
+
+  .grid-item-humid-avg {
+    font-size: 18px;
+    color: #3F51B5;
+  }
+
+  .grid-container-light {
+    display: inline-grid;
+    grid-template-columns: 50px 260px 50px 260px;
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-light-bubble {
     font-size: 10px;
     padding-bottom: 3px;
   }
-  
-  .grid-item2 {
+
+
+  .grid-container-battery {
+    display: inline-grid;
+    grid-template-columns: 50px 260px 50px 260px;
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-battery-latest {
+    font-size: 18px;
+    color: black;
+  }
+
+  .grid-container-door {
+    display: inline-grid;
+    grid-template-columns: 50px 260px 50px 260px; 
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-door-latest {
+    font-size: 18px;
+    color: black;
+  }
+
+  .grid-container-status {
+    display: inline-grid;
+    grid-template-columns: 50px 260px 50px 260px; 
+    grid-gap: 20px;
+    align-items: flex-end;  
+  }
+
+  .grid-item-status {
     font-size: 18px;
     color: black;
   }

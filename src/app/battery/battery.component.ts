@@ -6,8 +6,7 @@ import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-battery-latest', 
-    template: '{{ batteryLevel }}%', 
-    styleUrls: ['./battery.component.css']
+    template: '{{ batteryLevel }}%'
 })
 
 export class BatteryComponent implements OnInit, OnDestroy {
