@@ -84,7 +84,6 @@ export class AuthService {
         return this.authStatusListener.asObservable();
     }
 
-
     private cacheAuthToken(token: string, expirationDate: Date) {
         localStorage.setItem("token", token);
         localStorage.setItem("expiration", expirationDate.toISOString());

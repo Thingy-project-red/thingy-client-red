@@ -45,6 +45,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { UserComponent } from "./users/user.component"; 
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { AppRoutingModule } from "./app-routing.module";
     StatusComponent,
     LoginComponent, 
     SignupComponent, 
-    HeaderComponent
+    HeaderComponent, 
+    UserComponent
   ],
   imports: [
     BrowserModule,
