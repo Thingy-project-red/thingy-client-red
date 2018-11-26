@@ -14,8 +14,8 @@ import {
   MatTreeModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatSelectModule, 
-  
+  MatSelectModule,
+
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -45,6 +45,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { MetricsService } from './ws/metrics.service';
 
 @NgModule({
   declarations: [
@@ -69,8 +70,8 @@ import { AppRoutingModule } from "./app-routing.module";
     LightBubbleComponent,
     LightLatestComponent,
     StatusComponent,
-    LoginComponent, 
-    SignupComponent, 
+    LoginComponent,
+    SignupComponent,
     HeaderComponent
   ],
   imports: [
