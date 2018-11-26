@@ -3,7 +3,6 @@ import { NgForm } from "@angular/forms";
 import { AuthService } from '../auth.service'; 
 import {MatSnackBar} from '@angular/material';
 
-
 @Component({
     selector: 'app-signup', 
     templateUrl: './signup.component.html',
@@ -23,5 +22,6 @@ export class SignupComponent {
         this.isLoading = true; 
         let response = this.authService.createUser(form.value.username, form.value.password); 
         this.snackBar.open("User created successfully", "done", {duration: 2000}); 
+        this.isLoading = false; 
     }
 }

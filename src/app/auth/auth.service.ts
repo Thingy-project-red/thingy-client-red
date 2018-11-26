@@ -6,6 +6,7 @@ import { UserData } from './auth-user-data.model';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserService } from '../users/user.service';
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
     private authStatusListener = new Subject<boolean>();
     private tokenTimer: any;
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router, public userService: UserService) { }
 
     createUser(user: string, password: string) {
         const authData: UserData = {
@@ -24,7 +25,7 @@ export class AuthService {
             `${environment.api}/api/v1/users`, authData)
             .subscribe(response => {
                 console.log("User created successfully");
-                this.router.navigate(['/dashboard']);
+                this.userService.getUsers(); 
             })
     }
 
