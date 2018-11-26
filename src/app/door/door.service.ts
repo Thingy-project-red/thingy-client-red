@@ -7,41 +7,32 @@ import { Door } from "./door.model";
 @Injectable({ providedIn: 'root' })
 export class DoorService {
 
-    private doors1: Door[] = [];
-    private doors2: Door[] = [];
-
+    private doors: Door[] = [];
     private doorsUpdated1 = new Subject<Door[]>();
     private doorsUpdated2 = new Subject<Door[]>();
 
     constructor(private http: HttpClient) { }
 
-    getDoor1(rangeInSeconds) {
+    getDoorStatus(device) {
         this.http
             .get<Door[]>(
-                `${environment.api}/api/v1/Thingy1/door/${rangeInSeconds}`,
+                `${environment.api}/api/v1/${device}/door/1`,
             )
-            .subscribe((transformedLights) => {
-                this.doors1 = transformedLights;
-                this.doorsUpdated1.next(this.doors1);
+            .subscribe((doorStatus) => {
+                this.doors = doorStatus; 
+                if(device == "Thingy1"){
+                    this.doorsUpdated1.next(this.doors); 
+                }else{
+                    this.doorsUpdated2.next(this.doors); 
+                }
             })
     }
 
-    getDoor2(rangeInSeconds) {
-        this.http
-            .get<Door[]>(
-                `${environment.api}/api/v1/Thingy2/door/${rangeInSeconds}`,
-            )
-            .subscribe((transformedLights) => {
-                this.doors2 = transformedLights;
-                this.doorsUpdated2.next(this.doors2);
-            })
-    }
-
-    getDoorUpdateListener1() {
-        return this.doorsUpdated1.asObservable();
-    }
-
-    getDoorUpdateListener2() {
-        return this.doorsUpdated2.asObservable();
+    getDoorUpdateListener(device) {
+        if(device == "Thingy1"){
+            return this.doorsUpdated1.asObservable(); 
+        }else{
+            return this.doorsUpdated2.asObservable()
+        }
     }
 }
