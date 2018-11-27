@@ -1,33 +1,32 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
-import { TemperatureLatestService } from './temperature-latest.service';
+import { Subscription } from 'rxjs';
+import { MetricsService } from '../../ws/metrics.service';
 import { Temperature } from '../temperature.model';
 
 @Component({
-  selector: 'app-temperature-latest',
-  template: '{{ latest }}°C',
-  styleUrls: ['../temperature.component.css']
+    selector: 'app-temperature-latest',
+    template: '{{ latest }}°C',
+    styleUrls: ['../temperature.component.css']
 })
+
 export class TemperatureLatestComponent implements OnInit, OnDestroy {
-  @Input() device: String;
+    @Input() device: String;
+    latest: number;
 
-  private latest: number;
-  private temperaturesSub: Subscription;
+    private subscription: Subscription;
 
-  constructor(public temperatureService: TemperatureLatestService) { }
+    constructor(public metricsService: MetricsService) { }
 
-  ngOnInit() {
-    this.temperaturesSub = interval(1000).subscribe(x => {
-      this.temperatureService.getLatestTemperature(this.device);
-      this.temperatureService.getTemperatureUpdateListener(this.device)
-        .subscribe((temperature: number) => {
-          this.latest = temperature;
+    ngOnInit() {
+        this.subscription = this.metricsService.temperatures
+            .subscribe((temperature: Temperature) => {
+            if (temperature.device === this.device) {
+                this.latest = temperature.temperature;
+            }
         });
-    })
-  }
+    }
 
-  ngOnDestroy(){
-    this.temperaturesSub.unsubscribe(); 
-  }
-
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 }
