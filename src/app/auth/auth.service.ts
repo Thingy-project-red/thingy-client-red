@@ -25,7 +25,7 @@ export class AuthService {
             `${environment.api}/api/v1/users`, authData)
             .subscribe(response => {
                 console.log("User created successfully");
-                this.userService.getUsers(); 
+                this.userService.getUsers();
             })
     }
 
@@ -38,14 +38,12 @@ export class AuthService {
                 this.token = token;
                 if (token) {
                     const helper = new JwtHelperService();
-                    const expiresInDuration: number = helper
+                    const expirationDate: Date = helper
                         .getTokenExpirationDate(token)
-                        .getTime();
+                    const expiresInDuration: number = expirationDate.getTime();
                     this.setAuthenticationTimer(expiresInDuration);
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
-                    const now = new Date();
-                    const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                     this.cacheAuthToken(token, expirationDate);
                     this.router.navigate(['/dashboard']);
                 }
@@ -62,7 +60,7 @@ export class AuthService {
         if (expiresIn > 0) {
             this.token = authData.token;
             this.isAuthenticated = true;
-            this.setAuthenticationTimer(expiresIn / 1000);
+            this.setAuthenticationTimer(expiresIn);
             this.authStatusListener.next(true);
         }
     }
@@ -116,7 +114,7 @@ export class AuthService {
     private setAuthenticationTimer(expiresInDuration: number) {
         this.tokenTimer = setTimeout(() => {
             this.logout();
-        }, expiresInDuration * 1000); // timeout in ms  
+        }, expiresInDuration);
     }
 
 
