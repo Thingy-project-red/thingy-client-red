@@ -1,33 +1,31 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Battery } from './battery.model';
-import { BatteryService } from './battery.services';
 import { Subscription } from 'rxjs';
-import { interval } from 'rxjs';
+import { MetricsService } from '../ws/metrics.service';
+import { Battery } from './battery.model';
 
 @Component({
-    selector: 'app-battery-latest', 
+    selector: 'app-battery-latest',
     template: '{{ batteryLevel }}%'
 })
 
 export class BatteryComponent implements OnInit, OnDestroy {
-    @Input() device: String; 
+    @Input() device: String;
+    batteryLevel: number;
 
-    private batteryLevel: number; 
-    private batterySub: Subscription; 
+    private subscription: Subscription;
 
-    constructor(public batteryService: BatteryService){}
+    constructor(public metricsService: MetricsService) { }
 
-    ngOnInit(){
-        this.batterySub = interval(1000).subscribe(x => {
-            this.batteryService.getBatteryLevel(this.device); 
-            this.batteryService.getBatteryUpdateListener(this.device)
-            .subscribe((level: number) => {
-                this.batteryLevel = level; 
-            });
-        })
+    ngOnInit() {
+        this.subscription = this.metricsService.batteries
+            .subscribe((battery: Battery) => {
+            if (battery.device === this.device) {
+                this.batteryLevel = battery.battery_level;
+            }
+        });
     }
 
-    ngOnDestroy(){
-        this.batterySub.unsubscribe(); 
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

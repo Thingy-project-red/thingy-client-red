@@ -1,33 +1,32 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MetricsService } from '../../ws/metrics.service';
 import { Humidity } from '../humidity.model';
-import { HumidityLatestService } from './humidity-latest.service';
-import { Subscription, interval } from 'rxjs';
 
 @Component({
-  selector: 'app-humidity-latest',
-  template: '{{ latest }}%',
-  styleUrls: ['../humidity.component.css']
+    selector: 'app-humidity-latest',
+    template: '{{ latest }}%',
+    styleUrls: ['../humidity.component.css']
 })
-export class HumidityLatestComponent implements OnInit, OnDestroy{
-  @Input() device: String;
 
-  latest: number;
-  private humidSub: Subscription;
+export class HumidityLatestComponent implements OnInit, OnDestroy {
+    @Input() device: String;
+    latest: number;
 
-  constructor(public humidityService: HumidityLatestService) { }
+    private subscription: Subscription;
 
-  ngOnInit() {
-    this.humidSub = interval(1000).subscribe(x => {
-      this.humidityService.getLatestHumidity(this.device);
-      this.humidityService.getHumidityUpdateListener(this.device)
-        .subscribe((humidities1: Humidity[]) => {
-          this.latest = humidities1[0].humidity;
+    constructor(public metricsService: MetricsService) { }
+
+    ngOnInit() {
+        this.subscription = this.metricsService.humidities
+            .subscribe((humidity: Humidity) => {
+            if (humidity.device === this.device) {
+                this.latest = humidity.humidity;
+            }
         });
-    })
-  }
+    }
 
-  ngOnDestroy() {
-    this.humidSub.unsubscribe();
-  }
-
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 }

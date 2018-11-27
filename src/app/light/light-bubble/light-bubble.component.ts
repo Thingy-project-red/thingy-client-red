@@ -1,33 +1,35 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Subscribable, Subscription, interval } from 'rxjs';
-import { LightService } from '../light.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MetricsService } from '../../ws/metrics.service';
 import { Light } from '../light.model';
 
 @Component({
-  selector: 'app-light-bubble',
-  templateUrl: './light-bubble.component.html',
-  styleUrls: ['../light.component.css']
+    selector: 'app-light-bubble',
+    templateUrl: './light-bubble.component.html',
+    styleUrls: ['../light.component.css']
 })
+
 export class LightBubbleComponent implements OnInit {
-  @Input() device: String;
+    @Input() device: String;
+    latestColor: string;
 
-  latestColor: number;
-  private lightSub: Subscription;
+    private subscription: Subscription;
 
-  constructor(public lightService: LightService) { }
+    constructor(public metricsService: MetricsService) { }
 
-  ngOnInit() {
-    this.lightSub = interval(1000).subscribe(x => {
-      this.lightService.getLatestColor(this.device);
-      this.lightService.getLightsUpdateListener(this.device)
-        .subscribe((lights: Light[]) => {
-          this.latestColor = this.lightService.getColorCode();
-        })
-    })
-  }
+    ngOnInit() {
+        this.subscription = this.metricsService.lights
+            .subscribe((light: Light) => {
+            if (light.device === this.device) {
+                this.latestColor = 'rgb('
+                    + light.red + ', '
+                    + light.green + ', '
+                    + light.blue + ')';
+            }
+        });
+    }
 
-  ngOnDestroy() {
-    this.lightSub.unsubscribe();
-  }
-
+    ngOnDestroy(){
+        this.subscription.unsubscribe();
+    }
 }

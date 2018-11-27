@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MetricsService } from '../ws/metrics.service';
 import { Door } from './door.model';
-import { DoorService } from './door.service';
-import { Subscription, interval } from 'rxjs';
-
 
 @Component({
     selector: 'app-door',
@@ -10,29 +9,27 @@ import { Subscription, interval } from 'rxjs';
 })
 
 export class DoorComponent implements OnInit, OnDestroy {
-    @Input() device: String; 
+    @Input() device: String;
+    doorStatus: String;
 
-    private doorStatus: string; 
-    private doorSub: Subscription; 
+    private subscription: Subscription;
 
-    constructor(public doorService: DoorService) { }
+    constructor(public metricsService: MetricsService) { }
 
     ngOnInit() {
-        this.doorSub = interval(1000).subscribe(x => {
-            this.doorService.getDoorStatus(this.device);
-            this.doorService.getDoorUpdateListener(this.device)
-                .subscribe((doors: Door[]) => {
-                    const isOpen = doors[0].open;
-                    if(isOpen){
-                        this.doorStatus = "open"; 
-                    }else {
-                        this.doorStatus = "closed"; 
-                    }
-                });
-        })
+        this.subscription = this.metricsService.doors
+            .subscribe((door: Door) => {
+            if (door.device === this.device) {
+                if (door.open) {
+                    this.doorStatus = 'open';
+                } else {
+                    this.doorStatus = 'closed';
+                }
+            }
+        });
     }
 
     ngOnDestroy() {
-        this.doorSub.unsubscribe(); 
+        this.subscription.unsubscribe();
     }
 }
