@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MetricsService } from '../ws/metrics.service';
+import { WebsocketService } from '../websocket/websocket.service';
 import { Battery } from './battery.model';
 
 @Component({
@@ -14,10 +14,10 @@ export class BatteryComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public metricsService: MetricsService) { }
+    constructor(public websocketService: WebsocketService) { }
 
     ngOnInit() {
-        this.subscription = this.metricsService.batteries
+        this.subscription = this.websocketService.batteries
             .subscribe((battery: Battery) => {
             if (battery.device === this.device) {
                 this.batteryLevel = battery.battery_level;

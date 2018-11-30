@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MetricsService } from '../../ws/metrics.service';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { Air } from '../air.model';
 
 @Component({
@@ -15,10 +15,10 @@ export class AirqualityLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public metricsService: MetricsService) { }
+    constructor(public websocketService: WebsocketService) { }
 
     ngOnInit() {
-        this.subscription = this.metricsService.airs
+        this.subscription = this.websocketService.airs
             .subscribe((air: Air) => {
             if (air.device === this.device) {
                 this.latest = air.eco2;

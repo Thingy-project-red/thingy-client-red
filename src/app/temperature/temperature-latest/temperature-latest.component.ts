@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MetricsService } from '../../ws/metrics.service';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { Temperature } from '../temperature.model';
 
 @Component({
@@ -15,10 +15,10 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public metricsService: MetricsService) { }
+    constructor(public websocketService: WebsocketService) { }
 
     ngOnInit() {
-        this.subscription = this.metricsService.temperatures
+        this.subscription = this.websocketService.temperatures
             .subscribe((temperature: Temperature) => {
             if (temperature.device === this.device) {
                 this.latest = temperature.temperature;

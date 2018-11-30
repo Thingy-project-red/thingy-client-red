@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MetricsService } from '../../ws/metrics.service';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { Light } from '../light.model';
 
 @Component({
@@ -15,10 +15,10 @@ export class LightLatestComponent implements OnInit {
 
     private subscription: Subscription;
 
-    constructor(public metricsService: MetricsService) { }
+    constructor(public websocketService: WebsocketService) { }
 
     ngOnInit() {
-        this.subscription = this.metricsService.lights
+        this.subscription = this.websocketService.lights
             .subscribe((light: Light) => {
             if (light.device === this.device) {
                 this.latestLight = 'rgb('

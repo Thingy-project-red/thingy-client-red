@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MetricsService } from '../ws/metrics.service';
+import { WebsocketService } from '../websocket/websocket.service';
 import { Door } from './door.model';
 
 @Component({
@@ -14,10 +14,10 @@ export class DoorComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public metricsService: MetricsService) { }
+    constructor(public websocketService: WebsocketService) { }
 
     ngOnInit() {
-        this.subscription = this.metricsService.doors
+        this.subscription = this.websocketService.doors
             .subscribe((door: Door) => {
             if (door.device === this.device) {
                 if (door.open) {
