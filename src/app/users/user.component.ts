@@ -1,8 +1,9 @@
 import { Subscription } from "rxjs";
-import { UserData } from "../auth/auth-user-data.model";
 import { OnInit, OnDestroy, Component } from "@angular/core";
 import { UserService } from "./user.service";
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material';
+import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-users',
@@ -10,14 +11,16 @@ import {MatSnackBar} from '@angular/material';
 })
 
 export class UserComponent implements OnInit, OnDestroy {
-    private users: UserData[];
+    private users: User[];
     private usersSub: Subscription;
+    private adminListenerSubs: Subscription;
     isLoading = false;
+    isAdmin = false;
 
-    constructor(public userService: UserService, public snackBar: MatSnackBar) { }
+    constructor(public userService: UserService, public snackBar: MatSnackBar, public router: Router) { }
 
     ngOnInit() {
-        this.isLoading = true; 
+        this.isLoading = true;
         this.userService.getUsers();
         this.usersSub = this.userService
             .getUserUpdateListener()
@@ -29,6 +32,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.usersSub.unsubscribe();
+        this.adminListenerSubs.unsubscribe();
 
     }
 
@@ -38,7 +42,17 @@ export class UserComponent implements OnInit, OnDestroy {
             this.snackBar.open("User " + username + " deleted successfully", "done", { duration: 2000 });
             this.userService.getUsers();
         });
-        this.isLoading = false; 
+        this.isLoading = false;
 
     }
+
+    onChange(user: User, right: string, value: boolean) {
+        this.isLoading = true;
+        this.userService.updateRights(user, right, value);
+        this.userService.getUsers();
+        this.router.navigate(['/users']);
+        this.isLoading = false;
+        this.snackBar.open("Rights updated successfully ", "done", { duration: 3000 });
+    }
+
 }

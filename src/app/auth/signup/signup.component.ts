@@ -20,8 +20,8 @@ export class SignupComponent {
             return; 
         }
         this.isLoading = true; 
-        let response = this.authService.createUser(form.value.username, form.value.password); 
-        this.snackBar.open("User created successfully", "done", {duration: 2000}); 
+        let response =  this.authService.createUser(form.value.username, form.value.password, form.value.admin, form.value.api); 
         this.isLoading = false; 
+        this.snackBar.open("User created successfully", "done", {duration: 5000}); 
     }
 }

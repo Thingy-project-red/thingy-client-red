@@ -15,7 +15,8 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatCheckboxModule
 
 } from '@angular/material';
 
@@ -47,7 +48,6 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { UserComponent } from "./users/user.component";
-import { MetricsService } from './ws/metrics.service';
 
 @NgModule({
   declarations: [
@@ -97,7 +97,8 @@ import { MetricsService } from './ws/metrics.service';
     MatTableModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule, 
+    MatCheckboxModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

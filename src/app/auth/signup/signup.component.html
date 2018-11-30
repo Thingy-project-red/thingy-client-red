@@ -2,7 +2,8 @@
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form #signupForm="ngForm" (submit)="onSignup(signupForm); ngForm.reset()" *ngIf="!isLoading">
         <mat-form-field>
-            <input matInput name="username" ngModel type="username" placeholder="Username" #userNameInput="ngModel" required>
+            <input matInput name="username" ngModel type="username" placeholder="Username" #userNameInput="ngModel"
+                required>
             <mat-error *ngIf="userNameInput.invalid">Please enter a valid username.</mat-error>
         </mat-form-field>
         <mat-form-field>
@@ -10,6 +11,8 @@
                 required>
             <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
         </mat-form-field>
+            <mat-checkbox name="admin" ngModel #admin="ngModel" checked>admin</mat-checkbox>
+            <mat-checkbox name="api" ngModel #api="ngModel" checked>api</mat-checkbox>
         <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Add User</button>
     </form>
 </mat-card>

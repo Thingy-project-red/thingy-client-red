@@ -13,5 +13,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.authService.autoAuth(); 
+    console.log("From Cache" + localStorage.getItem("isAdmin"));
   }
 }
