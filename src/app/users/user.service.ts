@@ -40,7 +40,7 @@ export class UserService {
         console.log(rights);
 
         return this.http.patch(
-            `${environment.api}/api/v1/users/rights/${user.name}`, { rights: rights })
+            `${environment.api}/api/v1/users/${user.name}`, { rights: rights })
             .subscribe((response => {
                 this.getUsers();
             }));
