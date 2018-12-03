@@ -160,7 +160,7 @@ mat-panel-title{
   padding: 1rem;
   margin: 1rem;
   width: 25rem;
-  height: 19rem;
+  height: 17rem;
   cursor: pointer;
   background-color: white;
   border-radius: 0.5rem;
@@ -232,8 +232,11 @@ mat-panel-title{
   align-items: center;
 }
 
-mat-grid-tile{
-  margin: 0.1px; 
-  padding: 0.1px; 
+.thingyStatusLabel{
+  display: block;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  text-align: left;
 }
 

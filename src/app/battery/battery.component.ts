@@ -5,7 +5,7 @@ import { Battery } from './battery.model';
 
 @Component({
     selector: 'app-battery-latest',
-    template: '{{ batteryLevel }}%'
+    template: '<span *ngIf="batteryLevel">{{ batteryLevel }}%</span>'
 })
 
 export class BatteryComponent implements OnInit, OnDestroy {
