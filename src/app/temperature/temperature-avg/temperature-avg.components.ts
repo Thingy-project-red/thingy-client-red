@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-temperature-avg',
-    template: 'ø {{ avg }}°C',
+    template: '<span *ngIf=avg>Last Hour ø {{ avg }}°</span>',
     styleUrls: ['../temperature.component.css']
 })
 
@@ -29,9 +29,11 @@ export class TemperatureAvgComponent implements OnInit, OnDestroy {
                     this.avg = temperatures;
                 });
         });
+
     }
 
     ngOnDestroy() {
         this.temperaturesSub.unsubscribe();
+
     }
 }

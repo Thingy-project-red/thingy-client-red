@@ -5,7 +5,7 @@ import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-airquality-avg',
-  template: 'ø {{ avg }} ppm',
+  template: '<span *ngIf="avg">Last Hour ø {{ avg }}ppm</span>',
   styleUrls: ['../air.component.css']
 })
 

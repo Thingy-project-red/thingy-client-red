@@ -21,12 +21,12 @@ export class TemperatureAvgService {
                 this.avg = Math.round(temperature * 10) / 10;
                 if(device == "Thingy1"){
                     this.tempereraturesUpdated1.next(this.avg);
+
                 }else{
                     this.tempereraturesUpdated2.next(this.avg);
                 }
             })
     }
-
     getTemperatureUpdateListener(device) {
         if(device=="Thingy1"){
             return this.tempereraturesUpdated1.asObservable();
@@ -34,4 +34,6 @@ export class TemperatureAvgService {
             return this.tempereraturesUpdated2.asObservable();
         }
     }
+
 }
+

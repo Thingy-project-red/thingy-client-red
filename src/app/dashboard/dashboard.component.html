@@ -1,92 +1,235 @@
+
+<mat-grid-list cols="4">
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Temperature</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-temperature-latest device="Thingy1"></app-temperature-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-temperature-avg device="Thingy1" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Humidity</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-humidity-latest device="Thingy1"></app-humidity-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">C02</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-airquality-latest device="Thingy1"></app-airquality-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Fridge Door</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-door device="Thingy1"></app-door>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-light-bubble device="Thingy1"></app-light-bubble>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Temperature</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-temperature-latest device="Thingy2"></app-temperature-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Humidity</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-humidity-latest device="Thingy2"></app-humidity-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">C02</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-airquality-latest device="Thingy2"></app-airquality-latest>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+                <mat-card class="sensor-card">
+                        <mat-card-header class="card-header-container">
+                                <mat-card-title class="card-title">Fridge Door</mat-card-title>
+                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content class="card-content-container">
+                                <span class="card-content-latest">
+                                        <app-door device="Thingy2"></app-door>
+                                </span>
+                                <span class="card-content-avg">
+                                        <app-light-bubble device="Thingy1"></app-light-bubble>
+                                </span>
+                        </mat-card-content>
+                </mat-card>
+        </mat-grid-tile>
+
+</mat-grid-list>
+
+<!---
 <mat-accordion multi="true">
-    <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            Temperature
-                    </mat-panel-title>
-                    <mat-panel-description>
-                            <div class="grid-container-temp">
-                                    <div class="grid-item-thingy-label">Thingy1: </div>
-                                    <div class="grid-item-temp-latest">
-                                            <app-temperature-latest device="Thingy1"></app-temperature-latest>
-                                    </div>
-                                    <div class="grid-item-temp-avg">
-                                            <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
-                                    </div>
-                                    <div class="grid-item-thingy-label">Thingy2: </div>
-                                    <div class="grid-item-temp-latest">
-                                            <app-temperature-latest device="Thingy2"></app-temperature-latest>
-                                    </div>
-                                    <div class="grid-item-temp-avg">
-                                            <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
-                                    </div>
-                            </div>
-                    </mat-panel-description>
-            </mat-expansion-panel-header>
-            <app-temperature-series device="Thingy1" rangeInSeconds="10"></app-temperature-series>
-            <hr>
-            <app-temperature-series device="Thingy2" rangeInSeconds="10"></app-temperature-series>
-    </mat-expansion-panel>
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title>
+                                Temperature
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container-temp">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-temp-latest">
+                                                <app-temperature-latest device="Thingy1"></app-temperature-latest>
+                                        </div>
+                                        <div class="grid-item-temp-avg">
+                                                <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
+                                        </div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-temp-latest">
+                                                <app-temperature-latest device="Thingy2"></app-temperature-latest>
+                                        </div>
+                                        <div class="grid-item-temp-avg">
+                                                <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
+                                        </div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-temperature-series device="Thingy1" rangeInSeconds="10"></app-temperature-series>
+                <hr>
+                <app-temperature-series device="Thingy2" rangeInSeconds="10"></app-temperature-series>
+        </mat-expansion-panel>
 </mat-accordion>
 <mat-accordion multi="true">
-    <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                    <mat-panel-title class="airTitle"> 
-                            Air Quality
-                    </mat-panel-title>
-                    <mat-panel-description>
-                            <div class="grid-container-air">
-                                    <div class="grid-item-thingy-label">Thingy1: </div>
-                                    <div class="grid-item-air-latest">
-                                            <app-airquality-latest device="Thingy1"></app-airquality-latest>
-                                    </div>
-                                    <div class="grid-item-air-avg">
-                                            <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
-                                    </div>
-                                    <div class="grid-item-thingy-label">Thingy2: </div>
-                                    <div class="grid-item-air-latest">
-                                            <app-airquality-latest device="Thingy2"></app-airquality-latest>
-                                    </div>
-                                    <div class="grid-item-air-avg">
-                                            <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
-                                    </div>
-                            </div>
-                    </mat-panel-description>
-            </mat-expansion-panel-header>
-            <app-airquality-series device="Thingy1" rangeInSeconds="10"></app-airquality-series>
-            <hr>
-            <app-airquality-series device="Thingy2" rangeInSeconds="10"></app-airquality-series>
-    </mat-expansion-panel>
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title class="airTitle">
+                                Air Quality
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container-air">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-air-latest">
+                                                <app-airquality-latest device="Thingy1"></app-airquality-latest>
+                                        </div>
+                                        <div class="grid-item-air-avg">
+                                                <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
+                                        </div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-air-latest">
+                                                <app-airquality-latest device="Thingy2"></app-airquality-latest>
+                                        </div>
+                                        <div class="grid-item-air-avg">
+                                                <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
+                                        </div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-airquality-series device="Thingy1" rangeInSeconds="10"></app-airquality-series>
+                <hr>
+                <app-airquality-series device="Thingy2" rangeInSeconds="10"></app-airquality-series>
+        </mat-expansion-panel>
 </mat-accordion>
 <mat-accordion multi="true">
-    <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                    <mat-panel-title class="humidityTitle">
-                            Humidity
-                    </mat-panel-title>
-                    <mat-panel-description>
-                            <div class="grid-container-humid">
-                                    <div class="grid-item-thingy-label">Thingy1: </div>
-                                    <div class="grid-item-humid-latest">
-                                            <app-humidity-latest device="Thingy1"></app-humidity-latest>
-                                    </div>
-                                    <div class="grid-item-humid-avg">
-                                            <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
-                                    </div>
-                                    <div class="grid-item-thingy-label">Thingy2: </div>
-                                    <div class="grid-item-humid-latest">
-                                            <app-humidity-latest device="Thingy2"></app-humidity-latest>
-                                    </div>
-                                    <div class="grid-item-humid-avg">
-                                            <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
-                                    </div>
-                            </div>
-                    </mat-panel-description>
-            </mat-expansion-panel-header>
-            <app-humidity-series device="Thingy1" rangeInSeconds="10"></app-humidity-series>
-            <hr>
-            <app-humidity-series device="Thingy2" rangeInSeconds="10"></app-humidity-series>
-    </mat-expansion-panel>
+        <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                        <mat-panel-title class="humidityTitle">
+                                Humidity
+                        </mat-panel-title>
+                        <mat-panel-description>
+                                <div class="grid-container-humid">
+                                        <div class="grid-item-thingy-label">Thingy1: </div>
+                                        <div class="grid-item-humid-latest">
+                                                <app-humidity-latest device="Thingy1"></app-humidity-latest>
+                                        </div>
+                                        <div class="grid-item-humid-avg">
+                                                <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
+                                        </div>
+                                        <div class="grid-item-thingy-label">Thingy2: </div>
+                                        <div class="grid-item-humid-latest">
+                                                <app-humidity-latest device="Thingy2"></app-humidity-latest>
+                                        </div>
+                                        <div class="grid-item-humid-avg">
+                                                <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
+                                        </div>
+                                </div>
+                        </mat-panel-description>
+                </mat-expansion-panel-header>
+                <app-humidity-series device="Thingy1" rangeInSeconds="10"></app-humidity-series>
+                <hr>
+                <app-humidity-series device="Thingy2" rangeInSeconds="10"></app-humidity-series>
+        </mat-expansion-panel>
 </mat-accordion>
 <mat-accordion multi="true">
         <mat-expansion-panel>
@@ -118,9 +261,13 @@
                         <mat-panel-description>
                                 <div class="grid-container-door">
                                         <div class="grid-item-thingy-label">Thingy1: </div>
-                                        <div class="grid-item-door-latest"><app-door device="Thingy1"></app-door></div>
+                                        <div class="grid-item-door-latest">
+                                                <app-door device="Thingy1"></app-door>
+                                        </div>
                                         <div class="grid-item-thingy-label">Thingy2: </div>
-                                        <div class="grid-item-door-latest"><app-door device="Thingy2"></app-door></div>
+                                        <div class="grid-item-door-latest">
+                                                <app-door device="Thingy2"></app-door>
+                                        </div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
@@ -135,15 +282,19 @@
                         <mat-panel-description>
                                 <div class="grid-container-battery">
                                         <div class="grid-item-thingy-label">Thingy1: </div>
-                                        <div class="grid-item-battery-latest"><app-battery-latest device="Thingy1"></app-battery-latest></div>
+                                        <div class="grid-item-battery-latest">
+                                                <app-battery-latest device="Thingy1"></app-battery-latest>
+                                        </div>
                                         <div class="grid-item-thingy-label">Thingy2: </div>
-                                        <div class="grid-item-battery-latest"><app-battery-latest device="Thingy2"></app-battery-latest></div>
+                                        <div class="grid-item-battery-latest">
+                                                <app-battery-latest device="Thingy2"></app-battery-latest>
+                                        </div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
         </mat-expansion-panel>
-    </mat-accordion>
-    <mat-accordion multi="true" hideToggle="true">
+</mat-accordion>
+<mat-accordion multi="true" hideToggle="true">
         <mat-expansion-panel>
                 <mat-expansion-panel-header>
                         <mat-panel-title class="statusTitle">
@@ -152,12 +303,15 @@
                         <mat-panel-description>
                                 <div class="grid-container-status">
                                         <div class="grid-item-thingy-label">Thingy1: </div>
-                                        <div class="grid-item-status"><app-status device="Thingy1"></app-status></div>
+                                        <div class="grid-item-status">
+                                                <app-status device="Thingy1"></app-status>
+                                        </div>
                                         <div class="grid-item-thingy-label">Thingy2: </div>
-                                        <div class="grid-item-status"><app-status device="Thingy2"></app-status></div>
+                                        <div class="grid-item-status">
+                                                <app-status device="Thingy2"></app-status>
+                                        </div>
                                 </div>
                         </mat-panel-description>
                 </mat-expansion-panel-header>
         </mat-expansion-panel>
-      </mat-accordion>
-
+</mat-accordion>-->

@@ -5,7 +5,7 @@ import { Air } from '../air.model';
 
 @Component({
     selector: 'app-airquality-latest',
-    template: '{{ latest }} ppm CO2',
+    template: '<span *ngIf="latest">{{ latest }}ppm</span>',
     styleUrls: ['../air.component.css']
 })
 

@@ -5,7 +5,7 @@ import { Temperature } from '../temperature.model';
 
 @Component({
     selector: 'app-temperature-latest',
-    template: '{{ latest }}°C',
+    template: '<span *ngIf="latest">{{ latest }}°</span>',
     styleUrls: ['../temperature.component.css']
 })
 
@@ -15,13 +15,13 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public websocketService: WebsocketService) { }
+    constructor(public websocketService: WebsocketService) {}
 
     ngOnInit() {
         this.subscription = this.websocketService.temperatures
             .subscribe((temperature: Temperature) => {
             if (temperature.device === this.device) {
-                this.latest = temperature.temperature;
+                this.latest = Math.round(temperature.temperature * 10) / 10;
             }
         });
     }

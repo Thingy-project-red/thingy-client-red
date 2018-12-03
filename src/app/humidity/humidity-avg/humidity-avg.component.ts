@@ -5,7 +5,7 @@ import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-humidity-avg',
-  template: 'ø {{ avg }}%',
+  template: '<span *ngIf="avg">Last Hour ø {{ avg }}%</span>',
   styleUrls: ['../humidity.component.css']
 })
 export class HumidityAvgComponent implements OnInit, OnDestroy{

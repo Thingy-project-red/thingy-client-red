@@ -5,7 +5,7 @@ import { Humidity } from '../humidity.model';
 
 @Component({
     selector: 'app-humidity-latest',
-    template: '{{ latest }}%',
+    template: '<span *ngIf="latest">{{ latest }}%</span>',
     styleUrls: ['../humidity.component.css']
 })
 
