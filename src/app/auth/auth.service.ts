@@ -55,7 +55,8 @@ export class AuthService {
                     const helper = new JwtHelperService();
                     const expirationDate: Date = helper
                         .getTokenExpirationDate(token)
-                    const expiresInDuration: number = expirationDate.getTime();
+                    const expiresInDuration: number = expirationDate.getTime()
+                        - new Date().getTime();
                     this.setAuthenticationTimer(expiresInDuration);
                     this.isAuthenticated = true;
                     this.authStatusListener.next(true);
