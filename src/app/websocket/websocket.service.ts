@@ -8,6 +8,7 @@ import { Humidity } from '../humidity/humidity.model';
 import { Light } from '../light/light.model';
 import { Door } from '../door/door.model';
 import { Battery } from '../battery/battery.model';
+import { AuthService } from '../auth/auth.service';
 import 'rxjs/add/operator/filter';
 
 @Injectable({ providedIn: 'root' })
@@ -21,8 +22,14 @@ export class WebsocketService {
 
 	private socket: WebSocketSubject<any>;
 
-	constructor() {
-		this.socket = webSocket(environment.ws);
+	constructor(private authService: AuthService) {
+		// This is an ugly hack. Because the plain WebSocket implementation
+		// doesn't let us define custom headers, we need to use an existing
+		// one (subprotocol) to pass the token.
+		this.socket = webSocket({
+		  url: environment.ws,
+		  protocol: authService.getToken()
+		});
 
 		this.temperatures = <Subject<Temperature>> this.socket
 			.filter(update => update.kind === 'temperature');
