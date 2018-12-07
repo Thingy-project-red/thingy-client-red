@@ -25,8 +25,8 @@
           </mat-form-field>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left: 30px">
-          <button mat-icon-button>
-            <mat-icon aria-label="Example icon-button with a heart icon" (click)="loadGraphData((selectedValue * selectedTime), (selectedValue * selectedTime) / numberOfDataPoints)">refresh</mat-icon>
+          <button mat-icon-button (click)="loadGraphData((selectedValue * selectedTime), (selectedValue * selectedTime) / numberOfDataPoints)">
+            <mat-icon aria-label="Example icon-button with a heart icon">refresh</mat-icon>
           </button>
         </div>
       </div>
