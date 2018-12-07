@@ -176,17 +176,15 @@ export class AuthService {
         }, expiresInDuration);
     }
 
-    private getUser(username: string) {
-        return this.http.get<User>(
-            `${environment.api}/api/v1/users/${username}`)
-            .subscribe(user => {
-                this.user = user;
-            });
+    private async getUser(username: string) {
+        const user = await this.http.get<User>(
+            `${environment.api}/api/v1/users/${username}`).toPromise();
+        this.user = user;
     }
 
-    public isUserAdmin(username: string) {
+    public async isUserAdmin(username: string) {
         if (username != null) {
-            this.getUser(username);
+            await this.getUser(username);
         }
         if (this.user == null) {
             console.log("User received is undefined");
