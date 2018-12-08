@@ -1,0 +1,56 @@
+<h1 class="mat-display-1">Preferences &amp; Thresholds</h1>
+
+<mat-card>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <form #preferenceForm="ngForm" (submit)="onChange(preferenceForm)" *ngIf="!isLoading">
+                <table style="width:50%" *ngIf="!isLoading"> 
+                        <tr>
+                                <th>Notification methods</th>
+                                <th></th>
+                        </tr>
+                        <tr>
+                                <td>
+                                        <mat-form-field>
+                                                <input matInput name="telegram" [(ngModel)]="userPrefs.preferences.contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel">
+                                                <mat-error *ngIf="telegramInput.invalid">Please enter a valid chatId.</mat-error>
+                                        </mat-form-field>
+                                </td>
+                                <td>
+                                        <mat-form-field>
+                                                <input type="email" name="email" [(ngModel)]="userPrefs.preferences.contactData.email" matInput placeholder="Email address" #emailInput="ngModel">
+                                                <mat-error *ngIf="emailInput.invalid">Please enter a valid email address.</mat-error>
+                                        </mat-form-field>
+                                </td>
+                        </tr>
+                </table>
+                <p>To get your Telegram chatId contact <a href="http://t.me/thingy_project_red_bot" target="_blank" rel="nofollow noopener">@thingy_project_red_bot</a></p>
+                <br/>
+                <table style="width:50%" *ngIf="!isLoading"> 
+                        <tr>
+                                <th>Metric</th>
+                                <th>Thresholds</th>
+                                <th></th><th></th>
+                        </tr>
+                        <tr>
+                                <td>Not implemented yet</td>
+                                <td>
+                                        <mat-form-field>
+                                                <input type="number" matInput placeholder="min">
+                                        </mat-form-field>
+                                </td>
+                                <td>
+                                        <mat-form-field>
+                                                <input type="number" matInput placeholder="max">
+                                        </mat-form-field>
+                                </td>
+                                <td>
+                                        <mat-form-field>
+                                                <input type="number" matInput placeholder="timeout">
+                                        </mat-form-field>
+                                </td>
+                        </tr>
+                </table>
+                <br/>
+                <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Save</button>
+        </form>
+</mat-card>

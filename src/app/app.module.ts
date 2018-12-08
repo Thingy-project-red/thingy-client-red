@@ -48,6 +48,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { UserComponent } from "./users/user.component";
+import { PreferenceComponent } from "./preferences/preferences.component";
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { UserComponent } from "./users/user.component";
     SignupComponent,
     HeaderComponent,
     UserComponent,
+    PreferenceComponent,
     SignupComponent
   ],
   imports: [
