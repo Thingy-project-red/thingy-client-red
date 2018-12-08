@@ -11,19 +11,19 @@
                         <tr>
                                 <td>
                                         <mat-form-field>
-                                                <input matInput name="telegram" [(ngModel)]="userPrefs.preferences.contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel">
+                                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel">
                                                 <mat-error *ngIf="telegramInput.invalid">Please enter a valid chatId.</mat-error>
                                         </mat-form-field>
                                 </td>
                                 <td>
                                         <mat-form-field>
-                                                <input type="email" name="email" [(ngModel)]="userPrefs.preferences.contactData.email" matInput placeholder="Email address" #emailInput="ngModel">
+                                                <input type="email" name="email" [(ngModel)]="contactData.email" matInput placeholder="Email address" #emailInput="ngModel">
                                                 <mat-error *ngIf="emailInput.invalid">Please enter a valid email address.</mat-error>
                                         </mat-form-field>
                                 </td>
                         </tr>
                 </table>
-                <p>To get your Telegram chatId contact <a href="http://t.me/thingy_project_red_bot" target="_blank" rel="nofollow noopener">@thingy_project_red_bot</a></p>
+                <p>To get your Telegram chatId contact <a href="https://t.me/thingy_project_red_bot" target="_blank" rel="nofollow noopener">@thingy_project_red_bot</a></p>
                 <br/>
                 <table style="width:50%" *ngIf="!isLoading"> 
                         <tr>
@@ -31,21 +31,21 @@
                                 <th>Thresholds</th>
                                 <th></th><th></th>
                         </tr>
-                        <tr>
-                                <td>Not implemented yet</td>
+                        <tr *ngFor="let metric of metrics">
+                                <td>{{ metric }}</td>
                                 <td>
                                         <mat-form-field>
-                                                <input type="number" matInput placeholder="min">
+                                                <input type="number" name="{{ metric }}.min" [(ngModel)]="thresholds[metric].min" matInput placeholder="min ({{ units[metric] }})">
                                         </mat-form-field>
                                 </td>
                                 <td>
                                         <mat-form-field>
-                                                <input type="number" matInput placeholder="max">
+                                                <input type="number" name="{{ metric }}.max" [(ngModel)]="thresholds[metric].max" matInput placeholder="max ({{ units[metric] }})">
                                         </mat-form-field>
                                 </td>
                                 <td>
                                         <mat-form-field>
-                                                <input type="number" matInput placeholder="timeout">
+                                                <input type="number" name="{{ metric }}.timeout" [(ngModel)]="thresholds[metric].timeout" matInput placeholder="timeout (s)">
                                         </mat-form-field>
                                 </td>
                         </tr>

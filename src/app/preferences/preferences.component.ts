@@ -14,44 +14,54 @@ import { NgForm } from "@angular/forms";
 
 export class PreferenceComponent implements OnInit, OnDestroy {
     private userPrefs: UserPreferences;
+    private contactData: object;
+    private thresholds: object;
+    private metrics: string[];
+    private units: object;
     private preferencesSub: Subscription;
     isLoading = false;
     username: string;
     
     constructor(private authService: AuthService, public preferenceService: PreferenceService, public snackBar: MatSnackBar, public router: Router) { }
-    
+
+    // TODO: verify data (e.g. correct email)
+
     ngOnInit() {
         this.isLoading = true;
         this.username = this.authService.getUsername();
         this.preferenceService.getUser(this.username);
 		this.preferencesSub = this.preferenceService
             .getUserUpdateListener()
-            .subscribe((preferences) => {
-                if (!preferences.preferences) {
-                    preferences.preferences = {
-                        contactData: {},
-                        thresholds: {}
-                    }
-                }
-                this.userPrefs = preferences;
+            .subscribe((userPrefs) => {
+                this.userPrefs = userPrefs;
+                this.contactData = userPrefs.preferences.contactData;
+                this.thresholds = userPrefs.preferences.thresholds;
                 this.isLoading = false;
             });
+        this.metrics = this.preferenceService.metrics;
+        this.units = this.preferenceService.units;
     }
 
     ngOnDestroy(): void {
         this.preferencesSub.unsubscribe();
 	}
 
-    onChange(form: NgForm) {
+    onChange(form: NgForm) {        
         if(form.invalid){
             console.log("invalid form");
             return; 
         }
         this.isLoading = true;
-        this.preferenceService.updatePreferences(this.userPrefs, this.username);
-        //this.router.navigate(['/preferences']);
-        this.isLoading = false;
-        this.snackBar.open("Preferences updated successfully ", "done", { duration: 3000 });
+        this.preferenceService.updatePreferences(this.userPrefs, this.username)
+            .then(() => {
+                this.isLoading = false;
+                this.snackBar.open("Preferences updated successfully ", "done", { duration: 3000 });
+            })
+            .catch(err => {
+                this.isLoading = false;
+                console.log(err);
+                this.snackBar.open(err.message, "error", { duration: 5000 });
+            })        
     }
 
 }
