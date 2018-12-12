@@ -24,13 +24,15 @@ export class GraphDataService {
         )
   }
 
-  getDoorData(device, timeInSeconds) {
+  getDoorData(device, from, to) {
     return this.http.get(
       `${environment.api}/api/v1/` 
         + device 
         + '/' 
-        + 'door/'
-        + timeInSeconds
+        + 'door?from='
+        + encodeURIComponent(from)
+        + '&to='
+        + encodeURIComponent(to)
         //{ headers: AuthProvider.getHeaders(this.http)}
         )
   }

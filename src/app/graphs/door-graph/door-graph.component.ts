@@ -22,6 +22,11 @@ export class DoorGraphComponent implements OnInit {
   openCounts1:number = 0;
   openCounts2:number = 0;
 
+  endDate:Date = new Date();
+  startDate:Date = new Date(new Date().setHours(this.endDate.getHours() - 1));
+  selectedDate:Date = new Date();
+  selectedHours = this.selectedDate.getHours() - 1 + ':' + this.selectedDate.getMinutes();
+
   dataLoaded:boolean = false;
   data1Loaded:boolean = false;
   data2Loaded:boolean = false;
@@ -88,16 +93,28 @@ export class DoorGraphComponent implements OnInit {
   constructor(private graphDataService:GraphDataService) { }
 
   ngOnInit() {
-
+    
     this.loadGraphData(3600);
 
   }
 
   loadGraphData(timeRange) {
 
+    console.log('Time in seconds: ' + timeRange);
+
+    let tmp = this.selectedHours.split(':');
+    this.selectedDate.setHours(Number(tmp[0]));
+    this.selectedDate.setMinutes(Number(tmp[1]));
+    this.selectedDate.setSeconds(Number(0));
+    this.startDate = this.selectedDate;
+    console.log('Start Date: '+this.startDate.toISOString());
+    this.endDate = new Date(this.startDate);
+    this.endDate.setSeconds(this.endDate.getSeconds() + timeRange);
+    console.log('End Date: '+ this.endDate.toISOString());
+
     this.resetVariables();
 
-    this.graphDataService.getDoorData('Thingy1', timeRange).subscribe((data) => {
+    this.graphDataService.getDoorData('Thingy1', this.startDate.toISOString(), this.endDate.toISOString()).subscribe((data) => {
       this.graphData1 = data;
 
       let previousOpen:boolean = false;
@@ -148,7 +165,7 @@ export class DoorGraphComponent implements OnInit {
       console.log(error);
     });
 
-    this.graphDataService.getDoorData('Thingy2', timeRange).subscribe((data) => {
+    this.graphDataService.getDoorData('Thingy2', this.startDate.toISOString(), this.endDate.toISOString()).subscribe((data) => {
       this.graphData2 = data;
 
       let previousOpen:boolean = false;
