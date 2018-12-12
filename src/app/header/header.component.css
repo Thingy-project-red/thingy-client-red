@@ -4,7 +4,7 @@ ul {
     margin: 0;
   }
   
-  a {
+  a, button {
     text-decoration: none;
     color: white;
   }
@@ -16,4 +16,11 @@ ul {
   .spacer {
     flex: 1 1 auto;
   }
-  
+
+  mat-toolbar {
+    background-color: #000051
+  }
+
+  mat-accent {
+    color: #ec407a;
+  }
