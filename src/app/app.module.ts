@@ -49,6 +49,7 @@ import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
 import { UserComponent } from "./users/user.component";
 import { PreferenceComponent } from "./preferences/preferences.component";
+import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { PreferenceComponent } from "./preferences/preferences.component";
     HeaderComponent,
     UserComponent,
     PreferenceComponent,
-    SignupComponent
+    SignupComponent,
+    DoorGraphComponent
   ],
   imports: [
     BrowserModule,
