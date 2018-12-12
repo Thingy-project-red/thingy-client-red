@@ -42,7 +42,23 @@ export class Co2GraphComponent implements OnInit {
   public lineChartLabels:Array<any> = [];
 
   public lineChartOptions:any = {
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'CO2 (ppm)',
+          fontStyle: 'bold'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'time',
+          fontStyle: 'bold'
+        }
+      }]
+    }
   };
   public lineChartColors:Array<any> = [
     { // red
@@ -80,6 +96,8 @@ export class Co2GraphComponent implements OnInit {
     this.graphDataService.getData('Thingy1', 'air_quality', timeRange, interval).subscribe((data) => {
       this.graphData1 = data;
 
+      let axisLabelWithDate:boolean = false;
+
       for(let i = 0; i<this.graphData1.length; i++) {
         if(this.graphData1[i].eco2 != null) {
           this.dataPoints1.push(Number((this.graphData1[i].eco2).toFixed(2)));
@@ -88,12 +106,19 @@ export class Co2GraphComponent implements OnInit {
           if(this.selectedTime == 60 || this.selectedTime == 3600) {
             this.dataLabels.push(hours + ':' + (minutes < 10 ? '0' + minutes : minutes));
           } else {
+            axisLabelWithDate = true;
             let days = new Date(this.graphData1[i].time).getDate();
             let month = new Date(this.graphData1[i].time).getMonth() + 1;
             let year = new Date(this.graphData1[i].time).getFullYear();
             this.dataLabels.push(days + '.' + month + '.' + year + ' - ' +hours + ':' + (minutes < 10 ? '0' + minutes : minutes));
           }
         }
+      }
+
+      if(!axisLabelWithDate) {
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'time (hh:mm)';
+      } else {
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'time (DD.MM.YYYY - hh:mm)';
       }
 
       this.lineChartData[0] = {data: this.dataPoints1, label: 'Thingy1'};
