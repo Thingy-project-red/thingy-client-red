@@ -24,4 +24,15 @@ export class GraphDataService {
         )
   }
 
+  getDoorData(device, timeInSeconds) {
+    return this.http.get(
+      `${environment.api}/api/v1/` 
+        + device 
+        + '/' 
+        + 'door/'
+        + timeInSeconds
+        //{ headers: AuthProvider.getHeaders(this.http)}
+        )
+  }
+
 }
