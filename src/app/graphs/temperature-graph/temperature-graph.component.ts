@@ -45,7 +45,6 @@ export class TemperatureGraphComponent implements OnInit {
   public lineChartLabels:Array<any> = [];
 
   public lineChartOptions:any = {
-    elements: { point: { radius: 0 } },
     responsive: true,
     scales: {
       yAxes: [{
