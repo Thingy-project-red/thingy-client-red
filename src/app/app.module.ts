@@ -16,7 +16,9 @@ import {
   MatProgressSpinnerModule,
   MatSelectModule,
   MatSnackBarModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 
 } from '@angular/material';
 
@@ -102,7 +104,9 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSnackBarModule, 
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
