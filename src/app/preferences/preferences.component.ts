@@ -9,7 +9,8 @@ import { NgForm } from "@angular/forms";
 
 @Component({
     selector: 'app-preferences',
-    templateUrl: './preferences.component.html'
+    templateUrl: './preferences.component.html',
+    styleUrls: ['./preferences.component.css']
 })
 
 export class PreferenceComponent implements OnInit, OnDestroy {
