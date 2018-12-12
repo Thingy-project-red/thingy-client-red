@@ -13,7 +13,6 @@ import { Router } from "@angular/router";
 export class UserComponent implements OnInit, OnDestroy {
     private users: User[];
     private usersSub: Subscription;
-    private adminListenerSubs: Subscription;
     isLoading = false;
     isAdmin = false;
 
@@ -32,8 +31,6 @@ export class UserComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.usersSub.unsubscribe();
-        this.adminListenerSubs.unsubscribe();
-
     }
 
     onDelete(username: string) {
