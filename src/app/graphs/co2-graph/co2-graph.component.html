@@ -39,6 +39,12 @@
       </div>
       <div class="row" *ngIf="dataLoaded">
           <div class="col-md-12">
+            <div class="row" style="padding-bottom: 10px">
+              <div class="col-md-3 text-center"><h6>Average:</h6></div>
+              <div class="col-md-3 text-center">Thingy1: {{average1}} CO2/ppm</div>
+              <div class="col-md-3 text-center">Thingy2: {{average2}} CO2/ppm</div>
+              <div class="col-md-3 text-center">Both: {{(average1+average2)/2 | number: '.2'}} CO2/ppm</div>
+            </div>
             <div style="display: block;">
             <canvas baseChart width="400" height="400"
                         [datasets]="lineChartData"

@@ -19,6 +19,9 @@ export class TvocGraphComponent implements OnInit {
   dataPoints2 = [];
   dataLabels = [];
 
+  average1:number = 0;
+  average2:number = 0;
+
   dataLoaded:boolean = false;
   data1Loaded:boolean = false;
   data2Loaded:boolean = false;
@@ -101,6 +104,7 @@ export class TvocGraphComponent implements OnInit {
       for(let i = 0; i<this.graphData1.length; i++) {
         if(this.graphData1[i].tvoc != null) {
           this.dataPoints1.push(Number((this.graphData1[i].tvoc).toFixed(2)));
+          this.average1 += Number((this.graphData1[i].tvoc).toFixed(2));
           let minutes = new Date(this.graphData1[i].time).getMinutes();
           let hours = new Date(this.graphData1[i].time).getHours();
           if(this.selectedTime == 60 || this.selectedTime == 3600) {
@@ -124,6 +128,8 @@ export class TvocGraphComponent implements OnInit {
       this.lineChartData[0] = {data: this.dataPoints1, label: 'Thingy1'};
       this.lineChartLabels = this.dataLabels;
 
+      this.average1 = Number((this.average1 / this.graphData1.length).toFixed(2));
+
       this.data1Loaded = true;
       if(this.data2Loaded) {
         this.dataLoaded = true;
@@ -139,10 +145,13 @@ export class TvocGraphComponent implements OnInit {
       for(let i = 0; i<this.graphData2.length; i++) {
         if(this.graphData2[i].tvoc != null) {
           this.dataPoints2.push(Number((this.graphData2[i].tvoc).toFixed(2)));
+          this.average2 += Number((this.graphData2[i].tvoc).toFixed(2));
         }
       }
 
       this.lineChartData[1] = {data: this.dataPoints2, label: 'Thingy2'};
+
+      this.average2 = Number((this.average2 / this.graphData2.length).toFixed(2));
 
       this.data2Loaded = true;
       if(this.data1Loaded) {
@@ -161,6 +170,9 @@ export class TvocGraphComponent implements OnInit {
 
     this.graphData1 = null;
     this.graphData2 = null;
+
+    this.average1 = 0;
+    this.average2 = 0;
 
     this.dataPoints1 = [];
     this.dataPoints2 = [];
