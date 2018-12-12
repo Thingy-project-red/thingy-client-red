@@ -22,6 +22,9 @@ export class DoorGraphComponent implements OnInit {
   openCounts1:number = 0;
   openCounts2:number = 0;
 
+  openTime1:number = 0;
+  openTime2:number = 0;
+
   endDate:Date = new Date();
   startDate:Date = new Date(new Date().setHours(this.endDate.getHours() - 1));
   selectedDate:Date = new Date();
@@ -93,7 +96,7 @@ export class DoorGraphComponent implements OnInit {
   constructor(private graphDataService:GraphDataService) { }
 
   ngOnInit() {
-    
+
     this.loadGraphData(3600);
 
   }
@@ -129,6 +132,7 @@ export class DoorGraphComponent implements OnInit {
             }
             previousOpen = true;
             this.dataPoints1.push(1);
+            this.openTime1++;
           } else {
             previousOpen = false;
             this.dataPoints1.push(0);
@@ -178,6 +182,7 @@ export class DoorGraphComponent implements OnInit {
             }
             previousOpen = true;
             this.dataPoints2.push(1);
+            this.openTime2++;
           } else {
             previousOpen = false;
             this.dataPoints2.push(0);
@@ -207,6 +212,9 @@ export class DoorGraphComponent implements OnInit {
 
     this.openCounts1 = 0;
     this.openCounts2 = 0;
+
+    this.openTime1 = 0;
+    this.openTime2 = 0;
 
     this.dataPoints1 = [];
     this.dataPoints2 = [];
