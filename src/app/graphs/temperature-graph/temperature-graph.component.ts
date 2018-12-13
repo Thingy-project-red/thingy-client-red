@@ -88,7 +88,7 @@ export class TemperatureGraphComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loadGraphData(3600, this.numberOfDataPoints);
+    this.loadGraphData(3600, 3600 / this.numberOfDataPoints);
 
   }
 
