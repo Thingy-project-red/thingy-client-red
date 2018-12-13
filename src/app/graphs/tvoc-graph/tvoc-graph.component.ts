@@ -35,7 +35,7 @@ export class TvocGraphComponent implements OnInit {
   selectedTime = 3600;
   selectedValue:number = 1;
 
-  numberOfDataPoints:number = 60;
+  numberOfDataPoints:number = 30;
 
   /*
     Graph variables
