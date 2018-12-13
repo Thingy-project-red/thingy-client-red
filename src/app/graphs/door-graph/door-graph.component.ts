@@ -103,17 +103,13 @@ export class DoorGraphComponent implements OnInit {
 
   loadGraphData(timeRange) {
 
-    console.log('Time in seconds: ' + timeRange);
-
     let tmp = this.selectedHours.split(':');
     this.selectedDate.setHours(Number(tmp[0]));
     this.selectedDate.setMinutes(Number(tmp[1]));
     this.selectedDate.setSeconds(Number(0));
     this.startDate = this.selectedDate;
-    console.log('Start Date: '+this.startDate.toISOString());
     this.endDate = new Date(this.startDate);
     this.endDate.setSeconds(this.endDate.getSeconds() + timeRange);
-    console.log('End Date: '+ this.endDate.toISOString());
 
     this.resetVariables();
 
