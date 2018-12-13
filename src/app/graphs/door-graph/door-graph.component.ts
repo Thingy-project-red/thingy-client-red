@@ -97,6 +97,9 @@ export class DoorGraphComponent implements OnInit {
 
   ngOnInit() {
 
+    if(this.selectedHours.length == 4) {
+      this.selectedHours = '0' + this.selectedHours;
+    }
     this.loadGraphData(3600);
 
   }
