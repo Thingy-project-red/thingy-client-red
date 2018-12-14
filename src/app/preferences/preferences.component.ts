@@ -59,7 +59,8 @@ export class PreferenceComponent implements OnInit, OnDestroy {
             .catch(err => {
                 this.isLoading = false;
                 console.log(err);
-                this.snackBar.open(err.message, "error", { duration: 5000 });
+                let msg = typeof err.error === "string" ? err.error : err.message;
+                this.snackBar.open(msg, "error", { duration: 5000 });
             })        
     }
 

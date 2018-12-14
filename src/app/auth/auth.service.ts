@@ -44,9 +44,10 @@ export class AuthService {
 
     login(username: string, password: string) {
         const authData: AuthData = { name: username, password: password };
-        this.http.post(
+        return this.http.post(
             `${environment.api}/api/v1/auth`, authData, { responseType: 'text' })
-            .subscribe(response => {
+            .toPromise()
+            .then(response => {
                 const token = response;
                 this.token = token;
                 this.username = username;
