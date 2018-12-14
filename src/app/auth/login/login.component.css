@@ -5,3 +5,7 @@ mat-form-field {
 mat-spinner {
     margin: auto;
 }
+
+.error-msg {
+    color: red;
+}

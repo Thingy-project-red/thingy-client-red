@@ -11,13 +11,13 @@
                         <tr>
                                 <td>
                                         <mat-form-field>
-                                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel">
+                                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel" min="0" chatId>
                                                 <mat-error *ngIf="telegramInput.invalid">Please enter a valid chatId.</mat-error>
                                         </mat-form-field>
                                 </td>
                                 <td>
-                                        <mat-form-field>
-                                                <input type="email" name="email" [(ngModel)]="contactData.email" matInput placeholder="Email address" #emailInput="ngModel">
+                                        <mat-form-field class="email-input">
+                                                <input type="email" name="email" [(ngModel)]="contactData.email" matInput placeholder="Email address" #emailInput="ngModel" email>
                                                 <mat-error *ngIf="emailInput.invalid">Please enter a valid email address.</mat-error>
                                         </mat-form-field>
                                 </td>
@@ -32,9 +32,9 @@
                                 <th></th><th></th>
                         </tr>
                         <tr *ngFor="let metric of metrics">
-                                <td>{{ metric }}</td>
+                                <td>{{ metric.replace("_", " ") }}</td>
                                 <td>
-                                        <mat-form-field>
+                                        <mat-form-field *ngIf="metric !== 'door_open'">
                                                 <input type="number" name="{{ metric }}.min" [(ngModel)]="thresholds[metric].min" matInput placeholder="min ({{ units[metric] }})">
                                         </mat-form-field>
                                 </td>

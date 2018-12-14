@@ -18,14 +18,16 @@ export class PreferenceService {
             'temperature',
             'eco2',
             'tvoc',
-            'battery_level'
+            'battery_level',
+            'door_open'
         ];
         this.units = {
             temperature: '°C',
             humidity: '%',
             eco2: 'ppm',
             tvoc: 'ppb',
-            battery_level: '%'
+            battery_level: '%',
+            door_open: 's'
         };
     }
 

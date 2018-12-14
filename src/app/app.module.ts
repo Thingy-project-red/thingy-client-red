@@ -54,6 +54,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { UserComponent } from "./users/user.component";
 import { PreferenceComponent } from "./preferences/preferences.component";
 import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
+import { chatIdDirective } from './preferences/chatid-validator.directive';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
     UserComponent,
     PreferenceComponent,
     SignupComponent,
-    DoorGraphComponent
+    DoorGraphComponent,
+    chatIdDirective
   ],
   imports: [
     BrowserModule,
