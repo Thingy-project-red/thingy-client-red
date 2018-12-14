@@ -32,9 +32,9 @@
                                 <th></th><th></th>
                         </tr>
                         <tr *ngFor="let metric of metrics">
-                                <td>{{ metric }}</td>
+                                <td>{{ metric.replace("_", " ") }}</td>
                                 <td>
-                                        <mat-form-field>
+                                        <mat-form-field *ngIf="metric !== 'door_open'">
                                                 <input type="number" name="{{ metric }}.min" [(ngModel)]="thresholds[metric].min" matInput placeholder="min ({{ units[metric] }})">
                                         </mat-form-field>
                                 </td>
