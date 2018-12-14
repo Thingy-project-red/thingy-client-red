@@ -3,131 +3,133 @@
                 crossorigin="anonymous">
 </head>
 
+<span class="rwd-line">
 <div class="thingyStatusLabel">
-        <span>
-                Thingy 1: <app-status device="Thingy1"></app-status>, Battery: <app-battery-latest device="Thingy1"></app-battery-latest>,
-                &nbsp;&nbsp; Thingy 2: <app-status device="Thingy2"></app-status>, Battery: <app-battery-latest device="Thingy2"></app-battery-latest>
-        </span>
+        Thingy 1: <app-status device="Thingy1"></app-status>,
+        Battery: <app-battery-latest device="Thingy1"></app-battery-latest>, &nbsp;&nbsp;
+        Thingy 2: <app-status device="Thingy2"></app-status>,
+        Battery: <app-battery-latest device="Thingy2"></app-battery-latest>
 </div>
+</span>
 
-<mat-grid-list cols="4">
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Temperature</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-temperature-latest device="Thingy1"></app-temperature-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-temperature-avg device="Thingy1" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
 
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Humidity</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-humidity-latest device="Thingy1"></app-humidity-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        C02</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-airquality-latest device="Thingy1"></app-airquality-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <app-door device="Thingy1"></app-door>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Temperature</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-temperature-latest device="Thingy2"></app-temperature-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Humidity</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-humidity-latest device="Thingy2"></app-humidity-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        C02</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-airquality-latest device="Thingy2"></app-airquality-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <app-door device="Thingy2"></app-door>
-                </mat-card>
-        </mat-grid-tile>
-</mat-grid-list>
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
+                                                        style="color:#ec407a"></i>&nbsp;
+                                                Temperature</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-temperature-latest device="Thingy1"></app-temperature-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-temperature-avg device="Thingy1" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                Humidity</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-humidity-latest device="Thingy1"></app-humidity-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                C02</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-airquality-latest device="Thingy1"></app-airquality-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <app-door device="Thingy1"></app-door>
+                        </mat-card>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
+                                                        style="color:#ec407a"></i>&nbsp;
+                                                Temperature</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-temperature-latest device="Thingy2"></app-temperature-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-temperature-avg device="Thingy2" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                Humidity</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-humidity-latest device="Thingy2"></app-humidity-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                C02</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-airquality-latest device="Thingy2"></app-airquality-latest>
+                                        </span>
+                                        <span class="card-content-avg">
+                                                <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
+                                        </span>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                        <mat-card class="sensor-card">
+                                <app-door device="Thingy2"></app-door>
+                        </mat-card>
+                </div>
+        </div>
+</div>

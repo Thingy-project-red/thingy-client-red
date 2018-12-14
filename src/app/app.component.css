@@ -20,20 +20,3 @@ body {
 }
 
 
-.sensor-card {
-  max-width: 400px;     
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  box-shadow: 0 0 0.5rem gray;
-  justify-items: center;    
-  padding: 1rem;
-  margin: 1rem;
-  width: 25rem;
-  height: 17rem;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 0.5rem;
-  animation: 1.25s ease-in-out 0ms 1 fadein;
-}
-

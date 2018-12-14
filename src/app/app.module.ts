@@ -18,9 +18,11 @@ import {
   MatSnackBarModule,
   MatCheckboxModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule, 
+  MatMenuModule
 
 } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
@@ -106,7 +108,9 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
     MatSnackBarModule, 
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule, 
+    FlexLayoutModule, 
+    MatMenuModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
