@@ -10,9 +10,9 @@
             <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel"
                 required>
             <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
-        </mat-form-field>
-            <mat-checkbox name="admin" ngModel #admin="ngModel" checked>admin</mat-checkbox>
-            <mat-checkbox name="api" ngModel #api="ngModel" checked>api</mat-checkbox>
+        </mat-form-field>&nbsp;
+            <mat-checkbox name="admin" ngModel #admin="ngModel" checked>admin</mat-checkbox>&nbsp;&nbsp;
+            <mat-checkbox name="api" ngModel #api="ngModel" checked>api</mat-checkbox>&nbsp;&nbsp;&nbsp;
         <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Add User</button>
     </form>
 </mat-card>
