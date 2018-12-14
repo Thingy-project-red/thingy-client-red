@@ -11,13 +11,13 @@
                         <tr>
                                 <td>
                                         <mat-form-field>
-                                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel">
+                                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number" placeholder="Telegram chatId" #telegramInput="ngModel" min="0" chatId>
                                                 <mat-error *ngIf="telegramInput.invalid">Please enter a valid chatId.</mat-error>
                                         </mat-form-field>
                                 </td>
                                 <td>
-                                        <mat-form-field>
-                                                <input type="email" name="email" [(ngModel)]="contactData.email" matInput placeholder="Email address" #emailInput="ngModel">
+                                        <mat-form-field class="email-input">
+                                                <input type="email" name="email" [(ngModel)]="contactData.email" matInput placeholder="Email address" #emailInput="ngModel" email>
                                                 <mat-error *ngIf="emailInput.invalid">Please enter a valid email address.</mat-error>
                                         </mat-form-field>
                                 </td>

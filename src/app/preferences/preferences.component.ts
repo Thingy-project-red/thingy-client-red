@@ -25,8 +25,6 @@ export class PreferenceComponent implements OnInit, OnDestroy {
     
     constructor(private authService: AuthService, public preferenceService: PreferenceService, public snackBar: MatSnackBar, public router: Router) { }
 
-    // TODO: verify data (e.g. correct email)
-
     ngOnInit() {
         this.isLoading = true;
         this.username = this.authService.getUsername();
