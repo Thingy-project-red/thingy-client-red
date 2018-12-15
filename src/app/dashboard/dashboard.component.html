@@ -44,10 +44,16 @@
                                 <mat-card-content class="card-content-container">
                                         <span class="card-content-latest">
                                                 <app-humidity-latest device="Thingy1"></app-humidity-latest>
-                                        </span>
-                                        <span class="card-content-avg">
-                                                <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
-                                        </span>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-humidity-change device="Thingy1" rangeInSeconds="3600"></app-humidity-change>
+                                                </div>
+                                        </div>
                                 </mat-card-content>
                         </mat-card>
                 </div>
@@ -75,30 +81,30 @@
                 </div>
         </div>
         <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
-                                        <mat-card class="sensor-card" flex="33">
-                                                <mat-card-header class="card-header-container">
-                                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
-                                                                        style="color:#ec407a"></i>&nbsp;
-                                                                Temperature</mat-card-title>
-                                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                                                </mat-card-header>
-                                                <mat-card-content class="card-content-container">
-                                                        <span class="card-content-latest">
-                                                                <app-temperature-latest device="Thingy2"></app-temperature-latest>
-                                                        </span><br>
-                                                        <div fxLayout="row" fxLayout.xs="column">
-                                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
-                                                                </div>
-                                                                <div class="separator" fxHide fxShow.gt-sm></div>
-                                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                                                                        <app-temperature-change device="Thingy2" rangeInSeconds="3600"></app-temperature-change>
-                                                                </div>
-                                                        </div>
-                                                </mat-card-content>
-                                        </mat-card>
-                                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
+                                                        style="color:#ec407a"></i>&nbsp;
+                                                Temperature</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest">
+                                                <app-temperature-latest device="Thingy2"></app-temperature-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-temperature-change device="Thingy2" rangeInSeconds="3600"></app-temperature-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
                 <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
                         <mat-card class="sensor-card">
                                 <mat-card-header class="card-header-container">
@@ -109,10 +115,16 @@
                                 <mat-card-content class="card-content-container">
                                         <span class="card-content-latest">
                                                 <app-humidity-latest device="Thingy2"></app-humidity-latest>
-                                        </span>
-                                        <span class="card-content-avg">
-                                                <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
-                                        </span>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-humidity-change device="Thingy2" rangeInSeconds="3600"></app-humidity-change>
+                                                </div>
+                                        </div>
                                 </mat-card-content>
                         </mat-card>
                 </div>

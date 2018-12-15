@@ -56,6 +56,7 @@ import { PreferenceComponent } from "./preferences/preferences.component";
 import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
 import { chatIdDirective } from './preferences/chatid-validator.directive';
 import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
+import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { TemperatureChangeComponent } from './temperature/temperature-change/tem
     SignupComponent,
     DoorGraphComponent,
     chatIdDirective, 
-    TemperatureChangeComponent
+    TemperatureChangeComponent, 
+    HumidityChangeComponent
   ],
   imports: [
     BrowserModule,
