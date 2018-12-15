@@ -58,6 +58,7 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
 import { chatIdDirective } from './preferences/chatid-validator.directive';
 import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
 import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
+import { AirChangeComponent } from './airquality/airquality-change/airquality-change.components'; 
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { HumidityChangeComponent } from './humidity/humidity-change/humidity-cha
     DoorGraphComponent,
     chatIdDirective, 
     TemperatureChangeComponent, 
-    HumidityChangeComponent
+    HumidityChangeComponent, 
+    AirChangeComponent
   ],
   imports: [
     BrowserModule,

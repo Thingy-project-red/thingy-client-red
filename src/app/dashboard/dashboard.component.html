@@ -42,10 +42,11 @@
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
                                 </mat-card-header>
                                 <mat-card-content class="card-content-container">
-                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity." matTooltipPosition="right">
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity."
+                                                matTooltipPosition="right">
                                                 <app-humidity-latest device="Thingy1"></app-humidity-latest>
                                         </span>
-                                        
+
                                         <br>
                                         <div fxLayout="row" fxLayout.xs="column">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -69,10 +70,16 @@
                                 <mat-card-content class="card-content-container">
                                         <span class="card-content-latest">
                                                 <app-airquality-latest device="Thingy1"></app-airquality-latest>
-                                        </span>
-                                        <span class="card-content-avg">
-                                                <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
-                                        </span>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-airquality-change device="Thingy1" rangeInSeconds="3600"></app-airquality-change>
+                                                </div>
+                                        </div>
                                 </mat-card-content>
                         </mat-card>
                 </div>
@@ -114,8 +121,9 @@
                                                 Humidity</mat-card-title>
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
                                 </mat-card-header>
-                                <mat-card-content class="card-content-container" >
-                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity." matTooltipPosition="right">
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity."
+                                                matTooltipPosition="right">
                                                 <app-humidity-latest device="Thingy2"></app-humidity-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
@@ -140,10 +148,16 @@
                                 <mat-card-content class="card-content-container">
                                         <span class="card-content-latest">
                                                 <app-airquality-latest device="Thingy2"></app-airquality-latest>
-                                        </span>
-                                        <span class="card-content-avg">
-                                                <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
-                                        </span>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-airquality-change device="Thingy2" rangeInSeconds="3600"></app-airquality-change>
+                                                </div>
+                                        </div>
                                 </mat-card-content>
                         </mat-card>
                 </div>
