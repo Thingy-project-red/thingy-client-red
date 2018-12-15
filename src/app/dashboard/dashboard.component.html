@@ -10,8 +10,8 @@
 
 <div class="container-fluid">
         <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
-                        <mat-card class="sensor-card">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
                                                         style="color:#ec407a"></i>&nbsp;
@@ -21,15 +21,21 @@
                                 <mat-card-content class="card-content-container">
                                         <span class="card-content-latest">
                                                 <app-temperature-latest device="Thingy1"></app-temperature-latest>
-                                        </span>
-                                        <span class="card-content-avg">
-                                                <app-temperature-avg device="Thingy1" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
-                                        </span>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                        <app-temperature-change device="Thingy1" rangeInSeconds="3600"></app-temperature-change>
+                                                </div>
+                                        </div>
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
-                        <mat-card class="sensor-card">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
                                                 Humidity</mat-card-title>
@@ -45,8 +51,8 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
-                        <mat-card class="sensor-card">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
                                                 C02</mat-card-title>
@@ -62,15 +68,15 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
                         <mat-card class="sensor-card">
                                 <app-door device="Thingy1"></app-door>
                         </mat-card>
                 </div>
         </div>
         <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
-                        <mat-card class="sensor-card">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
                                                         style="color:#ec407a"></i>&nbsp;
@@ -87,7 +93,7 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
                         <mat-card class="sensor-card">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
@@ -104,7 +110,7 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
                         <mat-card class="sensor-card">
                                 <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
@@ -121,7 +127,7 @@
                                 </mat-card-content>
                         </mat-card>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-8 col-xs-12">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
                         <mat-card class="sensor-card">
                                 <app-door device="Thingy2"></app-door>
                         </mat-card>

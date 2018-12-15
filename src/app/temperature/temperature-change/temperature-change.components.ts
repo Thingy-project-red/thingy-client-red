@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Temperature } from '../temperature.model';
 import { TemperatureChangeService } from './temperature-change.service';
 import { Subscription } from 'rxjs';
 import { interval } from 'rxjs';
@@ -7,8 +6,8 @@ import { interval } from 'rxjs';
 
 @Component({
     selector: 'app-temperature-change',
-    template: '<span *ngIf=change>{{ avg }}°</span>',
-    styleUrls: ['../temperature.component.css']
+    templateUrl: './temperature-change.component.html',
+    styleUrls: ['../temperature.component.css','../../dashboard/dashboard.component.css']
 })
 
 export class TemperatureChangeComponent implements OnInit, OnDestroy {

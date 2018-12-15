@@ -1,14 +1,14 @@
 .sensor-card {
-  max-width: 20rem;     
+  max-width: 20rem;  
+  width: 100%; 
+  height: 100%; 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   box-shadow: 0 0 0.5rem gray;
   justify-items: center;    
-  padding: 1.1rem;
+  padding: auto;
   margin: 1rem;
-  width: 100%;
-  height: 17rem;
   cursor: pointer;
   background-color: white;
   border-radius: 0.5rem;
@@ -41,7 +41,7 @@
 .card-content-latest{
   align-self: end;
   width: 100%;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-weight: 100;
   letter-spacing: 0.1rem;
 }
@@ -53,31 +53,26 @@
   letter-spacing: 0.1rem;
 }
 
-.card-content-subvalues-container{
-  display: flex;
-  align-items: center;
-  margin-left: -4rem;
+.card-content-subval{
+  display: block;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
 }
 
-.subvalues-separator {
-  margin: 0 2rem;
-  width: 2px;
-  height: 2.5rem;
-  background-color: white;
+.separator {
+  height: 4.5rem;
+  padding-left: 5; 
+  padding-right: 5; 
+  border-left: 1px solid lightgrey; 
 }
 
 .subvalues-text {
+  display: inline-block; 
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.1rem;
   font-size: 0.8rem;
   margin-bottom: 1rem;
-}
-
-.subvalues-container{
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .thingyStatusLabel{
@@ -88,4 +83,19 @@
   letter-spacing: 0.1rem;
   text-align: left;
   padding-left: 30px; 
+}
+
+.col-lg-6 {
+    white-space: nowrap;
+    transition: width 0.66s ease-out;
+    min-width: 108px;
+}
+
+.col-lg-3{
+  min-width: 255px; 
+  height: 17rem; 
+}
+
+.top-buffer{
+  margin-top: 25px; 
 }
