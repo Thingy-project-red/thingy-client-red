@@ -42,9 +42,11 @@
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
                                 </mat-card-header>
                                 <mat-card-content class="card-content-container">
-                                        <span class="card-content-latest">
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity." matTooltipPosition="right">
                                                 <app-humidity-latest device="Thingy1"></app-humidity-latest>
-                                        </span><br>
+                                        </span>
+                                        
+                                        <br>
                                         <div fxLayout="row" fxLayout.xs="column">
                                                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                         <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
@@ -112,8 +114,8 @@
                                                 Humidity</mat-card-title>
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
                                 </mat-card-header>
-                                <mat-card-content class="card-content-container">
-                                        <span class="card-content-latest">
+                                <mat-card-content class="card-content-container" >
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity." matTooltipPosition="right">
                                                 <app-humidity-latest device="Thingy2"></app-humidity-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">

@@ -19,7 +19,8 @@ import {
   MatCheckboxModule,
   MatDatepickerModule,
   MatNativeDateModule, 
-  MatMenuModule
+  MatMenuModule, 
+  MatTooltipModule
 
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -57,6 +58,7 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
 import { chatIdDirective } from './preferences/chatid-validator.directive';
 import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
 import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
+
 
 @NgModule({
   declarations: [
@@ -116,7 +118,8 @@ import { HumidityChangeComponent } from './humidity/humidity-change/humidity-cha
     MatDatepickerModule,
     MatNativeDateModule, 
     FlexLayoutModule, 
-    MatMenuModule
+    MatMenuModule, 
+    MatTooltipModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
