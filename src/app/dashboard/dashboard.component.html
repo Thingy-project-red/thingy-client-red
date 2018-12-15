@@ -19,15 +19,18 @@
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
                                 </mat-card-header>
                                 <mat-card-content class="card-content-container">
-                                        <span class="card-content-latest">
+                                        <span class="card-content-latest" matTooltip="The best temperature for preserving your food in the fridge and slowing down bacteria growth is between 1.7° and 3.3°C."
+                                        matTooltipPosition="right">
                                                 <app-temperature-latest device="Thingy1"></app-temperature-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-temperature-change device="Thingy1" rangeInSeconds="3600"></app-temperature-change>
                                                 </div>
                                         </div>
@@ -49,11 +52,13 @@
 
                                         <br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right" >
                                                         <app-humidity-change device="Thingy1" rangeInSeconds="3600"></app-humidity-change>
                                                 </div>
                                         </div>
@@ -73,11 +78,13 @@
                                                 <app-airquality-latest device="Thingy1"></app-airquality-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-airquality-change device="Thingy1" rangeInSeconds="3600"></app-airquality-change>
                                                 </div>
                                         </div>
@@ -100,15 +107,18 @@
                                         <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
                                 </mat-card-header>
                                 <mat-card-content class="card-content-container">
-                                        <span class="card-content-latest">
+                                        <span class="card-content-latest" matTooltip="The best temperature for preserving your food in the fridge and slowing down bacteria growth is between 1.7° and 3.3°C."
+                                        matTooltipPosition="right">
                                                 <app-temperature-latest device="Thingy2"></app-temperature-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-temperature-change device="Thingy2" rangeInSeconds="3600"></app-temperature-change>
                                                 </div>
                                         </div>
@@ -128,11 +138,13 @@
                                                 <app-humidity-latest device="Thingy2"></app-humidity-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-humidity-change device="Thingy2" rangeInSeconds="3600"></app-humidity-change>
                                                 </div>
                                         </div>
@@ -152,11 +164,13 @@
                                                 <app-airquality-latest device="Thingy2"></app-airquality-latest>
                                         </span><br>
                                         <div fxLayout="row" fxLayout.xs="column">
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
                                                 </div>
                                                 <div class="separator" fxHide fxShow.gt-sm></div>
-                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
                                                         <app-airquality-change device="Thingy2" rangeInSeconds="3600"></app-airquality-change>
                                                 </div>
                                         </div>
