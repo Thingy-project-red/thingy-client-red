@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ErrorService {
 
-  errors:string[] = [];
+  idCounter:number = 0;
+  errors:Error[] = [];
 
   constructor() { }
 
@@ -13,15 +14,21 @@ export class ErrorService {
     this.errors = [];
   }
 
-  addError(error:string) {
-    this.errors.push(error);
+  addError(error:string, date:Date) {
+    this.errors.push({id: this.idCounter++, message: error, timestamp:date});
   }
 
-  removeError(error:string) {
-    let index = this.errors.indexOf(error);
+  removeError(id:number) {
+    let index = this.errors.findIndex(x => x.id == id);
     if (index > -1) {
       this.errors.splice(index, 1);
     }
   }
 
+}
+
+export interface Error {
+  id:number,
+  message:string,
+  timestamp:Date
 }

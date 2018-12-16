@@ -26,7 +26,7 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
             }
         },
         (error) => {
-            this.errorService.addError('Temperature: could not load latest data');
+            this.errorService.addError('Temperature: could not load latest data', new Date());
         });
     }
 

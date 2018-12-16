@@ -137,7 +137,7 @@ export class HumidityGraphComponent implements OnInit {
       }
     },
     (error) => {
-      this.errorService.addError('Humidity graph: could not load data for thingy1');
+      this.errorService.addError('Humidity graph: could not load data for thingy1', new Date());
       console.log(error);
     });
 
@@ -161,7 +161,7 @@ export class HumidityGraphComponent implements OnInit {
       }
     },
     (error) => {
-      this.errorService.addError('Humidity graph: could not load data for thingy2');
+      this.errorService.addError('Humidity graph: could not load data for thingy2', new Date());
       console.log(error);
     });
   }

@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   openDialog(error): void {
     const dialogRef = this.dialog.open(ErrorDialog, {
       width: '400px',
-      data: {error: error}
+      data: {id: error.id, message: error.message, timestamp: error.timestamp }
     });
     dialogRef.afterClosed().subscribe(result => {
       this.errorService.removeError(result);
@@ -71,11 +71,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   selector: 'error-dialog',
   template: `<h1 mat-dialog-title>Error</h1>
   <div mat-dialog-content>
-    <p>{{data.error}}</p>
+    <p><b>Message:</b> {{data.message}}</p>
+    <p><b>Time:</b> {{data.timestamp}}</p>
   </div>
   <div mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="onNoClick()">Cancel</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data.error" cdkFocusInitial>Dismiss Error</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data.id" cdkFocusInitial>Dismiss Error</button>
   </div>`,
 })
 export class ErrorDialog {

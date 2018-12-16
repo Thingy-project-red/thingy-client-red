@@ -35,7 +35,7 @@ export class TemperatureChangeService {
                         }
                     });
             },(error) => {
-                this.errorService.addError('Temperature: could not load change data');
+                this.errorService.addError('Temperature: could not load change data', new Date());
             });
     }
 

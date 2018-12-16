@@ -36,7 +36,7 @@
         <mat-menu #notificationMenu="matMenu">
           <button *ngFor="let error of errorService.errors; let i = index" mat-menu-item (click)="openDialog(error)">
             <mat-icon style="color: black">error</mat-icon>
-            <span style="color: black">{{error}}</span>
+            <span style="color: black">{{error.message}}</span>
           </button>
           <button *ngIf="errorService.errors.length > 0" mat-menu-item (click)="errorService.removeErrors()">
               <mat-icon style="color: firebrick">delete</mat-icon>
@@ -63,7 +63,7 @@
     <mat-menu #notificationMenu="matMenu">
       <button *ngFor="let error of errorService.errors; let i = index" mat-menu-item (click)="openDialog(error)">
         <mat-icon style="color: black">error</mat-icon>
-        <span style="color: black">{{error}}</span>
+        <span style="color: black">{{error.message}}</span>
       </button>
       <button *ngIf="errorService.errors.length > 0" mat-menu-item (click)="errorService.removeErrors()">
           <mat-icon style="color: firebrick">delete</mat-icon>

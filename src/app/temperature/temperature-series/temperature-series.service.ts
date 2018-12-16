@@ -26,7 +26,7 @@ export class TemperatureSeriesService {
                 }
             },
             (error) => {
-                this.errorService.addError('Temperature: could not load series data');
+                this.errorService.addError('Temperature: could not load series data', new Date());
             });
     }
 

@@ -28,7 +28,7 @@ export class TemperatureAvgService {
                 }
             },
             (error) => {
-                this.errorService.addError('Temperature: could not load average data');
+                this.errorService.addError('Temperature: could not load average data', new Date());
             });
     }
     getTemperatureUpdateListener(device) {
