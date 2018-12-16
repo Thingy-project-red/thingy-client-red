@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserService } from '../users/user.service';
 import { User } from '../users/user.model';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -21,7 +22,7 @@ export class AuthService {
     private user: User;
     private isAdmin: boolean; 
 
-    constructor(private http: HttpClient, private router: Router, public userService: UserService) { }
+    constructor(private http: HttpClient, private router: Router, public userService: UserService, private errorService: ErrorService) { }
 
     createUser(user: string, password: string, admin: boolean, api: boolean) {
         let rights: string[] = [];
@@ -39,7 +40,10 @@ export class AuthService {
             .subscribe(response => {
                 console.log("User created successfully");
                 this.userService.getUsers();
-            })
+            },
+            (error) => {
+                this.errorService.addError('Users: could not create user ' + user, new Date());
+            });
     }
 
     login(username: string, password: string) {
