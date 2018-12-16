@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from '../websocket/websocket.service';
 import { Door } from './door.model';
+import { ErrorService } from '../errors/error.service';
 
 @Component({
     selector: 'app-door',
@@ -15,7 +16,7 @@ export class DoorComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public websocketService: WebsocketService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
     ngOnInit() {
         this.subscription = this.websocketService.doors
@@ -27,6 +28,9 @@ export class DoorComponent implements OnInit, OnDestroy {
                     this.doorStatus = 'closed';
                 }
             }
+        },
+        (error) => {
+            this.errorService.addError('Door: could not load status of door', new Date());
         });
     }
 
