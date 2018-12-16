@@ -1,158 +1,186 @@
-<head><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"></head>
-
-<div class="thingyStatusLabel"> 
-        <span>
-                Thingy 1: <app-status device="Thingy1"></app-status>, Battery: <app-battery-latest device="Thingy1"></app-battery-latest>, &nbsp;&nbsp; Thingy 2: <app-status device="Thingy2"></app-status>, Battery: <app-battery-latest device="Thingy2"></app-battery-latest>
-        </span>
-</div>
-
-
-
-<mat-grid-list cols="4">
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Temperature</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-temperature-latest device="Thingy1"></app-temperature-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-temperature-avg device="Thingy1" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Humidity</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-humidity-latest device="Thingy1"></app-humidity-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        C02</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-airquality-latest device="Thingy1"></app-airquality-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                <mat-card-title class="card-title"><i class="fas fa-door-open fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Fridge Door</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-door device="Thingy1"></app-door>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-light-bubble device="Thingy1"></app-light-bubble>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
+<span class="rwd-line">
+        <div class="thingyStatusLabel">
+                Thingy 1: <app-status device="Thingy1"></app-status>,
+                Battery: <app-battery-latest device="Thingy1"></app-battery-latest>,</div>
+        <div class="thingyStatusLabel">Thingy 2: <app-status device="Thingy2"></app-status>,
+                Battery: <app-battery-latest device="Thingy2"></app-battery-latest>
+        </div>
+</span>
 
 
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Temperature</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-temperature-latest device="Thingy2"></app-temperature-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600" isAvg=true></app-temperature-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
+<div class="container-fluid">
+        <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
+                                                        style="color:#ec407a"></i>&nbsp;
+                                                Temperature</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="The best temperature for preserving your food in the fridge and slowing down bacteria growth is between 1.7° and 3.3°C."
+                                        matTooltipPosition="right">
+                                                <app-temperature-latest device="Thingy1"></app-temperature-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-temperature-avg device="Thingy1" rangeInSeconds="3600"></app-temperature-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-temperature-change device="Thingy1" rangeInSeconds="3600"></app-temperature-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
+                                <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Humidity</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-humidity-latest device="Thingy2"></app-humidity-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
+                                                Humidity</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity."
+                                                matTooltipPosition="right">
+                                                <app-humidity-latest device="Thingy1"></app-humidity-latest>
+                                        </span>
 
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
+                                        <br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-humidity-avg device="Thingy1" rangeInSeconds="3600"></app-humidity-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right" >
+                                                        <app-humidity-change device="Thingy1" rangeInSeconds="3600"></app-humidity-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
+                                <mat-card-header class="card-header-container">
                                         <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        C02</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-airquality-latest device="Thingy2"></app-airquality-latest>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-        <mat-grid-tile>
-                <mat-card class="sensor-card">
-                        <mat-card-header class="card-header-container">
-                                        <mat-card-title class="card-title"><i class="fas fa-door-open fa-3x" style="color:#ec407a"></i>&nbsp;
-                                        Fridge Door</mat-card-title>
-                                <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content class="card-content-container">
-                                <span class="card-content-latest">
-                                        <app-door device="Thingy2"></app-door>
-                                </span>
-                                <span class="card-content-avg">
-                                        <app-light-bubble device="Thingy2"></app-light-bubble>
-                                </span>
-                        </mat-card-content>
-                </mat-card>
-        </mat-grid-tile>
-
-</mat-grid-list>
+                                                C02</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="The atmosphere has an approximate CO2 level of 320ppm. In general, values below <1000ppm are considered good environment. Increased CO2 levels might indicate that your fruits and veggies are respirating and loosing freshness."
+                                        matTooltipPosition="right">
+                                                <app-airquality-latest device="Thingy1"></app-airquality-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-airquality-avg device="Thingy1" rangeInSeconds="3600"></app-airquality-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-airquality-change device="Thingy1" rangeInSeconds="3600"></app-airquality-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card">
+                                <app-door device="Thingy1"></app-door>
+                        </mat-card>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card" flex="33">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-temperature-high fa-3x"
+                                                        style="color:#ec407a"></i>&nbsp;
+                                                Temperature</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="The best temperature for preserving your food in the fridge and slowing down bacteria growth is between 1.7° and 3.3°C."
+                                        matTooltipPosition="right">
+                                                <app-temperature-latest device="Thingy2"></app-temperature-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-temperature-avg device="Thingy2" rangeInSeconds="3600"></app-temperature-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average temperature of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-temperature-change device="Thingy2" rangeInSeconds="3600"></app-temperature-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-tint fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                Humidity</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="Higher humidity means less air flow in the fridge. In general, veggies like high humidity and fruits like low humidity."
+                                                matTooltipPosition="right">
+                                                <app-humidity-latest device="Thingy2"></app-humidity-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-humidity-avg device="Thingy2" rangeInSeconds="3600"></app-humidity-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average humidity level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-humidity-change device="Thingy2" rangeInSeconds="3600"></app-humidity-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card">
+                                <mat-card-header class="card-header-container">
+                                        <mat-card-title class="card-title"><i class="fas fa-wind fa-3x" style="color:#ec407a"></i>&nbsp;
+                                                C02</mat-card-title>
+                                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                                </mat-card-header>
+                                <mat-card-content class="card-content-container">
+                                        <span class="card-content-latest" matTooltip="The atmosphere has an approximate CO2 level of 320ppm. In general, values below <1000ppm are considered good environment. Increased CO2 levels might indicate that your fruits and veggies are respirating and loosing freshness."
+                                        matTooltipPosition="right">
+                                                <app-airquality-latest device="Thingy2"></app-airquality-latest>
+                                        </span><br>
+                                        <div fxLayout="row" fxLayout.xs="column">
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-airquality-avg device="Thingy2" rangeInSeconds="3600"></app-airquality-avg>
+                                                </div>
+                                                <div class="separator" fxHide fxShow.gt-sm></div>
+                                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" matTooltip="Increase in the hourly average CO2 level of the past hour. Updated every second."
+                                                matTooltipPosition="right">
+                                                        <app-airquality-change device="Thingy2" rangeInSeconds="3600"></app-airquality-change>
+                                                </div>
+                                        </div>
+                                </mat-card-content>
+                        </mat-card>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-10 col-xs-12 top-buffer">
+                        <mat-card class="sensor-card">
+                                <app-door device="Thingy2"></app-door>
+                        </mat-card>
+                </div>
+        </div>
+</div>

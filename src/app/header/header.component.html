@@ -1,29 +1,62 @@
 <mat-toolbar>
-  <span>
+  <div class="title-with-icon">
     <a routerLink="/">
-      <i class="fas fa-home fa-sm" style="color:white"></i>&nbsp;
-      FridgeWatch
+      Fridge<i class="far fa-snowflake" style="color: white"></i>Watch&nbsp;
     </a>
-  </span>
+  </div>
+
   <span class="spacer"></span>
-  <ul>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <a mat-button routerLink="/graphs" routerLinkActive="mat-accent">Graphs</a>
-    </li>
-    <li *ngIf="!userIsAuthenticated">
-      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-    </li>
-    <li *ngIf="userIsAuthenticated && isAdmin">
-      <a mat-button routerLink="/users" routerLinkActive="mat-accent">Manage Users</a>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-      <button mat-button (click)="onLogout()">Logout</button>
-    </li>
-    <li *ngIf="userIsAuthenticated">
-        <button mat-button routerLink="/preferences" routerLinkActive="mat-accent">{{username}}</button>
-    </li>
-  </ul>
+  <div fxHide fxShow.gt-sm>
+    <ul>
+      <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <a mat-button routerLink="/graphs" routerLinkActive="mat-accent">Graphs</a>
+      </li>
+      <li *ngIf="!userIsAuthenticated">
+        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      </li>
+      <li *ngIf="userIsAuthenticated && isAdmin">
+        <a mat-button routerLink="/users" routerLinkActive="mat-accent">Manage Users</a>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <button mat-button (click)="onLogout()">Logout</button>
+      </li>
+      <li *ngIf="userIsAuthenticated">
+        <button mat-button routerLink="/preferences" routerLinkActive="mat-accent">
+          {{username}}&nbsp;<mat-icon>account_circle</mat-icon>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div fxShow fxHide.gt-sm>
+    <div class="title-with-icon">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <mat-menu #menu="matMenu">
+      <span *ngIf="userIsAuthenticated">
+        <a button mat-menu-item routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
+      </span>
+      <span *ngIf="userIsAuthenticated">
+        <a button mat-menu-item routerLink="/graphs" routerLinkActive="mat-accent">Graphs</a>
+      </span>
+      <span *ngIf="!userIsAuthenticated">
+        <a button mat-menu-item routerLink="/login" routerLinkActive="mat-accent">Login</a>
+      </span>
+      <span *ngIf="userIsAuthenticated && isAdmin">
+        <a button mat-menu-item routerLink="/users" routerLinkActive="mat-accent">Manage Users</a>
+      </span>
+      <span *ngIf="userIsAuthenticated">
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </span>
+      <span *ngIf="userIsAuthenticated">
+        <button mat-menu-item routerLink="/preferences" routerLinkActive="mat-accent">
+          {{username}}&nbsp;<mat-icon>account_circle</mat-icon>
+        </button>
+      </span>
+    </mat-menu>
+  </div>
 </mat-toolbar>

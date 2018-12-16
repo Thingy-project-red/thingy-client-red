@@ -9,7 +9,8 @@ import { AuthService } from '../auth.service';
 })
 
 export class LoginComponent {
-    isLoading = false; 
+    isLoading = false;
+    error = "";
 
     constructor(public authService: AuthService){}
 
@@ -18,7 +19,12 @@ export class LoginComponent {
             return; 
         }
         this.isLoading = true; 
-        this.authService.login(form.value.username, form.value.password); 
+        this.authService.login(form.value.username, form.value.password)
+            .catch(err => {
+                console.log(err);
+                this.isLoading = false;
+                this.error = typeof err.error === "string" ? err.error : err.message;
+            });
     }
 
 }

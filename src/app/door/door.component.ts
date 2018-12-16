@@ -5,7 +5,8 @@ import { Door } from './door.model';
 
 @Component({
     selector: 'app-door',
-    template: '{{ doorStatus }}'
+    templateUrl: './door.component.html',
+    styleUrls: ['../dashboard/dashboard.component.css'], 
 })
 
 export class DoorComponent implements OnInit, OnDestroy {

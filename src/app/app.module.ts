@@ -18,9 +18,12 @@ import {
   MatSnackBarModule,
   MatCheckboxModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule, 
+  MatMenuModule, 
+  MatTooltipModule
 
 } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
@@ -52,6 +55,11 @@ import { AppRoutingModule } from "./app-routing.module";
 import { UserComponent } from "./users/user.component";
 import { PreferenceComponent } from "./preferences/preferences.component";
 import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
+import { chatIdDirective } from './preferences/chatid-validator.directive';
+import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
+import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
+import { AirChangeComponent } from './airquality/airquality-change/airquality-change.components'; 
+
 
 @NgModule({
   declarations: [
@@ -82,7 +90,11 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
     UserComponent,
     PreferenceComponent,
     SignupComponent,
-    DoorGraphComponent
+    DoorGraphComponent,
+    chatIdDirective, 
+    TemperatureChangeComponent, 
+    HumidityChangeComponent, 
+    AirChangeComponent
   ],
   imports: [
     BrowserModule,
@@ -106,7 +118,10 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
     MatSnackBarModule, 
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule, 
+    FlexLayoutModule, 
+    MatMenuModule, 
+    MatTooltipModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]

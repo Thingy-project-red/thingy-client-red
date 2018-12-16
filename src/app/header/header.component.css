@@ -1,26 +1,37 @@
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  a, button {
-    text-decoration: none;
-    color: white;
-  }
-  
-  ul {
-    display: flex;
-  }
-  
-  .spacer {
-    flex: 1 1 auto;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  mat-toolbar {
-    background-color: #000051
-  }
+a, button {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+}
 
-  mat-accent {
-    color: #ec407a;
-  }
+ul {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background-color: #000051; 
+}
+
+mat-accent {
+  color: #ec407a;
+}
+
+.mat-menu-item {
+color: #000051 !important;
+}
+
+.title-with-icon{
+display: flex;
+align-items: center;
+}

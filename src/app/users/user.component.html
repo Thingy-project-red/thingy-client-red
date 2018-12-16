@@ -1,6 +1,6 @@
 <app-signup></app-signup>
 
-<mat-card>
+<mat-card class="userCard" style="margin-left: 2.5rem">
         <mat-spinner *ngIf="isLoading"></mat-spinner>
         <table style="width:50%" *ngIf="!isLoading"> 
                 <tr>
@@ -9,14 +9,14 @@
                         <th></th>
                 </tr>
                 <tr *ngFor="let user of users">
-                        <td>{{ user.name }}</td>
-                        <td>
+                        <td >{{ user.name }}</td>
+                        <td class="td-checkbox">
                                 <mat-checkbox #api [checked]="user.rights.indexOf('api') > -1" (click)="onChange(user, 'api', !api.checked)">api</mat-checkbox>
                         </td>
-                        <td>
+                        <td class="td-checkbox">
                                 <mat-checkbox #admin [checked]="user.rights.indexOf('admin') > -1" (click)="onChange(user, 'admin', !admin.checked)">admin</mat-checkbox>
                         </td>
-                        <td><button mat-button color="warn" (click)="onDelete(user.name)">DELETE</button></td>
+                        <td class="td-buttom"><button mat-button color="warn" (click)="onDelete(user.name)">DELETE</button></td>
                 </tr>
         </table>
 </mat-card>

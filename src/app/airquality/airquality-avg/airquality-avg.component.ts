@@ -5,8 +5,8 @@ import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-airquality-avg',
-  template: '<span *ngIf="avg">Last Hour ø {{ avg }}ppm</span>',
-  styleUrls: ['../air.component.css']
+  template: '<span *ngIf=avg><br><span class="card-content-subval">{{ avg }}</span><span class="subvalues-text">Last Hour</span></span>',
+  styleUrls: ['../air.component.css', '../../dashboard/dashboard.component.css']
 })
 
 export class AirqualityAvgComponent implements OnInit, OnDestroy {
