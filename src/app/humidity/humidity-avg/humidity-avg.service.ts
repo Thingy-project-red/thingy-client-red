@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Humidity } from '../humidity.model';
 import { Subject } from "rxjs";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class HumidityAvgService {
@@ -11,7 +12,7 @@ export class HumidityAvgService {
     private humiditiesUpdated1 = new Subject<Humidity[]>();
     private humiditiesUpdated2 = new Subject<Humidity[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getAvgHumidity(device, rangeInSeconds) {
         this.http
@@ -24,7 +25,10 @@ export class HumidityAvgService {
                 } else {
                     this.humiditiesUpdated2.next(this.avg);
                 }
-            })
+            },
+            (error) => {
+                this.errorService.addError('Humidity: could not load average data', new Date());
+            });
     }
 
     getHumidityUpdateListener(device) {

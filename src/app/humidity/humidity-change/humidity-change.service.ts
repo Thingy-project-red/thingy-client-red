@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Humidity } from "../humidity.model";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class HumidityChangeService {
     private humidChangeUpdated1 = new Subject<number>();
     private humidChangeUpdated2 = new Subject<number>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getHumidityChange(device, rangeInSeconds) {
         this.http
@@ -33,7 +34,10 @@ export class HumidityChangeService {
                             this.humidChangeUpdated2.next(change);
                         }
                     });
-            })
+            },
+            (error) => {
+                this.errorService.addError('Humidity: could not load change data', new Date());
+            });
     }
 
     getHumidityChangeListener(device) {

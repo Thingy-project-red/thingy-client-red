@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from '../../websocket/websocket.service';
 import { Humidity } from '../humidity.model';
+import { ErrorService } from '../../errors/error.service';
 
 @Component({
     selector: 'app-humidity-latest',
@@ -15,7 +16,7 @@ export class HumidityLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public websocketService: WebsocketService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
     ngOnInit() {
         this.subscription = this.websocketService.humidities
@@ -23,6 +24,9 @@ export class HumidityLatestComponent implements OnInit, OnDestroy {
             if (humidity.device === this.device) {
                 this.latest = humidity.humidity;
             }
+        },
+        (error) => {
+            this.errorService.addError('Humidity: could not load latest data', new Date());
         });
     }
 
