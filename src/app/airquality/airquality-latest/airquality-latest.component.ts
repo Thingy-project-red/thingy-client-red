@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from '../../websocket/websocket.service';
 import { Air } from '../air.model';
+import { ErrorService } from '../../errors/error.service';
 
 @Component({
     selector: 'app-airquality-latest',
@@ -15,7 +16,7 @@ export class AirqualityLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public websocketService: WebsocketService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
     ngOnInit() {
         this.subscription = this.websocketService.airs
@@ -23,6 +24,9 @@ export class AirqualityLatestComponent implements OnInit, OnDestroy {
             if (air.device === this.device) {
                 this.latest = air.eco2;
             }
+        },
+        (error) => {
+            this.errorService.addError('Air quality: could not load latest data', new Date());
         });
     }
 
