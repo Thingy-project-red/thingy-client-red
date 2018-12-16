@@ -1,4 +1,6 @@
-<svg width="27" height="27">
-  <circle cx="13.5" cy="13.5" r="12" stroke="gray" stroke-width="1"
-          [attr.fill]="latestColor" />
-</svg>
+<span *ngIf="latestColor">
+  Light
+  <svg width="27" height="27">
+    <circle cx="13.5" cy="13.5" r="12" stroke="gray" stroke-width="1" [attr.fill]="latestColor" />
+  </svg>
+</span>

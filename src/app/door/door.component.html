@@ -1,47 +1,47 @@
-<mat-accordion multi="true">
-        <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                        <mat-panel-title>
+<div *ngIf="device === 'Thingy1'; then thingy1; else thingy2"></div>
+<ng-template #thingy1>
+                <mat-card-header class="card-header-container">
+                        <mat-card-title class="card-title">
+                                <div *ngIf="doorStatus === 'open'; then open; else closed"></div>&nbsp;
                                 Fridge Door
-                        </mat-panel-title>
-                        <mat-panel-description>
-                                <div class="grid-container">
-                                        <div class="grid-item">Thingy1: </div>
-                                        <div class="grid-item2" *ngIf="isOpen1;else isClosed">open</div>
-                                        <div class="grid-item">Thingy2: </div>
-                                        <div class="grid-item2" *ngIf="isOpen2;else isClosed">open</div>
-                                </div>
-                        </mat-panel-description>
-                </mat-expansion-panel-header>
-                <table style="width:50%">
-                        <tr>
-                                <th>Door</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let door of doors1">
-                                <td *ngIf="door.open;else isClosed">open</td>
-                                <td>{{door.time | date: 'medium'}}</td>
-                                <td>{{door.device}}</td>
-                        </tr>
-                </table>
-                <hr>
-                <table style="width:50%">
-                        <tr>
-                                <th>Light</th>
-                                <th>Time</th>
-                                <th>Device</th>
-                        </tr>
-                        <tr *ngFor="let door of doors2">
-                                <td *ngIf="door.open;else isClosed">open</td>
-                                <td>{{door.time | date: 'medium'}}</td>
-                                <td>{{door.device}}</td>
-                        </tr>
-                </table>
-        </mat-expansion-panel>
-</mat-accordion>
+                        </mat-card-title>
+                        <mat-card-subtitle class="card-thingy-lable">Thingy 1</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="card-content-container">
+                        <span class="card-content-latest" matTooltip="Indicates, whether the frdge is currently closed or open"
+                        matTooltipPosition="right">
+                                {{doorStatus}}
+                        </span>
+                        <span class="card-content-avg">
+                                <app-light-bubble device="Thingy1"></app-light-bubble>
+                        </span>
+                </mat-card-content>
+</ng-template>
+
+<ng-template #thingy2>
+                <mat-card-header class="card-header-container">
+                        <mat-card-title class="card-title">
+                                <div *ngIf="doorStatus === 'open'; then open; else closed"></div>&nbsp;
+                                Fridge Door
+                        </mat-card-title>
+                        <mat-card-subtitle class="card-thingy-lable">Thingy 2</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="card-content-container">
+                        <span class="card-content-latest" matTooltip="Indicates, whether the frdge is currently closed or open"
+                        matTooltipPosition="right">
+                                {{doorStatus}}
+                        </span>
+                        <span class="card-content-avg">
+                                <app-light-bubble device="Thingy2"></app-light-bubble>
+                        </span>
+                </mat-card-content>
+</ng-template>
 
 
-<ng-template #isClosed>
-        closed
+<ng-template #open>
+        <i class="fas fa-door-open fa-3x" style="color:#ec407a"></i>
+</ng-template>
+
+<ng-template #closed>
+        <i class="fas fa-door-closed fa-3x" style="color:#ec407a"></i>
 </ng-template>

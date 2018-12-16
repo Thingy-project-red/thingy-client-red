@@ -1,0 +1,13 @@
+<span *ngIf="change || change === 0">
+    <span *ngIf="change >= 0">
+            <span><i class="fas fa-sort-up" style="color:red"></i></span><br>
+            <span class="card-content-subval">+{{ change | number:'.2'}}</span>
+            <span class="subvalues-text">last hour</span>
+    </span>
+    <span *ngIf="change < 0">
+            <span><i class="fas fa-sort-down" style="color:rgb(37, 219, 0)"></i></span><br>
+            <span class="card-content-subval">{{ change | number:'.2'}}</span>
+            <span class="subvalues-text">last hour</span>
+            
+    </span>
+</span>

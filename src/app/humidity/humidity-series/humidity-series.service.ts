@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Humidity } from '../humidity.model';
 import { Subject } from "rxjs";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class HumiditySeriesService {
@@ -10,7 +11,7 @@ export class HumiditySeriesService {
     private humiditiesUpdated1 = new Subject<Humidity[]>();
     private humiditiesUpdated2 = new Subject<Humidity[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getHumiditySeries(device, rangeInSeconds) {
         this.http
@@ -23,7 +24,10 @@ export class HumiditySeriesService {
                 } else {
                     this.humiditiesUpdated2.next(this.humidities);
                 }
-            })
+            },
+            (error) => {
+                this.errorService.addError('Humidity: could not load series data', new Date());
+            });
     }
 
     getHumidityUpdateListener(device) {

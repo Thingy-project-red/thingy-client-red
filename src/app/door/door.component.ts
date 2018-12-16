@@ -1,48 +1,40 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { WebsocketService } from '../websocket/websocket.service';
 import { Door } from './door.model';
-import { DoorService } from './door.service';
-import { Subscription, interval } from 'rxjs';
-
+import { ErrorService } from '../errors/error.service';
 
 @Component({
     selector: 'app-door',
     templateUrl: './door.component.html',
-    styleUrls: ['./door.component.css']
+    styleUrls: ['../dashboard/dashboard.component.css'], 
 })
 
 export class DoorComponent implements OnInit, OnDestroy {
-    doors1: any;
-    doors2: any;
-    isOpen1: boolean;
-    isOpen2: boolean;
-    lookUpRange = '10'; // in seconds
+    @Input() device: String;
+    doorStatus: String;
 
-    private doorSub1: Subscription;
-    private doorSub2: Subscription;
+    private subscription: Subscription;
 
-    constructor(public doorService: DoorService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
     ngOnInit() {
-        this.doorSub1 = interval(1000).subscribe(x => {
-            this.doorService.getDoor1(this.lookUpRange);
-            this.doorService.getDoorUpdateListener1()
-                .subscribe((doors: Door[]) => {
-                    this.doors1 = doors;
-                    this.isOpen1 = this.doors1[0].open;
-                });
-        })
-        this.doorSub2 = interval(1000).subscribe(x => {
-            this.doorService.getDoor2(this.lookUpRange);
-            this.doorService.getDoorUpdateListener2()
-                .subscribe((doors: Door[]) => {
-                    this.doors2 = doors;
-                    this.isOpen2 = this.doors2[0].open;
-                });
-        })
+        this.subscription = this.websocketService.doors
+            .subscribe((door: Door) => {
+            if (door.device === this.device) {
+                if (door.open) {
+                    this.doorStatus = 'open';
+                } else {
+                    this.doorStatus = 'closed';
+                }
+            }
+        },
+        (error) => {
+            this.errorService.addError('Door: could not load status of door', new Date());
+        });
     }
 
     ngOnDestroy() {
-        this.doorSub1.unsubscribe();
-        this.doorSub2.unsubscribe();
+        this.subscription.unsubscribe();
     }
 }

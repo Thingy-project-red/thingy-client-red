@@ -14,9 +14,19 @@ import {
   MatTreeModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatSelectModule, 
-  
+  MatSelectModule,
+  MatSnackBarModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule, 
+  MatMenuModule, 
+  MatTooltipModule,
+  MatBadgeModule,
+  MatDialogModule,
+  MatDividerModule
+
 } from '@angular/material';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { TemperatureAvgComponent } from './temperature/temperature-avg/temperature-avg.components';
@@ -45,6 +55,15 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { HeaderComponent } from './header/header.component';
 import { AppRoutingModule } from "./app-routing.module";
+import { UserComponent } from "./users/user.component";
+import { PreferenceComponent } from "./preferences/preferences.component";
+import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
+import { chatIdDirective } from './preferences/chatid-validator.directive';
+import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
+import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
+import { AirChangeComponent } from './airquality/airquality-change/airquality-change.components';
+import { ErrorDialog } from './header/header.component';
+
 
 @NgModule({
   declarations: [
@@ -69,9 +88,18 @@ import { AppRoutingModule } from "./app-routing.module";
     LightBubbleComponent,
     LightLatestComponent,
     StatusComponent,
-    LoginComponent, 
-    SignupComponent, 
-    HeaderComponent
+    LoginComponent,
+    SignupComponent,
+    HeaderComponent,
+    UserComponent,
+    PreferenceComponent,
+    SignupComponent,
+    DoorGraphComponent,
+    chatIdDirective, 
+    TemperatureChangeComponent, 
+    HumidityChangeComponent, 
+    AirChangeComponent,
+    ErrorDialog
   ],
   imports: [
     BrowserModule,
@@ -91,9 +119,20 @@ import { AppRoutingModule } from "./app-routing.module";
     MatTreeModule,
     MatTableModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule, 
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
+    FlexLayoutModule, 
+    MatMenuModule, 
+    MatTooltipModule,
+    MatBadgeModule,
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HeaderComponent, ErrorDialog]
 })
 export class AppModule { }

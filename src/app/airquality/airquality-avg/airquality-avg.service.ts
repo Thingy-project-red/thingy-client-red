@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Air } from "../air.model";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class AirAvgService {
@@ -10,7 +11,7 @@ export class AirAvgService {
     private avgUpdated1 = new Subject<Air[]>();
     private avgUpdated2 = new Subject<Air[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getAvgCO2(device, rangeInSeconds) {
         this.http
@@ -23,6 +24,9 @@ export class AirAvgService {
                 } else {
                     this.avgUpdated2.next(this.avg);
                 }
+            },
+            (error) => {
+                this.errorService.addError('Air quality: could not load average data', new Date());
             });
     }
 

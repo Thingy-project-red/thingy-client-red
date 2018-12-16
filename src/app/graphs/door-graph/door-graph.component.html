@@ -1,0 +1,70 @@
+<mat-card>
+    <mat-card-header>
+      <div></div>
+      <mat-card-title style="padding-bottom: 10px">Door</mat-card-title>
+      <mat-card-subtitle>
+          <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <!--<mat-form-field style="width: 70%" hidden>
+              <input matInput placeholder="#Datapoints" type="number" [(ngModel)]="numberOfDataPoints">
+            </mat-form-field>-->
+            <mat-form-field style="width: 100%">
+              <input matInput [(ngModel)]="selectedDate" [matDatepicker]="picker" placeholder="from">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <mat-form-field style="width: 100%">
+              <input matInput type="time" placeholder="time" [(ngModel)]="selectedHours">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <mat-form-field style="width: 70%">
+              <input matInput placeholder="Amount" type="number" [(ngModel)]="selectedValue">
+            </mat-form-field>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <mat-form-field style="width: 100%">
+              <mat-select placeholder="Time interval" [(value)]="selectedTime">
+                <mat-option *ngFor="let time of times" [value]="time.value">
+                  {{time.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left: 10px">
+            <button mat-icon-button (click)="loadGraphData(selectedTime * selectedValue)">
+              <mat-icon aria-label="Example icon-button with a heart icon">refresh</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="loader" *ngIf="!dataLoaded">
+        <mat-spinner style="margin:0 auto;" [diameter]="60"></mat-spinner>
+      </div>
+      <div class="row" *ngIf="dataLoaded">
+          <div class="col-md-12">
+            <div class="row" style="padding-bottom: 10px">
+              <div class="col-md-3 text-center"><h6>Open:</h6></div>
+              <div class="col-md-3 text-center">Thingy1: {{openCounts1}}x opened, {{openTime1}}s</div>
+              <div class="col-md-3 text-center">Thingy2: {{openCounts2}}x opened, {{openTime2}}s</div>
+            </div>
+            <div style="display: block;">
+            <canvas baseChart width="400" height="200"
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColors"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"></canvas>
+            </div>
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions></mat-card-actions>
+  </mat-card>

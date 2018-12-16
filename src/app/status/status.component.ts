@@ -1,42 +1,35 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Status } from './status.model';
 import { StatusService } from './status.service';
 import { Subscription, interval } from 'rxjs';
+import { ErrorService } from '../errors/error.service';
 
 @Component({
   selector: 'app-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.css']
+  template: '{{ status }}',
 })
 export class StatusComponent implements OnInit, OnDestroy {
-    status1: string = 'unset'; 
-    status2: string = 'unset';
+    @Input() device: string; 
+    
+    private status: string = 'loading...'; 
+    private statusSub: Subscription; 
 
-    private statusSub1: Subscription; 
-    private statusSub2: Subscription;
-
-    constructor(public statusService: StatusService){}
+    constructor(public statusService: StatusService, private errorService: ErrorService){}
 
     ngOnInit(){
-        this.statusSub1 = interval(1000).subscribe(x => {
-            this.statusService.getStatus1(); 
-            this.statusService.getStatusUpdateListener1()
+        this.statusSub = interval(1000).subscribe(x => {
+            this.statusService.getStatus(this.device); 
+            this.statusService.getStatusUpdateListener(this.device)
             .subscribe((data: Status) => {
-                this.status1 = data.status;
-            });
-        })
-
-        this.statusSub2 = interval(1000).subscribe(x => {
-            this.statusService.getStatus2(); 
-            this.statusService.getStatusUpdateListener2()
-            .subscribe((data: Status) => {
-                 this.status2 = data.status;
+                this.status = data.status;
+            },
+            (error) => {
+                this.errorService.addError('Status: could not load status', new Date());
             });
         })
     }
 
     ngOnDestroy(){
-        this.statusSub1.unsubscribe(); 
-        this.statusSub2.unsubscribe(); 
+        this.statusSub.unsubscribe(); 
     }
 }

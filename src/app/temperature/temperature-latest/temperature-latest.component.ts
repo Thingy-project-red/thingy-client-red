@@ -1,33 +1,36 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
-import { TemperatureLatestService } from './temperature-latest.service';
+import { Subscription } from 'rxjs';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { Temperature } from '../temperature.model';
+import { ErrorService } from '../../errors/error.service';
 
 @Component({
-  selector: 'app-temperature-latest',
-  template: '{{ latest }}°C',
-  styleUrls: ['../temperature.component.css']
+    selector: 'app-temperature-latest',
+    template: '<span *ngIf="latest">{{ latest }}°</span>',
+    styleUrls: ['../temperature.component.css']
 })
+
 export class TemperatureLatestComponent implements OnInit, OnDestroy {
-  @Input() device: String;
-  latest: number;
+    @Input() device: String;
+    latest: number;
 
-  private temperaturesSub: Subscription;
+    private subscription: Subscription;
 
-  constructor(public temperatureService: TemperatureLatestService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) {}
 
-  ngOnInit() {
-    this.temperaturesSub = interval(1000).subscribe(x => {
-      this.temperatureService.getLatestTemperature(this.device);
-      this.temperatureService.getTemperatureUpdateListener(this.device)
-        .subscribe((temperatures: Temperature[]) => {
-          this.latest = temperatures[0].temperature;
+    ngOnInit() {
+        this.subscription = this.websocketService.temperatures
+            .subscribe((temperature: Temperature) => {
+            if (temperature.device === this.device) {
+                this.latest = Math.round(temperature.temperature * 10) / 10;
+            }
+        },
+        (error) => {
+            this.errorService.addError('Temperature: could not load latest data', new Date());
         });
-    })
-  }
+    }
 
-  ngOnDestroy(){
-    this.temperaturesSub.unsubscribe(); 
-  }
-
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 }

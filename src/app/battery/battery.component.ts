@@ -1,34 +1,35 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Battery } from './battery.model';
-import { BatteryService } from './battery.services';
 import { Subscription } from 'rxjs';
-import { interval } from 'rxjs';
+import { WebsocketService } from '../websocket/websocket.service';
+import { Battery } from './battery.model';
+import { ErrorService } from '../errors/error.service';
 
 @Component({
-    selector: 'app-battery-latest', 
-    template: '{{ batteryLevel }}%', 
-    styleUrls: ['./battery.component.css']
+    selector: 'app-battery-latest',
+    template: '<span *ngIf="batteryLevel">{{ batteryLevel }}%</span>'
 })
 
 export class BatteryComponent implements OnInit, OnDestroy {
-    @Input() device: String; 
+    @Input() device: String;
+    batteryLevel: number;
 
-    private batterySub: Subscription; 
-    private batteryLevel: number; 
+    private subscription: Subscription;
 
-    constructor(public batteryService: BatteryService){}
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
-    ngOnInit(){
-        this.batterySub = interval(1000).subscribe(x => {
-            this.batteryService.getBatteryLevel(this.device); 
-            this.batteryService.getBatteryUpdateListener(this.device)
-            .subscribe((batteries: Battery[]) => {
-                this.batteryLevel = batteries[0].battery_level; 
-            });
-        })
+    ngOnInit() {
+        this.subscription = this.websocketService.batteries
+            .subscribe((battery: Battery) => {
+            if (battery.device === this.device) {
+                this.batteryLevel = battery.battery_level;
+            }
+        },
+        (error) => {
+            this.errorService.addError('Battery: could not load status of battery', new Date());
+        });
     }
 
-    ngOnDestroy(){
-        this.batterySub.unsubscribe(); 
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

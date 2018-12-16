@@ -1,34 +1,7 @@
 main {
-  width: 80%;
+  width: 90%;
   margin: 1rem auto;
 }
-
-/* Hint: moved to dashboard component*/
-/*mat-panel-title{
-  margin-right: 6px;
-  font-size: 18px;
-}
-
-mat-panel-description{
-  font-size: 18px;
-}
-
-.grid-container {
-  display: inline-grid;
-  grid-template-columns: 50px 150px 150px 50px 150px 150px;
-  grid-gap: 20px;
-  align-items: flex-end;  
-}
-
-.grid-item {
-  font-size: 10px;
-  padding-bottom: 3px;
-}
-
-.grid-item2 {
-  font-size: 18px;
-  color: black;
-}*/
 
 .toolbar-spacer {
   padding-left: 25px;
@@ -37,4 +10,13 @@ mat-panel-description{
 a:hover {
   color: white;
 }
+
+body {
+  background-image: url("../assets/background.jpg");
+  background-repeat: repeat; 
+  background-size:     cover;                     
+  background-position: center center; 
+  background-attachment: scroll;
+}
+
 

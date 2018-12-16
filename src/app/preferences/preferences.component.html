@@ -1,0 +1,76 @@
+<h1 class="mat-display-1">Preferences &amp; Thresholds</h1>
+
+<mat-card class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <div style="padding: 15px">
+        <form #preferenceForm="ngForm" (submit)="onChange(preferenceForm)" *ngIf="!isLoading">
+        <div class="row">
+                        <h6><b>Notification methods</b></h6>
+        </div>
+        <div class="row">
+                <div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-form-field>
+                                <input matInput name="telegram" [(ngModel)]="contactData.telegram" type="number"
+                                        placeholder="Telegram chatId" #telegramInput="ngModel" min="0"
+                                        chatId>
+                                <mat-error *ngIf="telegramInput.invalid">Please enter a valid chatId.</mat-error>
+                        </mat-form-field>
+                </div>
+                <div class="col-12 col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <mat-form-field class="email-input">
+                                <input type="email" name="email" [(ngModel)]="contactData.email"
+                                        matInput placeholder="Email address" #emailInput="ngModel"
+                                        email>
+                                <mat-error *ngIf="emailInput.invalid">Please enter a valid email
+                                        address.</mat-error>
+                        </mat-form-field>
+                </div>
+        </div>
+        <div class="row">
+                <p>To get your Telegram chatId contact <a href="https://t.me/thingy_project_red_bot" target="_blank"
+                        rel="nofollow noopener">@thingy_project_red_bot</a></p>
+        </div>
+                <mat-divider></mat-divider>
+                <div class="row" style="padding-top: 15px">
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                                <h6><b>Metric</b></h6>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                                <h6><b>Thresholds</b></h6>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                        
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                
+                        </div>
+                </div>
+                <div *ngFor="let metric of metrics" class="row">
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2" style="margin-top: 20px">
+                                {{ metric.replace("_", " ") }}
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                                <mat-form-field *ngIf="metric !== 'door_open'">
+                                        <input type="number" name="{{ metric }}.min" [(ngModel)]="thresholds[metric].min"
+                                                matInput placeholder="min ({{ units[metric] }})">
+                                </mat-form-field>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                                <mat-form-field>
+                                        <input type="number" name="{{ metric }}.max" [(ngModel)]="thresholds[metric].max"
+                                                matInput placeholder="max ({{ units[metric] }})">
+                                </mat-form-field>
+                        </div>
+                        <div class="col-12 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+                                <mat-form-field>
+                                        <input type="number" name="{{ metric }}.timeout" [(ngModel)]="thresholds[metric].timeout"
+                                                matInput placeholder="timeout (s)">
+                                </mat-form-field>
+                        </div>
+                        <mat-divider class="d-lg-none d-md-none"></mat-divider>
+                </div>
+                <br />
+                <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Save</button>
+        </form>
+        </div> 
+</mat-card>

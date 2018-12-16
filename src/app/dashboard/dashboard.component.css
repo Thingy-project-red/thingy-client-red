@@ -1,25 +1,101 @@
-mat-panel-title{
-    margin-right: 6px;
-    font-size: 18px;
-  }
-  
-  mat-panel-description{
-    font-size: 18px;
-  }
-  
-  .grid-container {
-    display: inline-grid;
-    grid-template-columns: 50px 150px 150px 50px 150px 150px;
-    grid-gap: 20px;
-    align-items: flex-end;  
-  }
-  
-  .grid-item {
-    font-size: 10px;
-    padding-bottom: 3px;
-  }
-  
-  .grid-item2 {
-    font-size: 18px;
-    color: black;
-  }
+.sensor-card {
+  max-width: 20rem;  
+  width: 100%; 
+  height: 100%; 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  box-shadow: 0 0 0.5rem gray;
+  justify-items: center;    
+  padding: auto;
+  margin: 1rem;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 0.5rem;
+  animation: 1.25s ease-in-out 0ms 1 fadein;
+}
+
+.card-header-container{
+  display: block;
+  text-align: center; 
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.card-title{
+  font-size: 1.1rem; 
+}
+
+.card-thingy-lable{
+  display: block;
+  font-size: 1rem;
+  color: gray; 
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.card-content-container{
+  text-align: center; 
+}
+
+.card-content-latest{
+  align-self: end;
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: 100;
+  letter-spacing: 0.1rem;
+}
+
+.card-content-avg {
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.card-content-subval{
+  display: block;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+.separator {
+  height: 4.5rem;
+  padding-left: 5; 
+  padding-right: 5; 
+  border-left: 1px solid lightgrey; 
+}
+
+.subvalues-text {
+  display: inline-block; 
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.thingyStatusLabel{
+  display: inline-block;
+  color: white; 
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  text-align: left;
+  padding-left: 30px; 
+}
+
+.col-lg-6 {
+    white-space: nowrap;
+    transition: width 0.66s ease-out;
+    min-width: 108px;
+}
+
+.col-lg-3{
+  min-width: 255px; 
+  height: 17rem; 
+}
+
+.top-buffer{
+  margin-top: 25px; 
+}

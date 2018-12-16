@@ -1,33 +1,39 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Subscribable, Subscription, interval } from 'rxjs';
-import { LightService } from '../light.service';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { WebsocketService } from '../../websocket/websocket.service';
 import { Light } from '../light.model';
+import { ErrorService } from '../../errors/error.service';
 
 @Component({
-  selector: 'app-light-bubble',
-  templateUrl: './light-bubble.component.html',
-  styleUrls: ['../light.component.css']
+    selector: 'app-light-bubble',
+    templateUrl: './light-bubble.component.html',
+    styleUrls: ['../light.component.css']
 })
+
 export class LightBubbleComponent implements OnInit {
-  @Input() device: String;
+    @Input() device: String;
+    latestColor: string;
 
-  latestColor: number;
-  private lightSub: Subscription;
+    private subscription: Subscription;
 
-  constructor(public lightService: LightService) { }
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) { }
 
-  ngOnInit() {
-    this.lightSub = interval(1000).subscribe(x => {
-      this.lightService.getLatestColor(this.device);
-      this.lightService.getLightsUpdateListener(this.device)
-        .subscribe((lights: Light[]) => {
-          this.latestColor = this.lightService.getColorCode();
-        })
-    })
-  }
+    ngOnInit() {
+        this.subscription = this.websocketService.lights
+            .subscribe((light: Light) => {
+            if (light.device === this.device) {
+                this.latestColor = 'rgb('
+                    + light.red + ', '
+                    + light.green + ', '
+                    + light.blue + ')';
+            }
+        },
+        (error) => {
+            this.errorService.addError('Light: could not load light color data', new Date());
+        });
+    }
 
-  ngOnDestroy() {
-    this.lightSub.unsubscribe();
-  }
-
+    ngOnDestroy(){
+        this.subscription.unsubscribe();
+    }
 }

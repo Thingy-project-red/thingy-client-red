@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { GraphDataService } from '../graph-data.service';
+import { ErrorService } from '../../errors/error.service';
 
 export interface Time {
   value: number;
@@ -19,6 +20,9 @@ export class TemperatureGraphComponent implements OnInit {
   dataPoints2 = [];
   dataLabels = [];
 
+  average1:number = 0;
+  average2:number = 0;
+
   dataLoaded:boolean = false;
   data1Loaded:boolean = false;
   data2Loaded:boolean = false;
@@ -32,7 +36,7 @@ export class TemperatureGraphComponent implements OnInit {
   selectedTime = 3600;
   selectedValue:number = 1;
 
-  numberOfDataPoints:number = 60;
+  numberOfDataPoints:number = 30;
 
   /*
     Graph variables
@@ -42,7 +46,23 @@ export class TemperatureGraphComponent implements OnInit {
   public lineChartLabels:Array<any> = [];
 
   public lineChartOptions:any = {
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'temperature (C°)',
+          fontStyle: 'bold'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'time (hh:mm)',
+          fontStyle: 'bold'
+        }
+      }]
+    }
   };
   public lineChartColors:Array<any> = [
     { // red
@@ -65,11 +85,11 @@ export class TemperatureGraphComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
 
-  constructor(private graphDataService:GraphDataService) { }
+  constructor(private graphDataService:GraphDataService, private errorService: ErrorService) { }
 
   ngOnInit() {
 
-    this.loadGraphData(3600, this.numberOfDataPoints);
+    this.loadGraphData(3600, 3600 / this.numberOfDataPoints);
 
   }
 
@@ -80,14 +100,18 @@ export class TemperatureGraphComponent implements OnInit {
     this.graphDataService.getData('Thingy1', 'temperature', timeRange, interval).subscribe((data) => {
       this.graphData1 = data;
 
+      let axisLabelWithDate:boolean = false;
+
       for(let i = 0; i<this.graphData1.length; i++) {
         if(this.graphData1[i].temperature != null) {
           this.dataPoints1.push(Number((this.graphData1[i].temperature).toFixed(2)));
+          this.average1 += Number((this.graphData1[i].temperature).toFixed(2));
           let minutes = new Date(this.graphData1[i].time).getMinutes();
           let hours = new Date(this.graphData1[i].time).getHours();
           if(this.selectedTime == 60 || this.selectedTime == 3600) {
             this.dataLabels.push(hours + ':' + (minutes < 10 ? '0' + minutes : minutes));
           } else {
+            axisLabelWithDate = true;
             let days = new Date(this.graphData1[i].time).getDate();
             let month = new Date(this.graphData1[i].time).getMonth() + 1;
             let year = new Date(this.graphData1[i].time).getFullYear();
@@ -96,8 +120,16 @@ export class TemperatureGraphComponent implements OnInit {
         }
       }
 
+      if(!axisLabelWithDate) {
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'time (hh:mm)';
+      } else {
+        this.lineChartOptions.scales.xAxes[0].scaleLabel.labelString = 'time (DD.MM.YYYY - hh:mm)';
+      }
+
       this.lineChartData[0] = {data: this.dataPoints1, label: 'Thingy1'};
       this.lineChartLabels = this.dataLabels;
+
+      this.average1 = Number((this.average1 / this.graphData1.length).toFixed(2));
 
       this.data1Loaded = true;
       if(this.data2Loaded) {
@@ -105,6 +137,7 @@ export class TemperatureGraphComponent implements OnInit {
       }
     },
     (error) => {
+      this.errorService.addError('Temperature graph: could not load data for thingy1', new Date());
       console.log(error);
     });
 
@@ -114,10 +147,13 @@ export class TemperatureGraphComponent implements OnInit {
       for(let i = 0; i<this.graphData2.length; i++) {
         if(this.graphData2[i].temperature != null) {
           this.dataPoints2.push(Number((this.graphData2[i].temperature).toFixed(2)));
+          this.average2 += Number((this.graphData2[i].temperature).toFixed(2));
         }
       }
 
       this.lineChartData[1] = {data: this.dataPoints2, label: 'Thingy2'};
+
+      this.average2 = Number((this.average2 / this.graphData2.length).toFixed(2));
 
       this.data2Loaded = true;
       if(this.data1Loaded) {
@@ -125,6 +161,7 @@ export class TemperatureGraphComponent implements OnInit {
       }
     },
     (error) => {
+      this.errorService.addError('Temperature graph: could not load data for thingy2', new Date());
       console.log(error);
     });
   }
@@ -136,6 +173,9 @@ export class TemperatureGraphComponent implements OnInit {
 
     this.graphData1 = null;
     this.graphData2 = null;
+
+    this.average1 = 0;
+    this.average2 = 0;
 
     this.dataPoints1 = [];
     this.dataPoints2 = [];

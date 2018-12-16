@@ -5,3 +5,12 @@ mat-form-field {
 mat-spinner {
     margin: auto;
 }
+
+.error-msg {
+    color: red;
+}
+
+.col-md-12 {
+    padding-right: 10px;
+    padding-left: 10px;
+}

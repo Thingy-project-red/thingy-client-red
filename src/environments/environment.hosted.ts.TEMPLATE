@@ -2,5 +2,6 @@
 export const environment = {
   production: false,
   name: 'hosted',
-  api: 'http://HOSTNAME:PORT'
+  api: 'http://HOSTNAME:PORT',
+  ws: 'ws://HOSTNAME:PORT'
 };

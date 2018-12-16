@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Temperature } from "../temperature.model";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureSeriesService {
@@ -10,7 +11,7 @@ export class TemperatureSeriesService {
     private tempereraturesUpdated1 = new Subject<Temperature[]>();
     private tempereraturesUpdated2 = new Subject<Temperature[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getTemperatureSeries(device, rangeInSeconds) {
         this.http
@@ -23,7 +24,10 @@ export class TemperatureSeriesService {
                 }else{
                     this.tempereraturesUpdated2.next(this.temperatures);
                 }
-            })
+            },
+            (error) => {
+                this.errorService.addError('Temperature: could not load series data', new Date());
+            });
     }
 
     getTemperatureUpdateListener(device) {
