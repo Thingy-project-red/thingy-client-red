@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { WebsocketService } from '../../websocket/websocket.service';
 import { Temperature } from '../temperature.model';
+import { ErrorService } from '../../errors/error.service';
 
 @Component({
     selector: 'app-temperature-latest',
@@ -15,7 +16,7 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
 
     private subscription: Subscription;
 
-    constructor(public websocketService: WebsocketService) {}
+    constructor(public websocketService: WebsocketService, private errorService: ErrorService) {}
 
     ngOnInit() {
         this.subscription = this.websocketService.temperatures
@@ -23,6 +24,9 @@ export class TemperatureLatestComponent implements OnInit, OnDestroy {
             if (temperature.device === this.device) {
                 this.latest = Math.round(temperature.temperature * 10) / 10;
             }
+        },
+        (error) => {
+            this.errorService.addError('Temperature: could not load latest data');
         });
     }
 

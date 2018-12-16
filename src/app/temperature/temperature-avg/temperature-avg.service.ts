@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Temperature } from "../temperature.model";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureAvgService {
@@ -10,7 +11,7 @@ export class TemperatureAvgService {
     private tempereraturesUpdated1 = new Subject<number>();
     private tempereraturesUpdated2 = new Subject<number>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getAvgTemperature(device, rangeInSeconds) {
         this.http
@@ -25,7 +26,10 @@ export class TemperatureAvgService {
                 }else{
                     this.tempereraturesUpdated2.next(this.avg);
                 }
-            })
+            },
+            (error) => {
+                this.errorService.addError('Temperature: could not load average data');
+            });
     }
     getTemperatureUpdateListener(device) {
         if(device=="Thingy1"){

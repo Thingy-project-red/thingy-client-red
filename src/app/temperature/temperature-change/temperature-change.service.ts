@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Subject } from "rxjs";
 import { Temperature } from "../temperature.model";
+import { ErrorService } from '../../errors/error.service';
 
 @Injectable({ providedIn: 'root' })
 export class TemperatureChangeService {
     private tempChangeUpdated1 = new Subject<number>();
     private tempChangeUpdated2 = new Subject<number>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private errorService: ErrorService) { }
 
     getTemperatureChange(device, rangeInSeconds) {
         this.http
@@ -33,7 +34,9 @@ export class TemperatureChangeService {
                             this.tempChangeUpdated2.next(change);
                         }
                     });
-            })
+            },(error) => {
+                this.errorService.addError('Temperature: could not load change data');
+            });
     }
 
     getTemperatureChangeListener(device) {
