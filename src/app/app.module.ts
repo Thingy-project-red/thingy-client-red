@@ -21,7 +21,8 @@ import {
   MatNativeDateModule, 
   MatMenuModule, 
   MatTooltipModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatDialogModule
 
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -59,7 +60,8 @@ import { DoorGraphComponent } from './graphs/door-graph/door-graph.component';
 import { chatIdDirective } from './preferences/chatid-validator.directive';
 import { TemperatureChangeComponent } from './temperature/temperature-change/temperature-change.components'; 
 import { HumidityChangeComponent } from './humidity/humidity-change/humidity-change.components'; 
-import { AirChangeComponent } from './airquality/airquality-change/airquality-change.components'; 
+import { AirChangeComponent } from './airquality/airquality-change/airquality-change.components';
+import { ErrorDialog } from './header/header.component';
 
 
 @NgModule({
@@ -95,7 +97,8 @@ import { AirChangeComponent } from './airquality/airquality-change/airquality-ch
     chatIdDirective, 
     TemperatureChangeComponent, 
     HumidityChangeComponent, 
-    AirChangeComponent
+    AirChangeComponent,
+    ErrorDialog
   ],
   imports: [
     BrowserModule,
@@ -123,9 +126,11 @@ import { AirChangeComponent } from './airquality/airquality-change/airquality-ch
     FlexLayoutModule, 
     MatMenuModule, 
     MatTooltipModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [HeaderComponent, ErrorDialog]
 })
 export class AppModule { }
