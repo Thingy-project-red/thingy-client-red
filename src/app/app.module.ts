@@ -22,7 +22,8 @@ import {
   MatMenuModule, 
   MatTooltipModule,
   MatBadgeModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDividerModule
 
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -127,7 +128,8 @@ import { ErrorDialog } from './header/header.component';
     MatMenuModule, 
     MatTooltipModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent],
