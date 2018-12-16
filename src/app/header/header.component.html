@@ -28,14 +28,52 @@
           {{username}}&nbsp;<mat-icon>account_circle</mat-icon>
         </button>
       </li>
+      <li *ngIf="userIsAuthenticated">
+        <button mat-icon-button [matMenuTriggerFor]="notificationMenu">
+          <mat-icon *ngIf="errorService.errors.length > 0" [matBadge]="errorService.errors.length" matBadgeColor="warn">notifications</mat-icon>
+          <mat-icon *ngIf="!(errorService.errors.length > 0)">notifications</mat-icon>
+        </button>
+        <mat-menu #notificationMenu="matMenu">
+          <button *ngFor="let error of errorService.errors; let i = index" mat-menu-item (click)="openDialog(error)">
+            <mat-icon style="color: black">error</mat-icon>
+            <span style="color: black">{{error}}</span>
+          </button>
+          <button *ngIf="errorService.errors.length > 0" mat-menu-item (click)="errorService.removeErrors()">
+              <mat-icon style="color: firebrick">delete</mat-icon>
+              <span style="color: firebrick">Dismiss all errors</span>
+          </button>
+          <button *ngIf="!(errorService.errors.length > 0)" mat-menu-item disabled>
+              <mat-icon style="color: grey">check</mat-icon>
+              <span style="color: grey">No errors happened</span>
+          </button>
+        </mat-menu>
+    </li>
     </ul>
   </div>
   <div fxShow fxHide.gt-sm>
     <div class="title-with-icon">
+      <button mat-icon-button [matMenuTriggerFor]="notificationMenu" style="margin-right: 10px">
+        <mat-icon *ngIf="errorService.errors.length > 0" [matBadge]="errorService.errors.length" matBadgeColor="warn">notifications</mat-icon>
+        <mat-icon *ngIf="!(errorService.errors.length > 0)">notifications</mat-icon>
+      </button>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
+    <mat-menu #notificationMenu="matMenu">
+      <button *ngFor="let error of errorService.errors; let i = index" mat-menu-item (click)="openDialog(error)">
+        <mat-icon style="color: black">error</mat-icon>
+        <span style="color: black">{{error}}</span>
+      </button>
+      <button *ngIf="errorService.errors.length > 0" mat-menu-item (click)="errorService.removeErrors()">
+          <mat-icon style="color: firebrick">delete</mat-icon>
+          <span style="color: firebrick">Dismiss all errors</span>
+      </button>
+      <button *ngIf="!(errorService.errors.length > 0)" mat-menu-item disabled>
+          <mat-icon style="color: grey">check</mat-icon>
+          <span style="color: grey">No errors happened</span>
+      </button>
+    </mat-menu>
     <mat-menu #menu="matMenu">
       <span *ngIf="userIsAuthenticated">
         <a button mat-menu-item routerLink="/dashboard" routerLinkActive="mat-accent">Dashboard</a>
