@@ -6,13 +6,14 @@ import { Subject } from 'rxjs';
 import 'rxjs/add/operator/map'
 import { Router } from '@angular/router';
 import { AnimationKeyframesSequenceMetadata } from '@angular/animations';
+import { ErrorService } from '../errors/error.service';
 
 @Injectable({ providedIn: "root" })
 export class UserService {
     private users: User[];
     private usersUpdated = new Subject<User[]>();
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router, private errorService: ErrorService) {}
 
     getUsers() {
         return this.http.get<any>(
@@ -41,9 +42,12 @@ export class UserService {
 
         return this.http.patch(
             `${environment.api}/api/v1/users/${user.name}`, { rights: rights })
-            .subscribe((response => {
+            .subscribe((response) => {
                 this.getUsers();
-            }));
+            },
+            (error) => {
+                this.errorService.addError('Users: could not update user ' + user.name, new Date());
+            });
     }
 
 

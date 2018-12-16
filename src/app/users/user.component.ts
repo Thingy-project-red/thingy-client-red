@@ -4,6 +4,7 @@ import { UserService } from "./user.service";
 import { MatSnackBar } from '@angular/material';
 import { User } from "./user.model";
 import { Router } from "@angular/router";
+import { ErrorService } from '../errors/error.service';
 
 @Component({
     selector: 'app-users',
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit, OnDestroy {
     isLoading = false;
     isAdmin = false;
 
-    constructor(public userService: UserService, public snackBar: MatSnackBar, public router: Router) { }
+    constructor(public userService: UserService, public snackBar: MatSnackBar, public router: Router, private errorService: ErrorService) { }
 
     ngOnInit() {
         this.isLoading = true;
@@ -38,6 +39,9 @@ export class UserComponent implements OnInit, OnDestroy {
         this.userService.deleteUser(username).subscribe(() => {
             this.snackBar.open("User " + username + " deleted successfully", "done", { duration: 2000 });
             this.userService.getUsers();
+        },
+        (error) => {
+            this.errorService.addError('Users: could not delete user ' + username, new Date());
         });
         this.isLoading = false;
 
