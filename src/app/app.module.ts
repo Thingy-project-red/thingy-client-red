@@ -20,7 +20,8 @@ import {
   MatDatepickerModule,
   MatNativeDateModule, 
   MatMenuModule, 
-  MatTooltipModule
+  MatTooltipModule,
+  MatBadgeModule
 
 } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -121,7 +122,8 @@ import { AirChangeComponent } from './airquality/airquality-change/airquality-ch
     MatNativeDateModule, 
     FlexLayoutModule, 
     MatMenuModule, 
-    MatTooltipModule
+    MatTooltipModule,
+    MatBadgeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
