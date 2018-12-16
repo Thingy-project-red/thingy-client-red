@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GraphDataService } from '../graph-data.service';
+import { ErrorService } from '../../errors/error.service';
 
 export interface Time {
   value: number;
@@ -93,7 +94,7 @@ export class DoorGraphComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
 
-  constructor(private graphDataService:GraphDataService) { }
+  constructor(private graphDataService:GraphDataService, private errorService: ErrorService) { }
 
   ngOnInit() {
 
@@ -165,6 +166,7 @@ export class DoorGraphComponent implements OnInit {
       }
     },
     (error) => {
+      this.errorService.addError('Door graph: could not load data for thingy1');
       console.log(error);
     });
 
@@ -197,6 +199,7 @@ export class DoorGraphComponent implements OnInit {
       }
     },
     (error) => {
+      this.errorService.addError('Door graph: could not load data for thingy2');
       console.log(error);
     });
   }
