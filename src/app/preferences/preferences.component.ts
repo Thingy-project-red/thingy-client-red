@@ -6,6 +6,7 @@ import { UserPreferences } from "./preferences.model";
 import { Router } from "@angular/router";
 import { AuthService } from "../auth/auth.service";
 import { NgForm } from "@angular/forms";
+import { ErrorService } from '../errors/error.service';
 
 @Component({
     selector: 'app-preferences',
@@ -23,7 +24,7 @@ export class PreferenceComponent implements OnInit, OnDestroy {
     isLoading = false;
     username: string;
     
-    constructor(private authService: AuthService, public preferenceService: PreferenceService, public snackBar: MatSnackBar, public router: Router) { }
+    constructor(private authService: AuthService, public preferenceService: PreferenceService, public snackBar: MatSnackBar, public router: Router, private errorService: ErrorService) { }
 
     ngOnInit() {
         this.isLoading = true;
@@ -61,6 +62,7 @@ export class PreferenceComponent implements OnInit, OnDestroy {
                 console.log(err);
                 let msg = typeof err.error === "string" ? err.error : err.message;
                 this.snackBar.open(msg, "error", { duration: 5000 });
+                this.errorService.addError('Preferences: could not update user preferences', new Date());
             })        
     }
 
