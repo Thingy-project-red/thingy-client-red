@@ -10,10 +10,10 @@ mat-spinner {
     box-shadow: 0 0 0.5rem gray;
     justify-items: center;    
     padding: 1.1rem;
-    margin-left: 2.5rem;
+    /*margin-left: 2.5rem;*/
     margin-top: 4rem;
     margin-bottom: 2.5rem;
-    width: 60%;
+    width: 100%;
     border-radius: 0.5rem;
     animation: 1.25s ease-in-out 0ms 1 fadein;
 }
